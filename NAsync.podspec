@@ -10,12 +10,9 @@
 Pod::Spec.new do |s|
   s.name             = "NAsync"
   s.version          = "0.1.0"
-  s.summary          = "A short description of NAsync."
+  s.summary          = "Yet another async task library. Promises, chaining etc."
   s.description      = <<-DESC
-                       An optional longer description of NAsync
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       Some description here will be added.
                        DESC
   s.homepage         = "https://github.com/naithar/NAsync"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
@@ -33,6 +30,6 @@ Pod::Spec.new do |s|
   }
 
   s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'XCTest'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
