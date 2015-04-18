@@ -11,8 +11,4 @@
 
 @implementation NAsyncManager
 
-- (void)first {
-    [self second];
-}
-
 @end

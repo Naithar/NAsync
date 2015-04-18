@@ -9,7 +9,4 @@
 #import <Foundation/Foundation.h>
 
 @interface NAsyncManager : NSObject
-
-
-- (void)first;
 @end

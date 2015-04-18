@@ -10,7 +10,4 @@ import UIKit
 import NAsync
 
 extension NAsyncManager {
-    public func second() {
-        
-    }
 }
