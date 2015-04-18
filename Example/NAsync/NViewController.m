@@ -7,6 +7,7 @@
 //
 
 #import "NViewController.h"
+@import NAsync;
 
 @interface NViewController ()
 
@@ -17,6 +18,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
+    [[NAsyncManager new] second];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
