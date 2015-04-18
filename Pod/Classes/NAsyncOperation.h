@@ -10,23 +10,20 @@
 
 
 @class NAsyncOperation;
-
 typedef void(^NAsyncBlock)(NAsyncOperation *operation, id value);
 typedef id(^NAsyncReturnBlock)(NAsyncOperation *operation, id value);
 
 @interface NAsyncBaseOperation : NSOperation
-
 - (instancetype)init;
 - (instancetype)initWithPriority:(NSOperationQueuePriority)priority;
-
 @end
 
 @interface NAsyncDelayOperation : NAsyncBaseOperation
-
 - (instancetype)initWithDelay:(NSTimeInterval)delay;
+- (instancetype)initWithDelay:(NSTimeInterval)delay andPriority:(NSOperationQueuePriority)priority;
 + (instancetype)withDelay:(NSTimeInterval)delay;
++ (instancetype)withDelay:(NSTimeInterval)delay andPriority:(NSOperationQueuePriority)priority;
 - (void)perform;
-
 @end
 
 @interface NAsyncOperation : NAsyncBaseOperation

@@ -62,6 +62,12 @@
     [super cancel];
 }
 
+- (void)setOperationReady:(BOOL)operationReady {
+    [self willChangeValueForKey:@"isReady"];
+    _operationReady = operationReady;
+    [self didChangeValueForKey:@"isReady"];
+}
+
 - (void)setOperationExecuting:(BOOL)operationExecuting {
     [self willChangeValueForKey:@"isExecuting"];
     _operationExecuting = operationExecuting;
@@ -74,6 +80,11 @@
     [self didChangeValueForKey:@"isFinished"];
 }
 
+- (void)setOperationCancelled:(BOOL)operationCancelled {
+    [self willChangeValueForKey:@"isCancelled"];
+    _operationCancelled = operationCancelled;
+    [self didChangeValueForKey:@"isCancelled"];
+}
 @end
 
 
@@ -81,6 +92,7 @@
 @property (nonatomic, assign) NSTimeInterval delay;
 
 @end
+
 @implementation NAsyncDelayOperation
 
 + (NSOperationQueue*)delayQueue {
@@ -95,20 +107,40 @@
     return delayQueue;
 }
 
+- (instancetype)init {
+    return [self initWithDelay:0];
+}
+
 - (instancetype)initWithDelay:(NSTimeInterval)delay {
-    self = [super init];
+    return [self initWithDelay:delay
+                   andPriority:NSOperationQueuePriorityNormal];
+}
+
+- (instancetype)initWithDelay:(NSTimeInterval)delay
+                  andPriority:(NSOperationQueuePriority)priority {
+    self = [super initWithPriority:priority];
 
     if (self) {
         _delay = delay;
 
-        self.name = [NSString stringWithFormat:@"NAsync.DelayOperation.%@", @(_delay)];
+        self.name = [NSString
+                     stringWithFormat:@"NAsync.DelayOperation.%@",
+                     @(_delay)];
     }
 
     return self;
 }
 
+
 + (instancetype)withDelay:(NSTimeInterval)delay {
-    return [[self alloc] initWithDelay:delay];
+    return [self withDelay:delay
+               andPriority:NSOperationQueuePriorityNormal];
+}
+
++ (instancetype)withDelay:(NSTimeInterval)delay
+              andPriority:(NSOperationQueuePriority)priority {
+    return [[self alloc] initWithDelay:delay
+                           andPriority:priority];
 }
 
 
@@ -116,7 +148,8 @@
     if (self.delay > 0) {
         self.operationExecuting = NO;
         self.operationFinished = NO;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.delay * NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.delay * NSEC_PER_SEC),
+                       dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             self.operationExecuting = YES;
             self.operationFinished = YES;
         });
@@ -128,7 +161,9 @@
 }
 
 - (void)dealloc {
-    NSLog(@"delay operation dealloc");
+#ifdef DEBUG
+    NSLog(@"NAsync: delay operation deallocated");
+#endif
 }
 
 @end
