@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.version          = "0.1.0"
   s.summary          = "Yet another async task library. Promises, chaining etc."
   s.description      = <<-DESC
-                       Some description here will be added.
+                       Async task library for both ObjC and Swift. Chaining operations, promises, return values.
                        DESC
   s.homepage         = "https://github.com/naithar/NAsync"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
