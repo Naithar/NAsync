@@ -175,6 +175,7 @@
 @property (nonatomic, strong) NAsyncOperation* parentOperation;
 @property (nonatomic, copy) NAsyncReturnBlock operationBlock;
 
+@property (nonatomic, copy) id returnValue;
 @property (nonatomic, copy) id inputValue;
 @end
 
@@ -184,13 +185,15 @@
                      priority:(NSOperationQueuePriority)priority
             previousOperation:(NAsyncOperation*)operation
                      andBlock:(NAsyncBlock)block {
-
-    return [self initWithDelay:delay priority:priority previousOperation:operation andReturnBlock:^id(NAsyncOperation *operation, id value) {
-        if (block) {
-            block(operation, value);
-        }
-        return nil;
-    }];
+    return [self initWithDelay:delay
+                      priority:priority
+             previousOperation:operation
+                andReturnBlock:^id(NAsyncOperation *operation, id value) {
+                    if (block) {
+                        block(operation, value);
+                    }
+                    return nil;
+                }];
 }
 
 - (instancetype)initWithDelay:(NSTimeInterval)delay
@@ -203,18 +206,16 @@
         _operationBlock = block;
 
         if (delay > 0) {
-            NAsyncDelayOperation *delayOperation = [NAsyncDelayOperation withDelay:delay];
+            NAsyncDelayOperation *delayOperation = [NAsyncDelayOperation withDelay:delay
+                                                                       andPriority:priority];
 
             [self addDependency:delayOperation];
-
-            if (operation != nil) {
-                [delayOperation addDependency:operation];
-            }
 
             _delayOperation = delayOperation;
         }
 
         if (operation != nil) {
+            [_delayOperation addDependency:operation];
             [self addDependency:operation];
             _parentOperation = operation;
         }
@@ -227,19 +228,18 @@
 
 - (void)main {
     if (!self.inputValue) {
-        self.inputValue = self.parentOperation.value;
+        self.inputValue = self.parentOperation.returnValue;
     }
     [self removeDependency:self.delayOperation];
     self.delayOperation = nil;
 
-
     [self removeDependency:self.parentOperation];
     self.parentOperation = nil;
 
-    __block __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     if (self.operationBlock) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        strongSelf.value = strongSelf.operationBlock(strongSelf, strongSelf.inputValue);
+        strongSelf.returnValue = strongSelf.operationBlock(strongSelf, strongSelf.inputValue);
     }
 }
 
@@ -249,11 +249,17 @@
 
 - (id)wait {
     [self waitUntilFinished];
-
-    return self.value;
+    return self.returnValue;
 }
 
 - (void)performOnQueue:(NSOperationQueue*)queue {
+    [self performOnQueue:queue
+               withValue:nil];
+}
+
+- (void)performOnQueue:(NSOperationQueue *)queue
+             withValue:(id)inputValue {
+    self.inputValue = inputValue;
     [self.delayOperation perform];
     [queue addOperation:self];
 }
@@ -271,7 +277,10 @@
     self.operationBlock = nil;
     self.parentOperation = nil;
     self.delayOperation = nil;
+
+#ifdef DEBUG
     NSLog(@"operation dealloc");
+#endif
 }
 
 @end
