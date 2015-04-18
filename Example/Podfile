@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'NAsync', :exclusive => true do
+  pod "NAsync", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "NAsync", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
