@@ -31,7 +31,10 @@
         _operationCancelled = NO;
 
         self.queuePriority = priority;
-        self.name = @"NAsync.BaseOperation";
+
+        if ([self respondsToSelector:@selector(setName:)]) {
+            self.name = @"NAsync.BaseOperation";
+        }
     }
 
     return self;
@@ -123,9 +126,11 @@
     if (self) {
         _delay = delay;
 
+                if ([self respondsToSelector:@selector(setName:)]) {
         self.name = [NSString
                      stringWithFormat:@"NAsync.DelayOperation.%@",
                      @(_delay)];
+                }
     }
 
     return self;
@@ -220,7 +225,9 @@
             _parentOperation = operation;
         }
 
+                if ([self respondsToSelector:@selector(setName:)]) {
         self.name = @"NAsync.Operation";
+                }
     }
 
     return self;
