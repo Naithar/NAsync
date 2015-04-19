@@ -45,6 +45,21 @@ extension NAsyncOperation {
         #if DEBUG
             NSLog("swift value setter")
         #endif
-        self.swiftValue().inputValue = self.parentOperation?.swiftValue().returnValue;
+
+        if (self.swiftValue().inputValue == nil) {
+            self.swiftValue().inputValue = self.parentOperation?.swiftValue().returnValue
+        }
+    }
+
+    public func perform(queue: NSOperationQueue!, value: Any! = nil) {
+        self.swiftValue().inputValue = nil
+
+        self.performOnQueue(queue, withValue: value as? NSObject)
+    }
+
+    public func waitAny() -> Any! {
+        self.wait()
+
+        return self.swiftValue().returnValue
     }
 }
