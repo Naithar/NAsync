@@ -13,7 +13,7 @@ install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
 - set -o pipefail && xctool -workspace Example/NAsync.xcworkspace -scheme NAsync-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c 
-- xctool test -workspace Example/NAsync.xcworkspace -scheme Test -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+#- xctool test -workspace Example/NAsync.xcworkspace -scheme NAsync-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - pod lib lint --quick
 #after_success:
 #- ./script/coveralls.sh
