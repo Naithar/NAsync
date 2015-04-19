@@ -64,6 +64,7 @@
 		75583A0C9743E4CBF5F216DF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		7B3E0E8555A51B7FE6A33B1C /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD5482A7FCC676D4AE157EF /* Pods-NAsync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NAsync.release.xcconfig"; path = "Pods/Target Support Files/Pods-NAsync/Pods-NAsync.release.xcconfig"; sourceTree = "<group>"; };
+		90FB97271AE3288500ADBB40 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		99CE67C773890521B6EE99CF /* Pods-NAsync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NAsync.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NAsync/Pods-NAsync.debug.xcconfig"; sourceTree = "<group>"; };
 		D40F9C0DC4564E16086B815B /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E6E4ED8F9B1ABD3248BB4E2B /* NAsync.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NAsync.podspec; path = ../NAsync.podspec; sourceTree = "<group>"; };
@@ -130,6 +131,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90FB97271AE3288500ADBB40 /* libicucore.dylib */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
