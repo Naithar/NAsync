@@ -236,6 +236,7 @@
 - (void)main {
     if (!self.inputValue) {
         self.inputValue = self.parentOperation.returnValue;
+        [self prepareSwiftValues];
     }
     [self removeDependency:self.delayOperation];
     self.delayOperation = nil;

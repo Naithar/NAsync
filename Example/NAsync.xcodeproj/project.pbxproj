@@ -22,6 +22,8 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		90B9674F1AE36044004D1FBD /* libicucore.A.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90FB972A1AE3309300ADBB40 /* libicucore.A.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		90B967501AE36044004D1FBD /* libicucore.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90FB97271AE3288500ADBB40 /* libicucore.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E62AB4DD6D8790781CF3DF2A /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3E0E8555A51B7FE6A33B1C /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E8FA01E94B3DE236017FF7EA /* Pods_NAsync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D26FE529C73659F96BEE788 /* Pods_NAsync.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -35,6 +37,29 @@
 			remoteInfo = NAsync;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		90B9674E1AE3602D004D1FBD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				90B9674F1AE36044004D1FBD /* libicucore.A.dylib in CopyFiles */,
+				90B967501AE36044004D1FBD /* libicucore.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90F32DA91AE353A6006DD01C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D26FE529C73659F96BEE788 /* Pods_NAsync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NAsync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +237,7 @@
 				6003F588195388D20070C39A /* Resources */,
 				58F4ACB60BBDE8F387FEF206 /* Copy Pods Resources */,
 				2399926C4B89624DB34A84C7 /* Embed Pods Frameworks */,
+				90F32DA91AE353A6006DD01C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -232,6 +258,7 @@
 				6003F5AC195388D20070C39A /* Resources */,
 				5CF98B5631203E4A5E41E4CE /* Copy Pods Resources */,
 				32751486C92FC452837BBC05 /* Embed Pods Frameworks */,
+				90B9674E1AE3602D004D1FBD /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -537,7 +564,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -558,7 +586,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -578,7 +607,8 @@
 			baseConfigurationReference = 6A28223212DFB5ADA8FC29E1 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NAsync.app/NAsync";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -602,7 +632,8 @@
 			baseConfigurationReference = D40F9C0DC4564E16086B815B /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NAsync.app/NAsync";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
