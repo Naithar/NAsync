@@ -1,0 +1,14 @@
+PODS:
+  - NAsync (0.1.0)
+
+DEPENDENCIES:
+  - NAsync (from `../`)
+
+EXTERNAL SOURCES:
+  NAsync:
+    :path: ../
+
+SPEC CHECKSUMS:
+  NAsync: 64b33e17a68419031e6cc2cb9d28b0686da9e138
+
+COCOAPODS: 0.36.4
