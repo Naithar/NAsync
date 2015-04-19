@@ -23,7 +23,8 @@ import UIKit
 //    var inputValue: Any! = nil
 //}
 //
-//extension NAsyncOperation {
+extension NAsyncOperation {
+}
 //    private var swiftValues: NAsyncSwiftValues! {
 //        get {
 //            return objc_getAssociatedObject(self, &swiftReturnValueKey) as? NAsyncSwiftValues
