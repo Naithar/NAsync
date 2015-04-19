@@ -7,7 +7,8 @@
 //
 
 
-//@import NAsync;
+@import NAsync;
+
 SpecBegin(InitialSpecs)
 
 //describe(@"these will fail", ^{
@@ -27,21 +28,21 @@ SpecBegin(InitialSpecs)
 //    });
 //});
 //
-//describe(@"operation without return type", ^{
-//    it(@"will run", ^{
-//        __block NSInteger index = 0;
-//        waitUntil(^(DoneCallback done) {
-//            [[[NAsyncOperation alloc] initWithDelay:0
-//                                          priority:NSOperationQueuePriorityNormal
-//                                 previousOperation:nil
-//                                          andBlock:^(NAsyncOperation *operation, id value) {
-//                                              index = [value integerValue];
-//                                              done();
-//                                          }] performOnQueue:[NSOperationQueue mainQueue] withValue:@10];
-//        });
-//
-//        expect(index).to.equal(10);
-//    });
-//});
+describe(@"operation without return type", ^{
+    it(@"will run", ^{
+        __block NSInteger index = 0;
+        waitUntil(^(DoneCallback done) {
+            [[[NAsyncOperation alloc] initWithDelay:0
+                                          priority:NSOperationQueuePriorityNormal
+                                 previousOperation:nil
+                                          andBlock:^(NAsyncOperation *operation, id value) {
+                                              index = [value integerValue];
+                                              done();
+                                          }] performOnQueue:[NSOperationQueue mainQueue] withValue:@10];
+        });
+
+        expect(index).to.equal(10);
+    });
+});
 
 SpecEnd
