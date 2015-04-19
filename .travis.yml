@@ -17,6 +17,6 @@ script:
 - xcodebuild -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator
 - xcodebuild -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator test
 - pod lib lint --quick
-after_success:
-- ./script/coveralls.sh
+#after_success:
+#- ./script/coveralls.sh
 
