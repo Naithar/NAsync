@@ -69,7 +69,8 @@
 }
 
 - (instancetype)performWithValue:(id)value {
-    [self.operation performOnQueue:self.queue withValue:value];
+    [self.operation performOnQueue:self.queue
+                         withValue:value];
     return self;
 }
 
@@ -101,13 +102,18 @@
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
                 block:(NAsyncBlock)block {
-    return [self promiseQueue:queue block:block withDelay:0];
+    return [self promiseQueue:queue
+                        block:block
+                    withDelay:0];
 }
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
                 block:(NAsyncBlock)block
             withDelay:(NSTimeInterval)delay {
-    return [self promiseQueue:queue block:block withDelay:delay withPriority:NSOperationQueuePriorityNormal];
+    return [self promiseQueue:queue
+                        block:block
+                    withDelay:delay
+                 withPriority:NSOperationQueuePriorityNormal];
 }
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
@@ -123,28 +129,29 @@
 
 + (instancetype)queue:(NSOperationQueue*)queue
                 block:(NAsyncBlock)block {
-    return [self queue:queue block:block withDelay:0];
+    return [self queue:queue
+                 block:block
+             withDelay:0];
 }
 
 + (instancetype)queue:(NSOperationQueue*)queue
                 block:(NAsyncBlock)block
             withDelay:(NSTimeInterval)delay {
-    return [self queue:queue block:block withDelay:delay withPriority:NSOperationQueuePriorityNormal];
+    return [self queue:queue
+                 block:block
+             withDelay:delay
+          withPriority:NSOperationQueuePriorityNormal];
 }
 
 + (instancetype)queue:(NSOperationQueue*)queue
                 block:(NAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
-
     NAsyncManager *manager = [self promiseQueue:queue
                                           block:block
                                       withDelay:delay
                                    withPriority:priority];
-
-    [manager perform];
-    
-    return manager;
+    return [manager perform];
 }
 
 @end
