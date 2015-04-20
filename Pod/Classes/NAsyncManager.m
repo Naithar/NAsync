@@ -154,8 +154,70 @@
     return [manager perform];
 }
 
+//add once
+
 @end
 
+@implementation NAsyncManager (ChainQueuedNonReturn)
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                       block:(NAsyncBlock)block {
+    return [self promiseQueue:queue
+                 block:block
+             withDelay:0];
+}
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                       block:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay {
+    return [self promiseQueue:queue
+                 block:block
+             withDelay:delay
+          withPriority:NSOperationQueuePriorityNormal];
+}
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                       block:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay
+                withPriority:(NSOperationQueuePriority)priority {
+    return [[[self class] alloc] initWithQueue:queue
+                                     withDelay:delay
+                                      priority:priority
+                             previousOperation:self.operation
+                                      andBlock:block];
+}
+
+- (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block {
+    return [self queue:queue
+                 block:block
+             withDelay:0];
+}
+
+- (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay {
+    return [self queue:queue
+                 block:block
+             withDelay:delay
+          withPriority:NSOperationQueuePriorityNormal];
+}
+
+- (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority {
+    NAsyncManager *manager = [self promiseQueue:queue
+                                          block:block
+                                      withDelay:delay
+                                   withPriority:priority];
+
+    return [manager perform];
+}
+
+
+//add once
+@end
 
 //}
 //

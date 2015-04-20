@@ -70,6 +70,34 @@
          withPriority:(NSOperationQueuePriority)priority;
 @end
 
+@interface NAsyncManager (ChainQueuedNonReturn)
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                       block:(NAsyncBlock)block;
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                       block:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay;
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                       block:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay
+                withPriority:(NSOperationQueuePriority)priority;
+
+- (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block;
+
+- (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay;
+
+- (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority;
+
+@end
+
 //+ (instancetype)queueOnce:(NSOperationQueue*)queue
 //                    block:(NAsyncBlock)block
 //                withToken:(NAsyncOnceToken*)token;

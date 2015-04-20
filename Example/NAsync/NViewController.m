@@ -51,16 +51,25 @@
     NSLog(@"result 2 = %@", [[asyncManager performWithValue:@50] wait]);
     }
 
-    
-
     @autoreleasepool {
     [NAsyncManager queue:nil block:^(NAsyncOperation *operation, id value) {
         NSLog(@"queue");
     }];
     }
 
+    [queuePromiseManager queue:nil block:^(NAsyncOperation *operation, id value) {
+        NSLog(@"chained from promise");
+    }];
+
+    NAsyncManager *manager = [queuePromiseManager promiseQueue:nil block:^(NAsyncOperation *operation, id value) {
+        NSLog(@"chained prmise from promise");
+    }];
 
     [queuePromiseManager perform];
+
+    [manager perform];
+
+
 
 	// Do any additional setup after loading the view, typically from a nib.
 }
