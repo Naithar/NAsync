@@ -8,91 +8,97 @@
 
 #import "NAsyncManager.h"
 
-//@interface NAsyncManager ()
-//
-//@property (nonatomic, weak) NAsyncOperation *operation;
-//@end
-//
-//@implementation NAsyncManager
-//
-//- (instancetype)initWithQueue:(NSOperationQueue*)queue
-//                    withDelay:(NSTimeInterval)delay
-//                     priority:(NSOperationQueuePriority)priority
-//            previousOperation:(NAsyncOperation*)operation
-//                     andBlock:(NAsyncBlock)block {
-//
-//    self = [super init];
-//
-//
-//    if (self) {
-//        NAsyncOperation *tempOperation = [[NAsyncOperation alloc] initWithDelay:delay
-//                                                                       priority:priority
-//                                                              previousOperation:operation
-//                                                                       andBlock:block];
-//
-//
-//        [self commonInitWithQueue:queue
-//                     andOperation:tempOperation];
-//    }
-//
-//    return self;
-//}
-//
-//- (instancetype)initWithQueue:(NSOperationQueue*)queue
-//                    withDelay:(NSTimeInterval)delay
-//                     priority:(NSOperationQueuePriority)priority
-//            previousOperation:(NAsyncOperation*)operation
-//               andReturnBlock:(NAsyncReturnBlock)block {
-//    self = [super init];
-//
-//    if (self) {
-//        NAsyncOperation *tempOperation = [[NAsyncOperation alloc] initWithDelay:delay
-//                                                                       priority:priority
-//                                                              previousOperation:operation
-//                                                                 andReturnBlock:block];
-//
-//        [self commonInitWithQueue:queue
-//                     andOperation:tempOperation];
-//    }
-//
-//    return self;
-//}
-//
-//- (void)commonInitWithQueue:(NSOperationQueue*)queue
-//               andOperation:(NAsyncOperation*)operation {
-//    [queue addOperation:operation];
-//
-//    self.operation = operation;
-//
+@interface NAsyncManager ()
+
+@property (nonatomic, strong) NSOperationQueue *queue;
+@property (nonatomic, strong) NAsyncOperation *operation;
+
+@end
+
+@implementation NAsyncManager
+
+- (instancetype)initWithQueue:(NSOperationQueue*)queue
+                    withDelay:(NSTimeInterval)delay
+                     priority:(NSOperationQueuePriority)priority
+            previousOperation:(NAsyncOperation*)operation
+                     andBlock:(NAsyncBlock)block {
+
+    self = [super init];
+
+
+    if (self) {
+        NAsyncOperation *tempOperation = [[NAsyncOperation alloc] initWithDelay:delay
+                                                                       priority:priority
+                                                              previousOperation:operation
+                                                                       andBlock:block];
+        [self commonInitWithQueue:queue
+                     andOperation:tempOperation];
+    }
+
+    return self;
+}
+
+- (instancetype)initWithQueue:(NSOperationQueue*)queue
+                    withDelay:(NSTimeInterval)delay
+                     priority:(NSOperationQueuePriority)priority
+            previousOperation:(NAsyncOperation*)operation
+               andReturnBlock:(NAsyncReturnBlock)block {
+    self = [super init];
+
+    if (self) {
+        NAsyncOperation *tempOperation = [[NAsyncOperation alloc] initWithDelay:delay
+                                                                       priority:priority
+                                                              previousOperation:operation
+                                                                 andReturnBlock:block];
+        [self commonInitWithQueue:queue
+                     andOperation:tempOperation];
+    }
+
+    return self;
+}
+
+- (void)commonInitWithQueue:(NSOperationQueue*)queue
+               andOperation:(NAsyncOperation*)operation {
+    self.queue = queue;
+    self.operation = operation;
 //
 //    __strong typeof(self) strongSelf = self;
 //    [self.operation setCompletionBlock:^{
 //        strongSelf.operation = nil;
 //    }];
-//}
-//
-//- (id)wait {
-//    return [self.operation wait];
-//}
-//
-//- (instancetype)cancel {
-//    [self.operation cancel];
-//
-//    return self;
-//}
-//
-//- (instancetype)cancelAll:(BOOL)cancelPrevious {
-//    [self.operation cancelWithPrevious:cancelPrevious];
-//
-//    return self;
-//}
-//
-//- (void)dealloc {
-//    self.operation = nil;
-//    NSLog(@"dealloc async manager");
-//}
-//
-//@end
+}
+
+- (void)perform {
+    [self.operation performOnQueue:self.queue];
+}
+
+- (void)performWithValue:(id)value {
+    [self.operation performOnQueue:self.queue withValue:value];
+}
+
+- (id)wait {
+    return [self.operation wait];
+}
+
+- (instancetype)cancel {
+    return [self cancelAll:NO];
+}
+
+- (instancetype)cancelAll:(BOOL)cancelPrevious {
+    [self.operation cancelWithPrevious:cancelPrevious];
+    return self;
+}
+
+- (void)dealloc {
+    self.queue = nil;
+    self.operation = nil;
+
+#ifdef DEBUG
+    NSLog(@"dealloc async manager");
+#endif
+}
+
+@end
 //
 //@implementation NAsyncManager (Start)
 //

@@ -7,13 +7,6 @@
 //
 
 import UIKit
-//import NAsync
-
-//returnValue:(Any)
-//inputValue:(Any)
-//perform withValue:(Any)
-//wait -> (Any)
-
 
 private var swiftReturnValueKey: Void?
 

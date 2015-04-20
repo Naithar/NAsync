@@ -7,37 +7,42 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <NAsync/NAsyncOperation.h>
 
-
-//@class NAsyncManager;
+@class NAsyncManager;
 //
 //typedef NAsyncManager NAsync;
 //
 //typedef dispatch_once_t NAsyncOnceToken;
 //
-//@interface NAsyncManager : NSObject
-//
-//@property (nonatomic, readonly, weak) NAsyncOperation *operation;
-//
-//- (instancetype)initWithQueue:(NSOperationQueue*)queue withDelay:(NSTimeInterval)delay
-//                     priority:(NSOperationQueuePriority)priority
-//            previousOperation:(NAsyncOperation*)operation
-//                     andBlock:(NAsyncBlock)block;
-//
-//- (instancetype)initWithQueue:(NSOperationQueue*)queue
-//                    withDelay:(NSTimeInterval)delay
-//                     priority:(NSOperationQueuePriority)priority
-//            previousOperation:(NAsyncOperation*)operation
-//               andReturnBlock:(NAsyncReturnBlock)block;
-//
-//- (id)wait;
-//- (instancetype)cancel;
-//- (instancetype)cancelAll:(BOOL)cancelPrevious;
-//@end
-//
-//
-//
-//
+@interface NAsyncManager : NSObject
+
+@property (nonatomic, readonly, strong) NSOperationQueue *queue;
+@property (nonatomic, readonly, strong) NAsyncOperation *operation;
+
+- (instancetype)initWithQueue:(NSOperationQueue*)queue withDelay:(NSTimeInterval)delay
+                     priority:(NSOperationQueuePriority)priority
+            previousOperation:(NAsyncOperation*)operation
+                     andBlock:(NAsyncBlock)block;
+
+- (instancetype)initWithQueue:(NSOperationQueue*)queue
+                    withDelay:(NSTimeInterval)delay
+                     priority:(NSOperationQueuePriority)priority
+            previousOperation:(NAsyncOperation*)operation
+               andReturnBlock:(NAsyncReturnBlock)block;
+
+- (void)perform;
+- (void)performWithValue:(id)value;
+
+- (id)wait;
+
+- (instancetype)cancel;
+- (instancetype)cancelAll:(BOOL)cancelPrevious;
+@end
+
+
+
+
 //@interface NAsyncManager (Start)
 //
 //+ (instancetype)queue:(NSOperationQueue*)queue
