@@ -9,7 +9,8 @@
 #ifndef Pods_NAsync_h
 #define Pods_NAsync_h
 
-#import "NAsyncManager.h"
-#import "NAsyncOperation.h"
+#import <NAsync/NAsyncManager.h>
+#import <NAsync/NAsyncOperation.h>
+#import <NAsync/NAsyncManager.h>
 
 #endif
