@@ -13,8 +13,8 @@
 //
 //typedef NAsyncManager NAsync;
 //
-//typedef dispatch_once_t NAsyncOnceToken;
-//
+typedef dispatch_once_t NAsyncOnceToken;
+
 @interface NAsyncManager : NSObject
 
 @property (nonatomic, readonly, strong) NSOperationQueue *queue;
@@ -68,6 +68,39 @@
                 block:(NAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority;
+@end
+
+@interface NAsyncManager (StartQueuedOnceNonReturn)
+
++ (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block;
+
++ (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay;
+
++ (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block;
+
++ (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay;
+
++ (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority;
 @end
 
 @interface NAsyncManager (ChainQueuedNonReturn)
