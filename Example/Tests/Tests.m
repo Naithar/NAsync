@@ -6,28 +6,12 @@
 //  Copyright (c) 2014 Naithar. All rights reserved.
 //
 
-
 @import NAsync;
+
 
 SpecBegin(InitialSpecs)
 
-//describe(@"these will fail", ^{
-//
-//    it(@"can do maths", ^{
-//        expect(1).beLessThan(23);
-//    });
-//
-//    it(@"can read", ^{
-//        expect(@"team").toNot.contain(@"I");
-//    });
-//
-//    it(@"will wait for 10 seconds and fail", ^{
-//        waitUntil(^(DoneCallback done) {
-//            done();
-//        });
-//    });
-//});
-//
+
 describe(@"operation without return type", ^{
     it(@"will run", ^{
         __block NSInteger index = 0;
@@ -42,6 +26,29 @@ describe(@"operation without return type", ^{
         });
 
         expect(index).to.equal(10);
+    });
+});
+
+describe(@"operation with return value", ^{
+    it(@"will run", ^{
+        __block NSInteger index = 0;
+        __block NAsyncOperation *operation;
+
+        waitUntil(^(DoneCallback done) {
+            operation = [[NAsyncOperation alloc] initWithDelay:0
+                                           priority:NSOperationQueuePriorityNormal
+                                  previousOperation:nil
+                                           andReturnBlock:^(NAsyncOperation *operation, id value) {
+                                               index = [value integerValue];
+                                               done();
+                                               return @20;
+                                           }];
+            [operation performOnQueue:[NSOperationQueue mainQueue] withValue:@10];
+        });
+
+        expect(index).to.equal(10);
+
+        expect([operation wait]).to.equal(@20);
     });
 });
 
