@@ -249,6 +249,9 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.returnValue = strongSelf.operationBlock(strongSelf, strongSelf.inputValue);
     }
+    else {
+        self.returnValue = nil;
+    }
 }
 
 -(void)waitUntilFinished {

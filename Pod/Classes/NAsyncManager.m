@@ -192,7 +192,7 @@
         }
     };
 
-    return [self queue:queue
+    return [self promiseQueue:queue
                  block:operationOnceBlock
              withDelay:delay
           withPriority:priority];
@@ -292,48 +292,84 @@
     return [manager perform];
 }
 
-
-//add once
 @end
 
-//}
-//
-//+ (instancetype)queueOnce:(NSOperationQueue*)queue
-//                    block:(NAsyncBlock)block
-//                withToken:(NAsyncOnceToken*)token {
-//    return [self queueOnce:queue block:block withToken:token withDelay:0];
-//}
-//
-//+ (instancetype)queueOnce:(NSOperationQueue*)queue
-//                    block:(NAsyncBlock)block
-//                withToken:(NAsyncOnceToken*)token
-//                withDelay:(NSTimeInterval)delay {
-//    return [self queueOnce:queue block:block withToken:token withDelay:delay withPriority:NSOperationQueuePriorityNormal];
-//}
-//
-//+ (instancetype)queueOnce:(NSOperationQueue*)queue
-//                    block:(NAsyncBlock)block
-//                withToken:(NAsyncOnceToken*)token
-//                withDelay:(NSTimeInterval)delay
-//             withPriority:(NSOperationQueuePriority)priority {
-//
-//    __block __weak NAsyncOperation *operation;
-//
-//    NAsyncBlock operationBlock = ^(NAsyncOperation *operation, id value) {
-//        if (block) {
-//            dispatch_once(token, ^{
-//                block(operation, value);
-//            });
-//        }
-//    };
-//
-//    NAsyncManager *manager = [self queue:queue block:operationBlock withDelay:delay withPriority:priority];
-//
-//    operation = manager.operation;
-//
-//    return manager;
-//}
-//
+
+@implementation NAsyncManager (ChainQueuedOnceNonReturn)
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block {
+    return [self promiseQueueOnce:queue
+                            token:token
+                            block:block
+                        withDelay:0];
+}
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay {
+    return [self promiseQueueOnce:queue
+                            token:token
+                            block:block
+                        withDelay:delay
+                     withPriority:NSOperationQueuePriorityNormal];
+}
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority {
+    NAsyncBlock operationOnceBlock = ^(NAsyncOperation *operation, id value) {
+        if (block) {
+            dispatch_once(token, ^{
+                block(operation, value);
+            });
+        }
+    };
+
+    return [self promiseQueue:queue
+                        block:operationOnceBlock
+                    withDelay:delay
+                 withPriority:priority];
+}
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block {
+    return [self queueOnce:queue
+                     token:token
+                     block:block
+                 withDelay:0];
+}
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay {
+    return [self queueOnce:queue
+                     token:token
+                     block:block
+                 withDelay:delay
+              withPriority:NSOperationQueuePriorityNormal];
+}
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority {
+    NAsyncManager *manager = [self promiseQueue:queue
+                                          block:block
+                                      withDelay:delay
+                                   withPriority:priority];
+
+    return [manager perform];
+}
+@end
+
 //+ (instancetype)main:(NAsyncBlock)block {
 //    return [self main:block withDelay:0];
 //}
@@ -615,64 +651,6 @@
 //@end
 //
 //@implementation NAsyncManager (Chain)
-//
-//- (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block {
-//    return [self queue:queue block:block withDelay:0];
-//}
-//
-//- (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block
-//            withDelay:(NSTimeInterval)delay {
-//    return [self queue:queue block:block withDelay:delay withPriority:NSOperationQueuePriorityNormal];
-//}
-//
-//- (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block
-//            withDelay:(NSTimeInterval)delay
-//         withPriority:(NSOperationQueuePriority)priority {
-//    return [[[self class] alloc] initWithQueue:queue
-//                                     withDelay:delay
-//                                      priority:priority
-//                             previousOperation:self.operation
-//                                      andBlock:block];
-//}
-//
-//- (instancetype)queueOnce:(NSOperationQueue*)queue
-//                    block:(NAsyncBlock)block
-//                withToken:(NAsyncOnceToken*)token {
-//    return [self queueOnce:queue block:block withToken:token withDelay:0];
-//}
-//
-//- (instancetype)queueOnce:(NSOperationQueue*)queue
-//                    block:(NAsyncBlock)block
-//                withToken:(NAsyncOnceToken*)token
-//                withDelay:(NSTimeInterval)delay {
-//    return [self queueOnce:queue block:block withToken:token withDelay:delay withPriority:NSOperationQueuePriorityNormal];
-//}
-//
-//- (instancetype)queueOnce:(NSOperationQueue*)queue
-//                    block:(NAsyncBlock)block
-//                withToken:(NAsyncOnceToken*)token
-//                withDelay:(NSTimeInterval)delay
-//             withPriority:(NSOperationQueuePriority)priority {
-//
-//    __block __weak NAsyncOperation *operation;
-//
-//    NAsyncBlock operationBlock = ^(NAsyncOperation *operation, id value) {
-//        if (block) {
-//            dispatch_once(token, ^{
-//                block(operation, value);
-//            });
-//        }
-//    };
-//
-//    NAsyncManager *manager = [self queue:queue block:operationBlock withDelay:delay withPriority:priority];
-//
-//    operation = manager.operation;
-//
-//    return manager;
-//}
 //
 //- (instancetype)main:(NAsyncBlock)block {
 //    return [self main:block withDelay:0];

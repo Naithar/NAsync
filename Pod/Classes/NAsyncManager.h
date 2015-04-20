@@ -131,6 +131,39 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
+@interface NAsyncManager (ChainQueuedOnceNonReturn)
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block;
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay;
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority;
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block;
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay;
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority;
+@end
+
 //+ (instancetype)queueOnce:(NSOperationQueue*)queue
 //                    block:(NAsyncBlock)block
 //                withToken:(NAsyncOnceToken*)token;
