@@ -19,6 +19,10 @@
 {
     [super viewDidLoad];
 
+    NAsyncManager *queuePromiseManager = [NAsyncManager promiseQueue:nil block:^(NAsyncOperation *operation, id value) {
+        NSLog(@"promise queue");
+    }];
+
     @autoreleasepool {
     NAsyncOperation *operation = [[NAsyncOperation alloc] initWithDelay:0
                                                                priority:NSOperationQueuePriorityNormal previousOperation:nil
@@ -46,6 +50,17 @@
 
     NSLog(@"result 2 = %@", [[asyncManager performWithValue:@50] wait]);
     }
+
+    
+
+    @autoreleasepool {
+    [NAsyncManager queue:nil block:^(NAsyncOperation *operation, id value) {
+        NSLog(@"queue");
+    }];
+    }
+
+
+    [queuePromiseManager perform];
 
 	// Do any additional setup after loading the view, typically from a nib.
 }
