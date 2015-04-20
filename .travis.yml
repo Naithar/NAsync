@@ -14,9 +14,9 @@ install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
 - set -o pipefail && xctool -workspace Example/NAsync.xcworkspace -scheme NAsync-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c 
-- xcodebuild -destination platform='iOS Simulator,name=iPhone 5s,OS=7.1' -workspace Example/NAsync.xcworkspace -scheme NAsync-Example -sdk iphonesimulator test
-- xcodebuild -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator
-- xcodebuild -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator test
+- xctool -destination platform='iOS Simulator,name=iPhone 5s,OS=7.1' -workspace Example/NAsync.xcworkspace -scheme NAsync-Example -sdk iphonesimulator test
+- xctool -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator
+- xctool -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator test
 - pod lib lint --quick
 #after_success:
 #- ./script/coveralls.sh
