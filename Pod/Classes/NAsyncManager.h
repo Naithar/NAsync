@@ -31,8 +31,8 @@
             previousOperation:(NAsyncOperation*)operation
                andReturnBlock:(NAsyncReturnBlock)block;
 
-- (void)perform;
-- (void)performWithValue:(id)value;
+- (instancetype)perform;
+- (instancetype)performWithValue:(id)value;
 
 - (id)wait;
 
@@ -43,20 +43,33 @@
 
 
 
-//@interface NAsyncManager (Start)
-//
-//+ (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block;
-//
-//+ (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block
-//            withDelay:(NSTimeInterval)delay;
-//
-//+ (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block
-//            withDelay:(NSTimeInterval)delay
-//         withPriority:(NSOperationQueuePriority)priority;
-//
+@interface NAsyncManager (StartQueuedNonReturn)
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block;
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay;
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block;
+
++ (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay;
+
++ (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority;
+@end
+
 //+ (instancetype)queueOnce:(NSOperationQueue*)queue
 //                    block:(NAsyncBlock)block
 //                withToken:(NAsyncOnceToken*)token;

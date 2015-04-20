@@ -19,6 +19,7 @@
 {
     [super viewDidLoad];
 
+    @autoreleasepool {
     NAsyncOperation *operation = [[NAsyncOperation alloc] initWithDelay:0
                                                                priority:NSOperationQueuePriorityNormal previousOperation:nil
                                                                andReturnBlock:^(NAsyncOperation *operation, id value) {
@@ -33,6 +34,19 @@
     [operation performOnQueue:[[NSOperationQueue alloc] init] withValue:@101];
 
     NSLog(@"result = %@", [operation wait]);
+    }
+
+
+    @autoreleasepool {
+    NAsyncManager *asyncManager = [[NAsyncManager alloc] initWithQueue:nil withDelay:0 priority:NSOperationQueuePriorityNormal previousOperation:nil andReturnBlock:^id(NAsyncOperation *operation, id value) {
+        NSLog(@"value 2 = %@", value);
+        return @10;
+    }];
+
+
+    NSLog(@"result 2 = %@", [[asyncManager performWithValue:@50] wait]);
+    }
+
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

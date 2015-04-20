@@ -59,21 +59,18 @@
 
 - (void)commonInitWithQueue:(NSOperationQueue*)queue
                andOperation:(NAsyncOperation*)operation {
-    self.queue = queue;
+    self.queue = queue ?: [[NSOperationQueue alloc] init];
     self.operation = operation;
-//
-//    __strong typeof(self) strongSelf = self;
-//    [self.operation setCompletionBlock:^{
-//        strongSelf.operation = nil;
-//    }];
 }
 
-- (void)perform {
+- (instancetype)perform {
     [self.operation performOnQueue:self.queue];
+    return self;
 }
 
-- (void)performWithValue:(id)value {
+- (instancetype)performWithValue:(id)value {
     [self.operation performOnQueue:self.queue withValue:value];
+    return self;
 }
 
 - (id)wait {
@@ -99,29 +96,61 @@
 }
 
 @end
-//
-//@implementation NAsyncManager (Start)
-//
-//+ (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block {
-//    return [self queue:queue block:block withDelay:0];
-//}
-//
-//+ (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block
-//            withDelay:(NSTimeInterval)delay {
-//    return [self queue:queue block:block withDelay:delay withPriority:NSOperationQueuePriorityNormal];
-//}
-//
-//+ (instancetype)queue:(NSOperationQueue*)queue
-//                block:(NAsyncBlock)block
-//            withDelay:(NSTimeInterval)delay
-//         withPriority:(NSOperationQueuePriority)priority {
-//    return [[self alloc] initWithQueue:queue
-//                             withDelay:delay
-//                              priority:priority
-//                     previousOperation:nil
-//                              andBlock:block];
+
+@implementation NAsyncManager (StartQueuedNonReturn)
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block {
+    return [self queue:queue block:block withDelay:0];
+}
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay {
+    return [self queue:queue block:block withDelay:delay withPriority:NSOperationQueuePriorityNormal];
+}
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority {
+    return [[self alloc] initWithQueue:queue
+                             withDelay:delay
+                              priority:priority
+                     previousOperation:nil
+                              andBlock:block];
+}
+
++ (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block {
+    return [self queue:queue block:block withDelay:0];
+}
+
++ (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay {
+    return [self queue:queue block:block withDelay:delay withPriority:NSOperationQueuePriorityNormal];
+}
+
++ (instancetype)queue:(NSOperationQueue*)queue
+                block:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority {
+
+    NAsyncManager *manager = [[self alloc] initWithQueue:queue
+                                             withDelay:delay
+                                              priority:priority
+                                     previousOperation:nil
+                                              andBlock:block];
+
+    [manager perform];
+    
+    return manager;
+}
+
+@end
+
+
 //}
 //
 //+ (instancetype)queueOnce:(NSOperationQueue*)queue
