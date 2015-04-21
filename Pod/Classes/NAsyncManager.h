@@ -286,6 +286,35 @@ typedef dispatch_once_t NAsyncOnceToken;
              withPriority:(NSOperationQueuePriority)priority;
 @end
 
+#pragma mark - Main non return
+
+@interface NAsyncManager (StartMainNonReturn)
+@end
+
+@interface NAsyncManager (StartMainOnceNonReturn)
+@end
+
+@interface NAsyncManager (ChainMainNonReturn)
+@end
+
+@interface NAsyncManager (ChainMainOnceNonReturn)
+@end
+
+#pragma mark - Main return value
+
+@interface NAsyncManager (StartMainReturn)
+@end
+
+@interface NAsyncManager (StartMainOnceReturn)
+@end
+
+@interface NAsyncManager (ChainMainReturn)
+@end
+
+@interface NAsyncManager (ChainMainOnceReturn)
+@end
+
+
 //+ (instancetype)queueOnce:(NSOperationQueue*)queue
 //                    block:(NAsyncBlock)block
 //                withToken:(NAsyncOnceToken*)token;

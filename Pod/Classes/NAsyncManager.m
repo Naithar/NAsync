@@ -98,7 +98,6 @@
 
 @end
 
-
 #pragma mark - Queue non return
 
 @implementation NAsyncManager (StartQueuedNonReturn)
@@ -656,6 +655,34 @@
 
     return [manager perform];
 }
+@end
+
+#pragma mark - Main non return
+
+@implementation NAsyncManager (StartMainNonReturn)
+@end
+
+@implementation NAsyncManager (StartMainOnceNonReturn)
+@end
+
+@implementation NAsyncManager (ChainMainNonReturn)
+@end
+
+@implementation NAsyncManager (ChainMainOnceNonReturn)
+@end
+
+#pragma mark - Main return value
+
+@implementation NAsyncManager (StartMainReturn)
+@end
+
+@implementation NAsyncManager (StartMainOnceReturn)
+@end
+
+@implementation NAsyncManager (ChainMainReturn)
+@end
+
+@implementation NAsyncManager (ChainMainOnceReturn)
 @end
 
 //+ (instancetype)main:(NAsyncBlock)block {
