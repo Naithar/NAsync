@@ -8,7 +8,7 @@ podfile: Example/Podfile
 #env: OS=8.1
 before_install:
 - gem install cocoapods # Since Travis is not always on latest version
-- gem install xcpretty slather --no-ri --no-rdoc
+- gem install slather --no-ri --no-rdoc
 - pod install --project-directory=Example
 - pod install --project-directory="swift-Example"
 install:
@@ -19,4 +19,6 @@ script:
 - xctool -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator | xcpretty -c
 - xctool -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator test
 - pod lib lint --quick
-after_success: slather
+after_success: 
+- slather setup Example/NAsync.xcodeproj/project.pbxproj
+- slather
