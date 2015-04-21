@@ -98,6 +98,9 @@
 
 @end
 
+
+#pragma mark - Queue non return
+
 @implementation NAsyncManager (StartQueuedNonReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
@@ -294,7 +297,6 @@
 
 @end
 
-
 @implementation NAsyncManager (ChainQueuedOnceNonReturn)
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
@@ -370,6 +372,7 @@
 }
 @end
 
+#pragma mark - Queue return value
 
 @implementation NAsyncManager (StartQueuedReturn)
 
@@ -430,6 +433,63 @@
 
 @end
 
+@implementation NAsyncManager (ChainQueuedReturn)
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                 returnBlock:(NAsyncReturnBlock)block {
+    return [self promiseQueue:queue
+                  returnBlock:block
+                    withDelay:0];
+}
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                 returnBlock:(NAsyncReturnBlock)block
+                   withDelay:(NSTimeInterval)delay {
+    return [self promiseQueue:queue
+                  returnBlock:block
+                    withDelay:delay
+                 withPriority:NSOperationQueuePriorityNormal];
+}
+
+- (instancetype)promiseQueue:(NSOperationQueue*)queue
+                 returnBlock:(NAsyncReturnBlock)block
+                   withDelay:(NSTimeInterval)delay
+                withPriority:(NSOperationQueuePriority)priority {
+    return [[[self class] alloc] initWithQueue:queue
+                                     withDelay:delay
+                                      priority:priority
+                             previousOperation:self.operation
+                                andReturnBlock:block];
+}
+
+- (instancetype)queue:(NSOperationQueue*)queue
+          returnBlock:(NAsyncReturnBlock)block {
+    return [self queue:queue
+           returnBlock:block
+             withDelay:0];
+}
+
+- (instancetype)queue:(NSOperationQueue*)queue
+          returnBlock:(NAsyncReturnBlock)block
+            withDelay:(NSTimeInterval)delay {
+    return [self queue:queue
+           returnBlock:block
+             withDelay:delay
+          withPriority:NSOperationQueuePriorityNormal];
+}
+
+- (instancetype)queue:(NSOperationQueue*)queue
+          returnBlock:(NAsyncReturnBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority {
+    NAsyncManager *manager = [self promiseQueue:queue
+                                    returnBlock:block
+                                      withDelay:delay
+                                   withPriority:priority];
+
+    return [manager perform];
+}
+@end
 //+ (instancetype)main:(NAsyncBlock)block {
 //    return [self main:block withDelay:0];
 //}
