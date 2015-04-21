@@ -46,16 +46,16 @@ typedef dispatch_once_t NAsyncOnceToken;
 @interface NAsyncManager (StartQueuedNonReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block;
+                       block:(NAsyncBlock)block;
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block
-            withDelay:(NSTimeInterval)delay;
+                       block:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay;
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block
-            withDelay:(NSTimeInterval)delay
-         withPriority:(NSOperationQueuePriority)priority;
+                       block:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay
+                withPriority:(NSOperationQueuePriority)priority;
 
 + (instancetype)queue:(NSOperationQueue*)queue
                 block:(NAsyncBlock)block;
@@ -73,19 +73,19 @@ typedef dispatch_once_t NAsyncOnceToken;
 @interface NAsyncManager (StartQueuedOnceNonReturn)
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
-                    token:(NAsyncOnceToken*)token
-                    block:(NAsyncBlock)block;
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block;
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
-                    token:(NAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
-                withDelay:(NSTimeInterval)delay;
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay;
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
-                    token:(NAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
-                withDelay:(NSTimeInterval)delay
-             withPriority:(NSOperationQueuePriority)priority;
+                           token:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority;
 
 + (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NAsyncOnceToken*)token
@@ -169,7 +169,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 @interface NAsyncManager (StartQueuedReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                       returnBlock:(NAsyncReturnBlock)block;
+                 returnBlock:(NAsyncReturnBlock)block;
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
                  returnBlock:(NAsyncReturnBlock)block
@@ -191,6 +191,39 @@ typedef dispatch_once_t NAsyncOnceToken;
           returnBlock:(NAsyncReturnBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority;
+@end
+
+@interface NAsyncManager (StartQueuedOnceReturn)
+
++ (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block;
+
++ (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block
+                       withDelay:(NSTimeInterval)delay;
+
++ (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block;
+
++ (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block
+                withDelay:(NSTimeInterval)delay;
+
++ (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority;
 @end
 
 @interface NAsyncManager (ChainQueuedReturn)
@@ -218,6 +251,39 @@ typedef dispatch_once_t NAsyncOnceToken;
           returnBlock:(NAsyncReturnBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority;
+@end
+
+@interface NAsyncManager (ChainQueuedOnceReturn)
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block;
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block
+                       withDelay:(NSTimeInterval)delay;
+
+- (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
+                           token:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority;
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block;
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block
+                withDelay:(NSTimeInterval)delay;
+
+- (instancetype)queueOnce:(NSOperationQueue*)queue
+                    token:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority;
 @end
 
 //+ (instancetype)queueOnce:(NSOperationQueue*)queue
