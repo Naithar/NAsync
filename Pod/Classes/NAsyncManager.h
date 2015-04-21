@@ -164,6 +164,33 @@ typedef dispatch_once_t NAsyncOnceToken;
              withPriority:(NSOperationQueuePriority)priority;
 @end
 
+@interface NAsyncManager (StartQueuedReturn)
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                       returnBlock:(NAsyncReturnBlock)block;
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                 returnBlock:(NAsyncReturnBlock)block
+                   withDelay:(NSTimeInterval)delay;
+
++ (instancetype)promiseQueue:(NSOperationQueue*)queue
+                 returnBlock:(NAsyncReturnBlock)block
+                   withDelay:(NSTimeInterval)delay
+                withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)queue:(NSOperationQueue*)queue
+          returnBlock:(NAsyncReturnBlock)block;
+
++ (instancetype)queue:(NSOperationQueue*)queue
+          returnBlock:(NAsyncReturnBlock)block
+            withDelay:(NSTimeInterval)delay;
+
++ (instancetype)queue:(NSOperationQueue*)queue
+          returnBlock:(NAsyncReturnBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority;
+@end
+
 //+ (instancetype)queueOnce:(NSOperationQueue*)queue
 //                    block:(NAsyncBlock)block
 //                withToken:(NAsyncOnceToken*)token;

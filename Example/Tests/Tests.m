@@ -165,12 +165,12 @@ describe(@"operation chaining", ^{
                                                            block:^(id _0, id _1){
 
                                                            }];
-            
+
             NAsyncManager *chainedPromise = [promise promiseQueue:nil
                                                             block:^(id _0, id _1){
                                                                 done();
                                                             }];
-            
+
             [promise perform];
             [chainedPromise perform];
         });
@@ -194,6 +194,29 @@ describe(@"operation chaining", ^{
             [chainedPromise performWithValue:@10];
         });
 
+        expect(index).to.equal(10);
+    });
+});
+
+SpecEnd
+
+
+SpecBegin(NAsyncManagerReturnQueue)
+
+describe(@"start return manager", ^{
+    it(@"will start and return value", ^{
+
+        __block NSUInteger index = 0;
+
+        waitUntil(^(DoneCallback done) {
+            index = [[[NAsyncManager queue:nil
+                               returnBlock:^(NAsyncOperation *operation,
+                                             id value) {
+                                   done();
+                                   return @10;
+                               }] wait] integerValue];
+        });
+        
         expect(index).to.equal(10);
     });
 });
