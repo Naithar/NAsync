@@ -10,7 +10,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   NAsync:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Expecta: a2f175f4f5f99d062d480787945ea11d8884077e

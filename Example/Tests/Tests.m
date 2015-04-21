@@ -221,4 +221,30 @@ describe(@"start return manager", ^{
     });
 });
 
+describe(@"сhain return manager", ^{
+    it(@"will start and return value to chain task", ^{
+
+        __block NSUInteger returnValue = 0;
+        __block NSUInteger taskReturnValue = 0;
+
+        waitUntil(^(DoneCallback done) {
+            taskReturnValue = [[[[NAsyncManager queue:nil
+                      returnBlock:^(NAsyncOperation *operation,
+                                    id value) {
+                          return @10;
+                      }]
+             queue:nil
+             returnBlock:^(NAsyncOperation *_, id value){
+
+                 returnValue = [value integerValue];
+                 done();
+                 return @20;
+             }] wait] integerValue];
+        });
+
+        expect(returnValue).to.equal(10);
+        expect(taskReturnValue).to.equal(20);
+    });
+});
+
 SpecEnd
