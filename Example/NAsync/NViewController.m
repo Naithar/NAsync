@@ -71,6 +71,16 @@
 
 
 
+    [[NAsyncManager main:^(NAsyncOperation *operation, id value) {
+        self.view.backgroundColor = [UIColor redColor];
+    }] main:^(NAsyncOperation *operation, id value) {
+        self.view.backgroundColor = [UIColor greenColor];
+    } withDelay:10];
+
+
+    [NAsyncManager main:^(NAsyncOperation *operation, id value) {
+        self.view.backgroundColor = [UIColor grayColor];
+    } withDelay:5];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
