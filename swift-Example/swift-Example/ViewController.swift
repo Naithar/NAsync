@@ -27,6 +27,20 @@ class ViewController: UIViewController {
 
         NSLog("\(operation.wait())")
 
+        NAsyncManager.queue(nil) { _ in
+                NSLog("operation")
+                return
+        }
+
+        let promise = NAsyncManager.promiseQueue(nil) { (o: NAsyncOperation!, value: (Int, String)!) in
+            NSLog("operation promise returned = \(value)")
+            return
+        }
+
+
+        promise.perform((10, "ds"))
+
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
