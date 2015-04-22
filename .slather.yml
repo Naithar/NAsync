@@ -1,4 +1,5 @@
 coverage_service: coveralls
 xcodeproj: Example/NAsync.xcodeproj
+#source_directory: ./Pod/*
 #ignore:
-#  - Example/*
+#  - ./Example/NAsync/*

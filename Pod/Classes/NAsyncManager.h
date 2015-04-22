@@ -289,9 +289,45 @@ typedef dispatch_once_t NAsyncOnceToken;
 #pragma mark - Main non return
 
 @interface NAsyncManager (StartMainNonReturn)
+
++ (instancetype)promiseMain:(NAsyncBlock)block;
++ (instancetype)promiseMain:(NAsyncBlock)block
+                  withDelay:(NSTimeInterval)delay;
++ (instancetype)promiseMain:(NAsyncBlock)block
+                  withDelay:(NSTimeInterval)delay
+               withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)main:(NAsyncBlock)block;
++ (instancetype)main:(NAsyncBlock)block
+           withDelay:(NSTimeInterval)delay;
++ (instancetype)main:(NAsyncBlock)block
+           withDelay:(NSTimeInterval)delay
+        withPriority:(NSOperationQueuePriority)priority;
+
 @end
 
 @interface NAsyncManager (StartMainOnceNonReturn)
+
++ (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                          block:(NAsyncBlock)block;
++ (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                          block:(NAsyncBlock)block
+                      withDelay:(NSTimeInterval)delay;
++ (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                          block:(NAsyncBlock)block
+                      withDelay:(NSTimeInterval)delay
+                   withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)mainOnce:(NAsyncOnceToken*)token
+                   block:(NAsyncBlock)block;
++ (instancetype)mainOnce:(NAsyncOnceToken*)token
+                   block:(NAsyncBlock)block
+               withDelay:(NSTimeInterval)delay;
++ (instancetype)mainOnce:(NAsyncOnceToken*)token
+                   block:(NAsyncBlock)block
+               withDelay:(NSTimeInterval)delay
+            withPriority:(NSOperationQueuePriority)priority;
+
 @end
 
 @interface NAsyncManager (ChainMainNonReturn)
