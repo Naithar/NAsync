@@ -65,11 +65,8 @@
         NSLog(@"chained prmise from promise");
     }];
 
-    [queuePromiseManager perform];
 
     [manager perform];
-
-
 
     [[NAsyncManager main:^(NAsyncOperation *operation, id value) {
         self.view.backgroundColor = [UIColor redColor];
@@ -81,6 +78,20 @@
     [NAsyncManager main:^(NAsyncOperation *operation, id value) {
         self.view.backgroundColor = [UIColor grayColor];
     } withDelay:5];
+
+    [queuePromiseManager main:^(NAsyncOperation *operation, id value) {
+        self.view.backgroundColor = [UIColor blueColor];
+    }];
+
+    [queuePromiseManager perform];
+    [queuePromiseManager perform];
+
+
+    [[NAsyncManager queue:nil returnBlock:^id(NAsyncOperation *operation, id value) {
+        return [UIColor redColor];
+    }] main:^(NAsyncOperation *operation, UIColor *value) {
+        self.view.backgroundColor = value;
+    } withDelay:15];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

@@ -855,6 +855,45 @@
 #pragma mark - Main return value
 
 @implementation NAsyncManager (StartMainReturn)
+
++ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block {
+    return [self promiseMainReturn:block
+                         withDelay:0];
+}
++ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
+                        withDelay:(NSTimeInterval)delay {
+    return [self promiseMainReturn:block
+                         withDelay:delay
+                      withPriority:NSOperationQueuePriorityNormal];
+}
++ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
+                        withDelay:(NSTimeInterval)delay
+                     withPriority:(NSOperationQueuePriority)priority {
+    return [self promiseQueue:[NSOperationQueue mainQueue]
+                  returnBlock:block
+                    withDelay:delay
+                 withPriority:priority];
+}
+
++ (instancetype)mainReturn:(NAsyncReturnBlock)block {
+    return [self mainReturn:block
+                  withDelay:0];
+}
++ (instancetype)mainReturn:(NAsyncReturnBlock)block
+                 withDelay:(NSTimeInterval)delay {
+    return [self mainReturn:block
+                  withDelay:delay
+               withPriority:NSOperationQueuePriorityNormal];
+}
++ (instancetype)mainReturn:(NAsyncReturnBlock)block
+                 withDelay:(NSTimeInterval)delay
+              withPriority:(NSOperationQueuePriority)priority {
+    return [self queue:[NSOperationQueue mainQueue]
+           returnBlock:block
+             withDelay:delay
+          withPriority:priority];
+}
+
 @end
 
 @implementation NAsyncManager (StartMainOnceReturn)

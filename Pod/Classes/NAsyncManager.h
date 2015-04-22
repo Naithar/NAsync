@@ -375,6 +375,21 @@ typedef dispatch_once_t NAsyncOnceToken;
 #pragma mark - Main return value
 
 @interface NAsyncManager (StartMainReturn)
+
++ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block;
++ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
+                        withDelay:(NSTimeInterval)delay;
++ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
+                        withDelay:(NSTimeInterval)delay
+                     withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)mainReturn:(NAsyncReturnBlock)block;
++ (instancetype)mainReturn:(NAsyncReturnBlock)block
+                 withDelay:(NSTimeInterval)delay;
++ (instancetype)mainReturn:(NAsyncReturnBlock)block
+                 withDelay:(NSTimeInterval)delay
+              withPriority:(NSOperationQueuePriority)priority;
+
 @end
 
 @interface NAsyncManager (StartMainOnceReturn)

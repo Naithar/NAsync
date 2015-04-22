@@ -14,6 +14,8 @@
 @property (nonatomic, assign) BOOL operationExecuting;
 @property (nonatomic, assign) BOOL operationFinished;
 @property (nonatomic, assign) BOOL operationCancelled;
+
+@property (nonatomic, assign) BOOL inQueue;
 @end
 
 @implementation NAsyncBaseOperation
@@ -29,6 +31,7 @@
         _operationExecuting = YES;
         _operationFinished = YES;
         _operationCancelled = NO;
+        _inQueue = NO;
 
         self.queuePriority = priority;
 
@@ -151,18 +154,24 @@
 
 - (void)main {
     if (self.delay > 0) {
-        self.operationExecuting = NO;
+//        self.operationExecuting = YES;
         self.operationFinished = NO;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.delay * NSEC_PER_SEC),
                        dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            self.operationExecuting = YES;
+//            self.operationExecuting = YES;
             self.operationFinished = YES;
         });
     }
 }
 
 - (void)perform {
+    if (self.inQueue) {
+        return;
+    }
+
+    self.inQueue = YES;
     [[[self class] delayQueue] addOperation:self];
+
 }
 
 - (void)dealloc {
@@ -270,6 +279,11 @@
 
 - (void)performOnQueue:(NSOperationQueue *)queue
              withValue:(id)inputValue {
+    if (self.inQueue) {
+        return;
+    }
+
+    self.inQueue = YES;
     self.inputValue = inputValue;
     [self.delayOperation perform];
     [queue addOperation:self];
