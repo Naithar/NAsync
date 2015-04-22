@@ -17,6 +17,12 @@ extension NAsyncManager {
         self.operation.swiftValue().inputValue = value
         return self.performWithValue(value as? NSObject)
     }
+
+    public func waitAny() -> Any! {
+        self.wait()
+
+        return self.operation.waitAny()
+    }
 }
 
 //MARK: Start queue non return tasks
