@@ -393,12 +393,68 @@ typedef dispatch_once_t NAsyncOnceToken;
 @end
 
 @interface NAsyncManager (StartMainOnceReturn)
+
++ (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                          returnBlock:(NAsyncReturnBlock)block;
++ (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                          returnBlock:(NAsyncReturnBlock)block
+                        withDelay:(NSTimeInterval)delay;
++ (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                          returnBlock:(NAsyncReturnBlock)block
+                        withDelay:(NSTimeInterval)delay
+                     withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)mainOnce:(NAsyncOnceToken*)token
+                   returnBlock:(NAsyncReturnBlock)block;
++ (instancetype)mainOnce:(NAsyncOnceToken*)token
+                   returnBlock:(NAsyncReturnBlock)block
+                 withDelay:(NSTimeInterval)delay;
++ (instancetype)mainOnce:(NAsyncOnceToken*)token
+                   returnBlock:(NAsyncReturnBlock)block
+                 withDelay:(NSTimeInterval)delay
+              withPriority:(NSOperationQueuePriority)priority;
+
 @end
 
 @interface NAsyncManager (ChainMainReturn)
+
+- (instancetype)promiseMainReturn:(NAsyncReturnBlock)block;
+- (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
+                        withDelay:(NSTimeInterval)delay;
+- (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
+                        withDelay:(NSTimeInterval)delay
+                     withPriority:(NSOperationQueuePriority)priority;
+
+- (instancetype)mainReturn:(NAsyncReturnBlock)block;
+- (instancetype)mainReturn:(NAsyncReturnBlock)block
+                 withDelay:(NSTimeInterval)delay;
+- (instancetype)mainReturn:(NAsyncReturnBlock)block
+                 withDelay:(NSTimeInterval)delay
+              withPriority:(NSOperationQueuePriority)priority;
 @end
 
 @interface NAsyncManager (ChainMainOnceReturn)
+
+- (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                    returnBlock:(NAsyncReturnBlock)block;
+- (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                    returnBlock:(NAsyncReturnBlock)block
+                      withDelay:(NSTimeInterval)delay;
+- (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
+                    returnBlock:(NAsyncReturnBlock)block
+                      withDelay:(NSTimeInterval)delay
+                   withPriority:(NSOperationQueuePriority)priority;
+
+- (instancetype)mainOnce:(NAsyncOnceToken*)token
+             returnBlock:(NAsyncReturnBlock)block;
+- (instancetype)mainOnce:(NAsyncOnceToken*)token
+             returnBlock:(NAsyncReturnBlock)block
+               withDelay:(NSTimeInterval)delay;
+- (instancetype)mainOnce:(NAsyncOnceToken*)token
+             returnBlock:(NAsyncReturnBlock)block
+               withDelay:(NSTimeInterval)delay
+            withPriority:(NSOperationQueuePriority)priority;
+
 @end
 
 

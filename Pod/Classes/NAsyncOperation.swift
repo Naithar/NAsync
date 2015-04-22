@@ -16,7 +16,7 @@ public class NAsyncSwiftValues: NSObject {
     var inputValue: Any! = nil
 }
 
-extension NAsyncOperation {
+public extension NAsyncOperation {
     private var swiftValues: NAsyncSwiftValues! {
         get {
             return objc_getAssociatedObject(self, &swiftReturnValueKey) as? NAsyncSwiftValues
@@ -26,7 +26,7 @@ extension NAsyncOperation {
         }
     }
 
-    private func swiftValue() -> NAsyncSwiftValues! {
+    internal func swiftValue() -> NAsyncSwiftValues! {
         if (self.swiftValues == nil) {
             self.swiftValues = NAsyncSwiftValues()
         }
@@ -34,13 +34,22 @@ extension NAsyncOperation {
         return self.swiftValues;
     }
 
-    public final func prepareSwiftValues() {
+    public final func prepareSwiftInputValues() {
         #if DEBUG
-            NSLog("swift value setter")
+            NSLog("swift input value setter")
         #endif
 
         if (self.swiftValue().inputValue == nil) {
-            self.swiftValue().inputValue = self.parentOperation?.swiftValue().returnValue
+            self.swiftValue().inputValue = self.parentOperation?.swiftValue().returnValue //?? (self.parentOperation?.returnValue) segmentation fault?
+        }
+    }
+
+    public final func prepareSwiftReturnValues() {
+        #if DEBUG
+            NSLog("swift return value setter")
+        #endif
+
+        if (self.swiftValue().returnValue == nil) {
         }
     }
 
