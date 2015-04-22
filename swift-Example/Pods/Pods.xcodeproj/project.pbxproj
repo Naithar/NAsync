@@ -7,291 +7,254 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03E708D8F2E2C0BA4413D038 /* NAsync.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D6D9FB78CCF67D59B47E97E /* NAsync.bundle */; };
-		04E307C89E80BF1B5E89B698 /* NAsyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E6C1E262A9265F90C8186E /* NAsyncManager.swift */; };
-		31C4D65D73FAD5CF8FB59F51 /* Pods-swift-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 493919887C9610B7F5BE69BA /* Pods-swift-Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		522444AEE3594AA349F130B0 /* NAsyncManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 169A6E35989AB372BE275A90 /* NAsyncManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6866D6B347E1595373E99548 /* NAsyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D341BDC40B5C7A1736C2535 /* NAsyncManager.m */; };
-		76EBCC99546EE2D0F41536E0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B2AF862560A127E3C50E70 /* XCTest.framework */; };
-		802F3B43F64EA827A15B9009 /* Pods-swift-Example-NAsync-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA30F311305E24E0679E1C6F /* Pods-swift-Example-NAsync-dummy.m */; };
-		8F4CF5F1FF2DA137099BDF6E /* NAsyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F636EA20B24AE0FC9EA29532 /* NAsyncOperation.m */; };
-		C4085FC93DC7C8172CA77093 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCF27C51C24E894AFD76C48 /* Foundation.framework */; };
-		D0238BED9571AD7B4524942B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCF27C51C24E894AFD76C48 /* Foundation.framework */; };
-		E27A636DE0ECB721C3B5276B /* NAsyncOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = DF845FDD1D30BCB1DA820CA9 /* NAsyncOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E699F8D5E753A3E7D5A064F4 /* NAsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52E682C2AECA5C9877A3EE /* NAsyncOperation.swift */; };
-		E7702AB6615AEBE28884652A /* Pods-swift-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A41CD47CEDB822E8596B82B /* Pods-swift-Example-dummy.m */; };
-		F4B4A7D5B50661BC1B498D80 /* Pods-swift-Example-NAsync-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14396CFC556BF6B17F5F6478 /* Pods-swift-Example-NAsync-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F51A3E55D23B24F00A5A65D6 /* NAsync.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A9479AE88CFFDD81FBB3D5 /* NAsync.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1761C1E4135B6976C016EEA4 /* NAsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6918F858E43F145F5AFEAC1 /* NAsyncOperation.swift */; };
+		1BEC456C83EB3AFD5D187882 /* Pods-swift-Example-NAsync-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B289F5AEBA1733E842146E3 /* Pods-swift-Example-NAsync-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2142BACA7921D626366D6FCC /* NAsync.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADC35C0AD41E096934C051AE /* NAsync.bundle */; };
+		5595C23FDF854BE5EECABBE1 /* NAsyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD1AECA94FDE76972CD8F5E /* NAsyncManager.m */; };
+		5C45C34EC337658F63AD2CD3 /* Pods-swift-Example-NAsync-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B287BDB2E6D744E60819D2B /* Pods-swift-Example-NAsync-dummy.m */; };
+		5E226C2FA4887D2353F02115 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3976F4C48FF133A866C042AE /* Foundation.framework */; };
+		79C78DE26677D4B2C94A1E5E /* NAsyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9294A73325440C132584EC2 /* NAsyncManager.swift */; };
+		7B40D778C8E24C9DB27BCDF5 /* NAsync.h in Headers */ = {isa = PBXBuildFile; fileRef = A91F5D855B1ACB8DF54C41AE /* NAsync.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C471C97CB319A3BE0095255 /* Pods-swift-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 682B6C6A536DD5E481A550D6 /* Pods-swift-Example-dummy.m */; };
+		B75FB923AFC0E96CD5869E3D /* NAsyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1BCF27F79AECCDE474B0C /* NAsyncOperation.m */; };
+		BC5C48BD70CF583698F0D979 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22605EF732A55D00940A6C01 /* XCTest.framework */; };
+		BC774832C759DE8061814300 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3976F4C48FF133A866C042AE /* Foundation.framework */; };
+		BEF418C6766A3C94C0ED2B19 /* Pods-swift-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24173C85A7E364CA649048FA /* Pods-swift-Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB4650EA6989EEEE52E78EA5 /* NAsyncManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0152448641A83D42C06C5E58 /* NAsyncManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D348133B62CD29E76CB54FE3 /* NAsyncOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA060D5653A4D75D116792D /* NAsyncOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BB7076E8AD220EBED954844A /* PBXContainerItemProxy */ = {
+		618688AE65CF30A1EBD3E646 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75ABB01576A0016E115B6617 /* Project object */;
+			containerPortal = 52155B536F8F60BD3D2F4C93 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2DB7B1B135BA5DD8D12D943A;
-			remoteInfo = "Pods-swift-Example-NAsync";
-		};
-		FC9919C3055069AF291312E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75ABB01576A0016E115B6617 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EF287662684BC90F70FFFB21;
+			remoteGlobalIDString = 7C66CD1C9467C7590F07BA05;
 			remoteInfo = "Pods-swift-Example-NAsync-NAsync";
+		};
+		779CD1D39C04DA2CFF45F62F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52155B536F8F60BD3D2F4C93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAADD26ED585EF96FE0DBF4D;
+			remoteInfo = "Pods-swift-Example-NAsync";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		016BF967F6070F45791B2581 /* Pods-swift-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-swift-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		08B548B32DA2A2CB61BEFF12 /* Pods-swift-Example-NAsync.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-swift-Example-NAsync.modulemap"; sourceTree = "<group>"; };
-		14396CFC556BF6B17F5F6478 /* Pods-swift-Example-NAsync-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-swift-Example-NAsync-umbrella.h"; sourceTree = "<group>"; };
-		169A6E35989AB372BE275A90 /* NAsyncManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NAsyncManager.h; sourceTree = "<group>"; };
-		20DFC2239028E2B81CE44B13 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2D341BDC40B5C7A1736C2535 /* NAsyncManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NAsyncManager.m; sourceTree = "<group>"; };
-		30A9479AE88CFFDD81FBB3D5 /* NAsync.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NAsync.h; sourceTree = "<group>"; };
-		3D6D9FB78CCF67D59B47E97E /* NAsync.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NAsync.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		445CBCFC1A3A1F5CFB2C44BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		493919887C9610B7F5BE69BA /* Pods-swift-Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-swift-Example-umbrella.h"; sourceTree = "<group>"; };
-		4B1F3F4C8FDA8B1D4EE3E35A /* Pods-swift-Example-NAsync-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-swift-Example-NAsync-prefix.pch"; sourceTree = "<group>"; };
-		50E6C1E262A9265F90C8186E /* NAsyncManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NAsyncManager.swift; sourceTree = "<group>"; };
-		5763ED50E78FF81179639AAC /* Pods-swift-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-swift-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		66B2AF862560A127E3C50E70 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		7A41CD47CEDB822E8596B82B /* Pods-swift-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-swift-Example-dummy.m"; sourceTree = "<group>"; };
-		8D7657B2DF14A600BE9C53E9 /* Pods_swift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		956AC9E9974D32E54346DF21 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A255731B41CAEE7FB6246F23 /* Pods-swift-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-swift-Example-frameworks.sh"; sourceTree = "<group>"; };
-		A9D6CEBE99971A78A7555482 /* Pods-swift-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-swift-Example.release.xcconfig"; sourceTree = "<group>"; };
-		B8A895D718FB2A43FDE2078F /* Pods-swift-Example-NAsync.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-swift-Example-NAsync.xcconfig"; sourceTree = "<group>"; };
-		B8E00592B3F2938BDA257BD0 /* Pods-swift-Example-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-swift-Example-environment.h"; sourceTree = "<group>"; };
-		BA30F311305E24E0679E1C6F /* Pods-swift-Example-NAsync-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-swift-Example-NAsync-dummy.m"; sourceTree = "<group>"; };
-		C3A03C89D275B0477353CAF7 /* Pods-swift-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-swift-Example.modulemap"; sourceTree = "<group>"; };
-		D5D00D61C7082DFDE1F2C2CD /* Pods-swift-Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-swift-Example-resources.sh"; sourceTree = "<group>"; };
-		DB52E682C2AECA5C9877A3EE /* NAsyncOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NAsyncOperation.swift; sourceTree = "<group>"; };
-		DDE0FC0E9B3E3C7F05ABB0DC /* Pods-swift-Example-NAsync-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-swift-Example-NAsync-Private.xcconfig"; sourceTree = "<group>"; };
-		DF845FDD1D30BCB1DA820CA9 /* NAsyncOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NAsyncOperation.h; sourceTree = "<group>"; };
-		EDCF27C51C24E894AFD76C48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		F3AC58BF15A8FD4A9286BB3A /* NAsync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NAsync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F636EA20B24AE0FC9EA29532 /* NAsyncOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NAsyncOperation.m; sourceTree = "<group>"; };
-		FEB9553D8F608D8AEE9A0890 /* Pods-swift-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-swift-Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		0152448641A83D42C06C5E58 /* NAsyncManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NAsyncManager.h; sourceTree = "<group>"; };
+		024705CB5CA370CA48A7C8DF /* Pods-swift-Example-NAsync.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-swift-Example-NAsync.modulemap"; sourceTree = "<group>"; };
+		11E1BCF27F79AECCDE474B0C /* NAsyncOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NAsyncOperation.m; sourceTree = "<group>"; };
+		12A5E8C9A76D5A0B26ECF009 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13A1AD46A7BCEA10BF44D614 /* Pods_swift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B5075D5BC7377A04E8C7F94 /* Pods-swift-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-swift-Example.release.xcconfig"; sourceTree = "<group>"; };
+		1DB3F958E86EE43D1B18CC48 /* Pods-swift-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-swift-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		22605EF732A55D00940A6C01 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		24173C85A7E364CA649048FA /* Pods-swift-Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-swift-Example-umbrella.h"; sourceTree = "<group>"; };
+		2DA060D5653A4D75D116792D /* NAsyncOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NAsyncOperation.h; sourceTree = "<group>"; };
+		3976F4C48FF133A866C042AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		682B6C6A536DD5E481A550D6 /* Pods-swift-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-swift-Example-dummy.m"; sourceTree = "<group>"; };
+		79D9D66374C149A22C8C1E74 /* Pods-swift-Example-NAsync-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-swift-Example-NAsync-Private.xcconfig"; sourceTree = "<group>"; };
+		7B287BDB2E6D744E60819D2B /* Pods-swift-Example-NAsync-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-swift-Example-NAsync-dummy.m"; sourceTree = "<group>"; };
+		8B289F5AEBA1733E842146E3 /* Pods-swift-Example-NAsync-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-swift-Example-NAsync-umbrella.h"; sourceTree = "<group>"; };
+		9ADE37C1EFC7BCAA2099A864 /* Pods-swift-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-swift-Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		A91F5D855B1ACB8DF54C41AE /* NAsync.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NAsync.h; sourceTree = "<group>"; };
+		ADC35C0AD41E096934C051AE /* NAsync.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NAsync.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBFB95AAEFF17A6E2773313 /* Pods-swift-Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-swift-Example-resources.sh"; sourceTree = "<group>"; };
+		B31357B6D2907E8C3C4A7ED2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC79006111F098440F8AEA8E /* Pods-swift-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-swift-Example-frameworks.sh"; sourceTree = "<group>"; };
+		C6918F858E43F145F5AFEAC1 /* NAsyncOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NAsyncOperation.swift; sourceTree = "<group>"; };
+		DD4E32220E37FC133568ADE1 /* Pods-swift-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-swift-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		DDD1AECA94FDE76972CD8F5E /* NAsyncManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = NAsyncManager.m; sourceTree = "<group>"; };
+		E3178F81D1C555C18ED34336 /* Pods-swift-Example-NAsync.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-swift-Example-NAsync.xcconfig"; sourceTree = "<group>"; };
+		ED04E4EA9CA01BD4FE298C54 /* Pods-swift-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-swift-Example.modulemap"; sourceTree = "<group>"; };
+		EF1EC2DB4F49F5BBB3A0CA7E /* Pods-swift-Example-NAsync-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-swift-Example-NAsync-prefix.pch"; sourceTree = "<group>"; };
+		F513F8D4BFF40C776887173D /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F895E753EBF1F47796C6719F /* NAsync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NAsync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8E06AC8C402CA0D6183F586 /* Pods-swift-Example-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-swift-Example-environment.h"; sourceTree = "<group>"; };
+		F9294A73325440C132584EC2 /* NAsyncManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NAsyncManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3D9B0E06727A6E77227C697A /* Frameworks */ = {
+		16052E974313284C6ECFE6BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3DA738C729082BA5F83F743 /* Frameworks */ = {
+		25944743AA547DAD4864E40F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4085FC93DC7C8172CA77093 /* Foundation.framework in Frameworks */,
-				76EBCC99546EE2D0F41536E0 /* XCTest.framework in Frameworks */,
+				5E226C2FA4887D2353F02115 /* Foundation.framework in Frameworks */,
+				BC5C48BD70CF583698F0D979 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EF59D953A0AC7EEE976D2F58 /* Frameworks */ = {
+		DEF01B01B1B0887E1BE4B5F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0238BED9571AD7B4524942B /* Foundation.framework in Frameworks */,
+				BC774832C759DE8061814300 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		044B557E61F090297197DB44 /* Support Files */ = {
+		1B8B000CA2D111F148A943E9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				20DFC2239028E2B81CE44B13 /* Info.plist */,
-				08B548B32DA2A2CB61BEFF12 /* Pods-swift-Example-NAsync.modulemap */,
-				B8A895D718FB2A43FDE2078F /* Pods-swift-Example-NAsync.xcconfig */,
-				DDE0FC0E9B3E3C7F05ABB0DC /* Pods-swift-Example-NAsync-Private.xcconfig */,
-				BA30F311305E24E0679E1C6F /* Pods-swift-Example-NAsync-dummy.m */,
-				4B1F3F4C8FDA8B1D4EE3E35A /* Pods-swift-Example-NAsync-prefix.pch */,
-				14396CFC556BF6B17F5F6478 /* Pods-swift-Example-NAsync-umbrella.h */,
+				12A5E8C9A76D5A0B26ECF009 /* Info.plist */,
+				024705CB5CA370CA48A7C8DF /* Pods-swift-Example-NAsync.modulemap */,
+				E3178F81D1C555C18ED34336 /* Pods-swift-Example-NAsync.xcconfig */,
+				79D9D66374C149A22C8C1E74 /* Pods-swift-Example-NAsync-Private.xcconfig */,
+				7B287BDB2E6D744E60819D2B /* Pods-swift-Example-NAsync-dummy.m */,
+				EF1EC2DB4F49F5BBB3A0CA7E /* Pods-swift-Example-NAsync-prefix.pch */,
+				8B289F5AEBA1733E842146E3 /* Pods-swift-Example-NAsync-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "swift-Example/Pods/Target Support Files/Pods-swift-Example-NAsync";
 			sourceTree = "<group>";
 		};
-		05EC03EFFB51F4118971C7DD /* Products */ = {
+		1FC5B63828818BBE7623A096 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3D6D9FB78CCF67D59B47E97E /* NAsync.bundle */,
-				F3AC58BF15A8FD4A9286BB3A /* NAsync.framework */,
-				8D7657B2DF14A600BE9C53E9 /* Pods_swift_Example.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		4175BB7025AB830DAB155CA6 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				EDCF27C51C24E894AFD76C48 /* Foundation.framework */,
-				66B2AF862560A127E3C50E70 /* XCTest.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		4D2EBF2DF1A41067B07F335D /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CDE69569C29CE033C52F8D5B /* NAsync */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		6BCD422E4025F7F1447E1C45 /* Pods-swift-Example */ = {
-			isa = PBXGroup;
-			children = (
-				445CBCFC1A3A1F5CFB2C44BB /* Info.plist */,
-				C3A03C89D275B0477353CAF7 /* Pods-swift-Example.modulemap */,
-				016BF967F6070F45791B2581 /* Pods-swift-Example-acknowledgements.markdown */,
-				FEB9553D8F608D8AEE9A0890 /* Pods-swift-Example-acknowledgements.plist */,
-				7A41CD47CEDB822E8596B82B /* Pods-swift-Example-dummy.m */,
-				B8E00592B3F2938BDA257BD0 /* Pods-swift-Example-environment.h */,
-				A255731B41CAEE7FB6246F23 /* Pods-swift-Example-frameworks.sh */,
-				D5D00D61C7082DFDE1F2C2CD /* Pods-swift-Example-resources.sh */,
-				493919887C9610B7F5BE69BA /* Pods-swift-Example-umbrella.h */,
-				5763ED50E78FF81179639AAC /* Pods-swift-Example.debug.xcconfig */,
-				A9D6CEBE99971A78A7555482 /* Pods-swift-Example.release.xcconfig */,
-			);
-			name = "Pods-swift-Example";
-			path = "Target Support Files/Pods-swift-Example";
-			sourceTree = "<group>";
-		};
-		799A0E758C111CCB0B66EAC9 = {
-			isa = PBXGroup;
-			children = (
-				956AC9E9974D32E54346DF21 /* Podfile */,
-				4D2EBF2DF1A41067B07F335D /* Development Pods */,
-				A4DA221A0EEF51958C769E2D /* Frameworks */,
-				05EC03EFFB51F4118971C7DD /* Products */,
-				C269CA716FEF249164069BA5 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		879ADBBD317073E4FE3020B8 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				30A9479AE88CFFDD81FBB3D5 /* NAsync.h */,
-				169A6E35989AB372BE275A90 /* NAsyncManager.h */,
-				2D341BDC40B5C7A1736C2535 /* NAsyncManager.m */,
-				50E6C1E262A9265F90C8186E /* NAsyncManager.swift */,
-				DF845FDD1D30BCB1DA820CA9 /* NAsyncOperation.h */,
-				F636EA20B24AE0FC9EA29532 /* NAsyncOperation.m */,
-				DB52E682C2AECA5C9877A3EE /* NAsyncOperation.swift */,
+				A91F5D855B1ACB8DF54C41AE /* NAsync.h */,
+				0152448641A83D42C06C5E58 /* NAsyncManager.h */,
+				DDD1AECA94FDE76972CD8F5E /* NAsyncManager.m */,
+				F9294A73325440C132584EC2 /* NAsyncManager.swift */,
+				2DA060D5653A4D75D116792D /* NAsyncOperation.h */,
+				11E1BCF27F79AECCDE474B0C /* NAsyncOperation.m */,
+				C6918F858E43F145F5AFEAC1 /* NAsyncOperation.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		A4DA221A0EEF51958C769E2D /* Frameworks */ = {
+		21D92932D50818876B7AF57A = {
 			isa = PBXGroup;
 			children = (
-				4175BB7025AB830DAB155CA6 /* iOS */,
+				F513F8D4BFF40C776887173D /* Podfile */,
+				C6E6BF26FE3C22E6E5516CA6 /* Development Pods */,
+				4062D6BF82AC7C3B6FD8ED03 /* Frameworks */,
+				2C41DAA243A99538A80CB900 /* Products */,
+				462F7BBCCBFA5DD86D38F252 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		2C41DAA243A99538A80CB900 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADC35C0AD41E096934C051AE /* NAsync.bundle */,
+				F895E753EBF1F47796C6719F /* NAsync.framework */,
+				13A1AD46A7BCEA10BF44D614 /* Pods_swift_Example.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4062D6BF82AC7C3B6FD8ED03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87F0683726CF68A87524578B /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C0C91B507DC75F07D7FB5980 /* Pod */ = {
+		462F7BBCCBFA5DD86D38F252 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				879ADBBD317073E4FE3020B8 /* Classes */,
-			);
-			path = Pod;
-			sourceTree = "<group>";
-		};
-		C269CA716FEF249164069BA5 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				6BCD422E4025F7F1447E1C45 /* Pods-swift-Example */,
+				C9E3C07E8711F41099EDEADC /* Pods-swift-Example */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		CDE69569C29CE033C52F8D5B /* NAsync */ = {
+		601C0A6D26652303EEC4BC33 /* NAsync */ = {
 			isa = PBXGroup;
 			children = (
-				C0C91B507DC75F07D7FB5980 /* Pod */,
-				044B557E61F090297197DB44 /* Support Files */,
+				791630DF2DDBDF4E1FAED99D /* Pod */,
+				1B8B000CA2D111F148A943E9 /* Support Files */,
 			);
 			name = NAsync;
 			path = ../..;
 			sourceTree = "<group>";
 		};
+		791630DF2DDBDF4E1FAED99D /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				1FC5B63828818BBE7623A096 /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		87F0683726CF68A87524578B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3976F4C48FF133A866C042AE /* Foundation.framework */,
+				22605EF732A55D00940A6C01 /* XCTest.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C6E6BF26FE3C22E6E5516CA6 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				601C0A6D26652303EEC4BC33 /* NAsync */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		C9E3C07E8711F41099EDEADC /* Pods-swift-Example */ = {
+			isa = PBXGroup;
+			children = (
+				B31357B6D2907E8C3C4A7ED2 /* Info.plist */,
+				ED04E4EA9CA01BD4FE298C54 /* Pods-swift-Example.modulemap */,
+				1DB3F958E86EE43D1B18CC48 /* Pods-swift-Example-acknowledgements.markdown */,
+				9ADE37C1EFC7BCAA2099A864 /* Pods-swift-Example-acknowledgements.plist */,
+				682B6C6A536DD5E481A550D6 /* Pods-swift-Example-dummy.m */,
+				F8E06AC8C402CA0D6183F586 /* Pods-swift-Example-environment.h */,
+				BC79006111F098440F8AEA8E /* Pods-swift-Example-frameworks.sh */,
+				AFBFB95AAEFF17A6E2773313 /* Pods-swift-Example-resources.sh */,
+				24173C85A7E364CA649048FA /* Pods-swift-Example-umbrella.h */,
+				DD4E32220E37FC133568ADE1 /* Pods-swift-Example.debug.xcconfig */,
+				1B5075D5BC7377A04E8C7F94 /* Pods-swift-Example.release.xcconfig */,
+			);
+			name = "Pods-swift-Example";
+			path = "Target Support Files/Pods-swift-Example";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		98C5FDA1A6B4352B808A4FA9 /* Headers */ = {
+		7757CA4EE88935867B67C64C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31C4D65D73FAD5CF8FB59F51 /* Pods-swift-Example-umbrella.h in Headers */,
+				7B40D778C8E24C9DB27BCDF5 /* NAsync.h in Headers */,
+				CB4650EA6989EEEE52E78EA5 /* NAsyncManager.h in Headers */,
+				D348133B62CD29E76CB54FE3 /* NAsyncOperation.h in Headers */,
+				1BEC456C83EB3AFD5D187882 /* Pods-swift-Example-NAsync-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DE6F727C0E4FFE8BA559D23D /* Headers */ = {
+		F3059B6A4943E990029E1131 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F51A3E55D23B24F00A5A65D6 /* NAsync.h in Headers */,
-				522444AEE3594AA349F130B0 /* NAsyncManager.h in Headers */,
-				E27A636DE0ECB721C3B5276B /* NAsyncOperation.h in Headers */,
-				F4B4A7D5B50661BC1B498D80 /* Pods-swift-Example-NAsync-umbrella.h in Headers */,
+				BEF418C6766A3C94C0ED2B19 /* Pods-swift-Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2DB7B1B135BA5DD8D12D943A /* Pods-swift-Example-NAsync */ = {
+		7C66CD1C9467C7590F07BA05 /* Pods-swift-Example-NAsync-NAsync */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 54429347C852A99ED82CB6C2 /* Build configuration list for PBXNativeTarget "Pods-swift-Example-NAsync" */;
+			buildConfigurationList = 81BF920036E53591B6922E26 /* Build configuration list for PBXNativeTarget "Pods-swift-Example-NAsync-NAsync" */;
 			buildPhases = (
-				9AF27906B078DBA5B6774EFB /* Sources */,
-				E3DA738C729082BA5F83F743 /* Frameworks */,
-				34C64FE2DFED30265E6DF86B /* Resources */,
-				DE6F727C0E4FFE8BA559D23D /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3689E15972002B9EFF79C357 /* PBXTargetDependency */,
-			);
-			name = "Pods-swift-Example-NAsync";
-			productName = "Pods-swift-Example-NAsync";
-			productReference = F3AC58BF15A8FD4A9286BB3A /* NAsync.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		7A9C2BC3555C4AE1C6CE7CC5 /* Pods-swift-Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 28C54606FE5F1CA00BF6A66D /* Build configuration list for PBXNativeTarget "Pods-swift-Example" */;
-			buildPhases = (
-				029407F595992253DD779989 /* Sources */,
-				EF59D953A0AC7EEE976D2F58 /* Frameworks */,
-				98C5FDA1A6B4352B808A4FA9 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C5C7F1616C2E007B596F67AB /* PBXTargetDependency */,
-			);
-			name = "Pods-swift-Example";
-			productName = "Pods-swift-Example";
-			productReference = 8D7657B2DF14A600BE9C53E9 /* Pods_swift_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EF287662684BC90F70FFFB21 /* Pods-swift-Example-NAsync-NAsync */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 85EDBE1312D7D3F95D14A553 /* Build configuration list for PBXNativeTarget "Pods-swift-Example-NAsync-NAsync" */;
-			buildPhases = (
-				4F874BBA604CC42CEFB51C00 /* Sources */,
-				3D9B0E06727A6E77227C697A /* Frameworks */,
-				4012C8306ADFA3242F42602B /* Resources */,
+				8C67C7B64B1A94332D5EC73A /* Sources */,
+				16052E974313284C6ECFE6BA /* Frameworks */,
+				B940E24D391F72DCE28581A2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -299,46 +262,83 @@
 			);
 			name = "Pods-swift-Example-NAsync-NAsync";
 			productName = "Pods-swift-Example-NAsync-NAsync";
-			productReference = 3D6D9FB78CCF67D59B47E97E /* NAsync.bundle */;
+			productReference = ADC35C0AD41E096934C051AE /* NAsync.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		BAADD26ED585EF96FE0DBF4D /* Pods-swift-Example-NAsync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C76CEFEB0F738A77E8407949 /* Build configuration list for PBXNativeTarget "Pods-swift-Example-NAsync" */;
+			buildPhases = (
+				C2D9229612CB0359548F90D5 /* Sources */,
+				25944743AA547DAD4864E40F /* Frameworks */,
+				9CA9B08493B7AA3BD0FB10BD /* Resources */,
+				7757CA4EE88935867B67C64C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56AC612DD7BE57719F132561 /* PBXTargetDependency */,
+			);
+			name = "Pods-swift-Example-NAsync";
+			productName = "Pods-swift-Example-NAsync";
+			productReference = F895E753EBF1F47796C6719F /* NAsync.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D4ED907508ECD9868D6526BA /* Pods-swift-Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96D0BBF24CB82E9B68E4F7DA /* Build configuration list for PBXNativeTarget "Pods-swift-Example" */;
+			buildPhases = (
+				863E84DE2A0C7498E64DECF1 /* Sources */,
+				DEF01B01B1B0887E1BE4B5F4 /* Frameworks */,
+				F3059B6A4943E990029E1131 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F464F13D4AA80037928340F4 /* PBXTargetDependency */,
+			);
+			name = "Pods-swift-Example";
+			productName = "Pods-swift-Example";
+			productReference = 13A1AD46A7BCEA10BF44D614 /* Pods_swift_Example.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		75ABB01576A0016E115B6617 /* Project object */ = {
+		52155B536F8F60BD3D2F4C93 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 2936C29DA93CEAB0B9D6BF7B /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = A13CF5CFC701DD62664CA7DE /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 799A0E758C111CCB0B66EAC9;
-			productRefGroup = 05EC03EFFB51F4118971C7DD /* Products */;
+			mainGroup = 21D92932D50818876B7AF57A;
+			productRefGroup = 2C41DAA243A99538A80CB900 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7A9C2BC3555C4AE1C6CE7CC5 /* Pods-swift-Example */,
-				2DB7B1B135BA5DD8D12D943A /* Pods-swift-Example-NAsync */,
-				EF287662684BC90F70FFFB21 /* Pods-swift-Example-NAsync-NAsync */,
+				D4ED907508ECD9868D6526BA /* Pods-swift-Example */,
+				BAADD26ED585EF96FE0DBF4D /* Pods-swift-Example-NAsync */,
+				7C66CD1C9467C7590F07BA05 /* Pods-swift-Example-NAsync-NAsync */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		34C64FE2DFED30265E6DF86B /* Resources */ = {
+		9CA9B08493B7AA3BD0FB10BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03E708D8F2E2C0BA4413D038 /* NAsync.bundle in Resources */,
+				2142BACA7921D626366D6FCC /* NAsync.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4012C8306ADFA3242F42602B /* Resources */ = {
+		B940E24D391F72DCE28581A2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -348,54 +348,54 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		029407F595992253DD779989 /* Sources */ = {
+		863E84DE2A0C7498E64DECF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7702AB6615AEBE28884652A /* Pods-swift-Example-dummy.m in Sources */,
+				7C471C97CB319A3BE0095255 /* Pods-swift-Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F874BBA604CC42CEFB51C00 /* Sources */ = {
+		8C67C7B64B1A94332D5EC73A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9AF27906B078DBA5B6774EFB /* Sources */ = {
+		C2D9229612CB0359548F90D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6866D6B347E1595373E99548 /* NAsyncManager.m in Sources */,
-				04E307C89E80BF1B5E89B698 /* NAsyncManager.swift in Sources */,
-				8F4CF5F1FF2DA137099BDF6E /* NAsyncOperation.m in Sources */,
-				E699F8D5E753A3E7D5A064F4 /* NAsyncOperation.swift in Sources */,
-				802F3B43F64EA827A15B9009 /* Pods-swift-Example-NAsync-dummy.m in Sources */,
+				5595C23FDF854BE5EECABBE1 /* NAsyncManager.m in Sources */,
+				79C78DE26677D4B2C94A1E5E /* NAsyncManager.swift in Sources */,
+				B75FB923AFC0E96CD5869E3D /* NAsyncOperation.m in Sources */,
+				1761C1E4135B6976C016EEA4 /* NAsyncOperation.swift in Sources */,
+				5C45C34EC337658F63AD2CD3 /* Pods-swift-Example-NAsync-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3689E15972002B9EFF79C357 /* PBXTargetDependency */ = {
+		56AC612DD7BE57719F132561 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-swift-Example-NAsync-NAsync";
-			target = EF287662684BC90F70FFFB21 /* Pods-swift-Example-NAsync-NAsync */;
-			targetProxy = FC9919C3055069AF291312E1 /* PBXContainerItemProxy */;
+			target = 7C66CD1C9467C7590F07BA05 /* Pods-swift-Example-NAsync-NAsync */;
+			targetProxy = 618688AE65CF30A1EBD3E646 /* PBXContainerItemProxy */;
 		};
-		C5C7F1616C2E007B596F67AB /* PBXTargetDependency */ = {
+		F464F13D4AA80037928340F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-swift-Example-NAsync";
-			target = 2DB7B1B135BA5DD8D12D943A /* Pods-swift-Example-NAsync */;
-			targetProxy = BB7076E8AD220EBED954844A /* PBXContainerItemProxy */;
+			target = BAADD26ED585EF96FE0DBF4D /* Pods-swift-Example-NAsync */;
+			targetProxy = 779CD1D39C04DA2CFF45F62F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		69F3797346C58F0FB83576F7 /* Release */ = {
+		322A0C99477A563ADE2C8A48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9D6CEBE99971A78A7555482 /* Pods-swift-Example.release.xcconfig */;
+			baseConfigurationReference = 1B5075D5BC7377A04E8C7F94 /* Pods-swift-Example.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -422,36 +422,9 @@
 			};
 			name = Release;
 		};
-		7BE9F033FFE9E53BDFB56226 /* Release */ = {
+		3E3075260C5AC51B10B0DC59 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDE0FC0E9B3E3C7F05ABB0DC /* Pods-swift-Example-NAsync-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-swift-Example-NAsync/Pods-swift-Example-NAsync-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-swift-Example-NAsync/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-swift-Example-NAsync/Pods-swift-Example-NAsync.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = NAsync;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		81D888BCB730D4EF550B8DC3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5763ED50E78FF81179639AAC /* Pods-swift-Example.debug.xcconfig */;
+			baseConfigurationReference = DD4E32220E37FC133568ADE1 /* Pods-swift-Example.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -479,9 +452,55 @@
 			};
 			name = Debug;
 		};
-		8D158723B25EB7479F8A426A /* Debug */ = {
+		450736B8C291F7C0F98959A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDE0FC0E9B3E3C7F05ABB0DC /* Pods-swift-Example-NAsync-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		571F4F85E2CA4886DF49D522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-swift-Example";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = NAsync;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		5ED24E2EB8F2A57D3AF9B9BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79D9D66374C149A22C8C1E74 /* Pods-swift-Example-NAsync-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -496,18 +515,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-swift-Example-NAsync/Pods-swift-Example-NAsync.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = NAsync;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		AB7ECDAB18CE50007F3BDEC8 /* Debug */ = {
+		A1DFE4B36FDC24A8810C10E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -546,53 +564,7 @@
 			};
 			name = Debug;
 		};
-		AC0495E41909A19748AD1EDF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-swift-Example";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = NAsync;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		E13BBC87C357F1096A592F52 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E990CAF2751D1D902A924051 /* Debug */ = {
+		C21F6817AB217CCE0A0ABF5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-swift-Example";
@@ -604,46 +576,74 @@
 			};
 			name = Debug;
 		};
+		F59EE9D54E9423DD49F64E7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79D9D66374C149A22C8C1E74 /* Pods-swift-Example-NAsync-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-swift-Example-NAsync/Pods-swift-Example-NAsync-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-swift-Example-NAsync/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-swift-Example-NAsync/Pods-swift-Example-NAsync.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = NAsync;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		28C54606FE5F1CA00BF6A66D /* Build configuration list for PBXNativeTarget "Pods-swift-Example" */ = {
+		81BF920036E53591B6922E26 /* Build configuration list for PBXNativeTarget "Pods-swift-Example-NAsync-NAsync" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				81D888BCB730D4EF550B8DC3 /* Debug */,
-				69F3797346C58F0FB83576F7 /* Release */,
+				C21F6817AB217CCE0A0ABF5F /* Debug */,
+				571F4F85E2CA4886DF49D522 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2936C29DA93CEAB0B9D6BF7B /* Build configuration list for PBXProject "Pods" */ = {
+		96D0BBF24CB82E9B68E4F7DA /* Build configuration list for PBXNativeTarget "Pods-swift-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB7ECDAB18CE50007F3BDEC8 /* Debug */,
-				E13BBC87C357F1096A592F52 /* Release */,
+				3E3075260C5AC51B10B0DC59 /* Debug */,
+				322A0C99477A563ADE2C8A48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		54429347C852A99ED82CB6C2 /* Build configuration list for PBXNativeTarget "Pods-swift-Example-NAsync" */ = {
+		A13CF5CFC701DD62664CA7DE /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D158723B25EB7479F8A426A /* Debug */,
-				7BE9F033FFE9E53BDFB56226 /* Release */,
+				A1DFE4B36FDC24A8810C10E3 /* Debug */,
+				450736B8C291F7C0F98959A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		85EDBE1312D7D3F95D14A553 /* Build configuration list for PBXNativeTarget "Pods-swift-Example-NAsync-NAsync" */ = {
+		C76CEFEB0F738A77E8407949 /* Build configuration list for PBXNativeTarget "Pods-swift-Example-NAsync" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E990CAF2751D1D902A924051 /* Debug */,
-				AC0495E41909A19748AD1EDF /* Release */,
+				F59EE9D54E9423DD49F64E7F /* Debug */,
+				5ED24E2EB8F2A57D3AF9B9BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 75ABB01576A0016E115B6617 /* Project object */;
+	rootObject = 52155B536F8F60BD3D2F4C93 /* Project object */;
 }

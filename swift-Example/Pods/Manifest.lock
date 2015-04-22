@@ -6,7 +6,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   NAsync:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   NAsync: 64b33e17a68419031e6cc2cb9d28b0686da9e138

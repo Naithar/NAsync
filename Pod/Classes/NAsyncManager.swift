@@ -14,16 +14,36 @@ import UIKit
 //public typealias NAsyncSwiftBlock = ((operation: NAsyncOperation!, value: Any!) -> ())
 
 extension NAsyncManager {
-//    public func main<T: Any>(after delay: NSTimeInterval = 0,
-//        priority: NSOperationQueuePriority = .Normal,
-//        closure: ((NAsyncOperation!, T!) -> ())) -> NAsyncManager! {
-//            return self.main({ operation, value in
-//                NSLog("swift input value = \(operation.swiftValue().inputValue)")
-//                closure(operation, (value as? T) ?? operation.swiftValue().inputValue as? T)
-//                return
-//                }, withDelay: delay, withPriority: priority)
-//    }
 
+    public func perform(value: Any!) -> NAsyncManager! {
+        self.operation.swiftValue().inputValue = value
+        return self.performWithValue(value as? NSObject)
+    }
+
+    public class func promiseQueue(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        closure: NAsyncBlock) -> NAsyncManager! {
+            return self.promiseQueue(queue,
+                block: closure,
+                withDelay: delay,
+                withPriority: priority)
+    }
+
+    public class func promiseQueue<inT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        closure: ((operation: NAsyncOperation!, value: inT!) -> ())) -> NAsyncManager! {
+            return self.promiseQueue(queue,
+                after: delay,
+                priority: priority,
+                closure: { operation, value in
+                    closure(operation: operation,
+                        value: value as? inT
+                            ?? operation.swiftValue().inputValue as? inT)
+                    return
+            })
+    }
 
     public class func queue(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
@@ -42,8 +62,10 @@ extension NAsyncManager {
             return self.queue(queue,
                 after: delay,
                 priority: priority,
-                closure: { (operation: NAsyncOperation!, value: AnyObject!) -> Void in
-                    closure(operation: operation, value: value as? inT ?? operation.swiftValue().inputValue as? inT)
+                closure: { operation, value in
+                    closure(operation: operation,
+                        value: value as? inT
+                            ?? operation.swiftValue().inputValue as? inT)
                     return
             })
     }
