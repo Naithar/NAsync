@@ -7,18 +7,20 @@
 //
 
 import UIKit
-//    //async
-//    //main
-//    //queue
+//    //async (start, start-once, chain, chain-once)
+//    //main (start, start-once, chain, chain-once)
+//    //queue  (start-once, chain, chain-once)
 
-//public typealias NAsyncSwiftBlock = ((operation: NAsyncOperation!, value: Any!) -> ())
-
+//MARK: Non queue extension
 extension NAsyncManager {
-
     public func perform(value: Any!) -> NAsyncManager! {
         self.operation.swiftValue().inputValue = value
         return self.performWithValue(value as? NSObject)
     }
+}
+
+//MARK: Start queue non return tasks
+extension NAsyncManager {
 
     public class func promiseQueue(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
