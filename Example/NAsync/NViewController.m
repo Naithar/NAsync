@@ -93,6 +93,14 @@
         self.view.backgroundColor = value;
     } withDelay:15];
 	// Do any additional setup after loading the view, typically from a nib.
+
+
+    [[NAsyncManager async:^(NAsyncOperation *operation, id value) {
+        NSLog(@"async operation");
+    }] async:^(NAsyncOperation *operation, id value) {
+        NSLog(@"async operation 2");
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning

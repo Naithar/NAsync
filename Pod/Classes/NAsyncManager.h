@@ -460,15 +460,87 @@ typedef dispatch_once_t NAsyncOnceToken;
 #pragma mark - Async non return
 
 @interface NAsyncManager (StartAsyncNonReturn)
+
++ (instancetype)promiseAsync:(NAsyncBlock)block;
++ (instancetype)promiseAsync:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay;
++ (instancetype)promiseAsync:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay
+                withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)async:(NAsyncBlock)block;
++ (instancetype)async:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay;
++ (instancetype)async:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority;
 @end
 
 @interface NAsyncManager (StartAsyncOnceNonReturn)
+
++ (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block;
++ (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay;
++ (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority;
+
++ (instancetype)asyncOnce:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block;
++ (instancetype)asyncOnce:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay;
++ (instancetype)asyncOnce:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority;
+
 @end
 
 @interface NAsyncManager (ChainAsyncNonReturn)
+
+- (instancetype)promiseAsync:(NAsyncBlock)block;
+- (instancetype)promiseAsync:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay;
+- (instancetype)promiseAsync:(NAsyncBlock)block
+                   withDelay:(NSTimeInterval)delay
+                withPriority:(NSOperationQueuePriority)priority;
+
+- (instancetype)async:(NAsyncBlock)block;
+- (instancetype)async:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay;
+- (instancetype)async:(NAsyncBlock)block
+            withDelay:(NSTimeInterval)delay
+         withPriority:(NSOperationQueuePriority)priority;
+
 @end
 
 @interface NAsyncManager (ChainAsyncOnceNonReturn)
+
+- (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block;
+- (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay;
+- (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                           block:(NAsyncBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority;
+
+- (instancetype)asyncOnce:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block;
+- (instancetype)asyncOnce:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay;
+- (instancetype)asyncOnce:(NAsyncOnceToken*)token
+                    block:(NAsyncBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority;
+
+
 @end
 
 #pragma mark - Async return value
