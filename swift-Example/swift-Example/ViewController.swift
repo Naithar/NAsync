@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 
         operation.perform(NSOperationQueue(), value: 20)
 
-        NSLog("\(operation.wait())")
+        NSLog("operation = \(operation.wait())")
 
         NHAsyncManager.queue(nil) { _ in
                 NSLog("operation")
@@ -37,10 +37,32 @@ class ViewController: UIViewController {
             return
         }
 
+        var returnValuePromise = NHAsyncManager.promiseQueue(nil) { (_, value: (Int, Int, Int)!) -> (Int, Int)! in
+            NSLog("return queue input = \(value)")
+            return (10, 150)
+        }
+
+        returnValuePromise.queue(nil) { (_, value: (Int, Int)!) in
+            NSLog("returned value = \(value)")
+            return
+        }
+
 
         promise.perform((10, "ds"))
 
+//        returnValuePromise.perform(10)
 
+        NSLog("return value promise = \(returnValuePromise.perform((10, 10, 15)).waitAny())")
+
+
+        NHAsyncManager.queue(nil) { _ -> Int! in
+            return 10
+            }.queue(nil) { (_, value: Int!) -> (Int, Int)! in
+                return (20 + value, 30 + value * 2)
+            }.queue(nil) { (_, value: (Int, Int)!) in
+                NSLog("\(value)")
+                return
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 

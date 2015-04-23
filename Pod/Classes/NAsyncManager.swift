@@ -7,9 +7,9 @@
 //
 
 import UIKit
-//    //async (start, start-once, chain, chain-once)
-//    //main (start, start-once, chain, chain-once)
-//    //queue  (start-once, chain, chain-once)
+//    //async (start (non, return), start-once (non, return), chain (non, return), chain-once (non, return))
+//    //main (start (non, return), start-once (non, return), chain (non, return), chain-once (non, return))
+//    //queue  (start-once (non, return), chain-once (non, return))
 
 //MARK: Non queue extension
 extension NHAsyncManager {
@@ -76,6 +76,179 @@ extension NHAsyncManager {
                             ?? operation.swiftValue().inputValue as? inT)
                     return
             })
+    }
+}
+
+
+
+//MARK: Chain queue non return task
+extension NHAsyncManager {
+    public func promiseQueue(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        closure: NAsyncBlock) -> NHAsyncManager! {
+            return self.promiseQueue(queue,
+                block: closure,
+                withDelay: delay,
+                withPriority: priority)
+    }
+
+    public func promiseQueue<inT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        closure: ((operation: NHAsyncOperation!, value: inT!) -> ())) -> NHAsyncManager! {
+            return self.promiseQueue(queue,
+                after: delay,
+                priority: priority,
+                closure: { operation, value in
+                    closure(operation: operation,
+                        value: value as? inT
+                            ?? operation.swiftValue().inputValue as? inT)
+                    return
+            })
+    }
+
+    public func queue(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        closure: NAsyncBlock) -> NHAsyncManager! {
+            return self.queue(queue,
+                block: closure,
+                withDelay: delay,
+                withPriority: priority);
+    }
+
+    public func queue<inT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        closure: ((operation: NHAsyncOperation!, value: inT!) -> ())) -> NHAsyncManager! {
+            return self.queue(queue,
+                after: delay,
+                priority: priority,
+                closure: { operation, value in
+                    closure(operation: operation,
+                        value: value as? inT
+                            ?? operation.swiftValue().inputValue as? inT)
+                    return
+            })
+    }
+}
+
+//MARK: Start queue return task
+extension NHAsyncManager {
+    public class func promiseQueue<outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(queue,
+                returnBlock: { operation, value in
+                    let returnValue = returnClosure(operation: operation, value: value)
+                    operation.swiftValue().returnValue = returnValue;
+                    return returnValue as? NSObject
+                }, withDelay: delay,
+                withPriority: priority)
+    }
+
+    public class func promiseQueue<inT: Any, outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(queue,
+                returnBlock: { operation, value in
+                    let returnValue = returnClosure(operation: operation,
+                        value: value as? inT
+                            ?? operation.swiftValue().inputValue as? inT)
+                    operation.swiftValue().returnValue = returnValue;
+                    return returnValue as? NSObject
+                }, withDelay: delay,
+                withPriority: priority)
+    }
+
+    public class func queue<outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(queue,
+                returnBlock: { operation, value in
+                    let returnValue = returnClosure(operation: operation, value: value)
+                    operation.swiftValue().returnValue = returnValue;
+                    return returnValue as? NSObject
+                }, withDelay: delay,
+                withPriority: priority)
+    }
+
+    public class func queue<inT: Any, outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(queue,
+                returnBlock: { operation, value in
+                    let returnValue = returnClosure(operation: operation,
+                        value: value as? inT
+                            ?? operation.swiftValue().inputValue as? inT)
+                    operation.swiftValue().returnValue = returnValue;
+                    return returnValue as? NSObject
+                }, withDelay: delay,
+                withPriority: priority)
+    }
+}
+
+//MARK: Chain queue return task
+extension NHAsyncManager {
+    public func promiseQueue<outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(queue,
+                returnBlock: { operation, value in
+                    let returnValue = returnClosure(operation: operation, value: value)
+                    operation.swiftValue().returnValue = returnValue;
+                    return returnValue as? NSObject
+                }, withDelay: delay,
+                withPriority: priority)
+    }
+
+    public func promiseQueue<inT: Any, outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(queue,
+                returnBlock: { operation, value in
+                    let returnValue = returnClosure(operation: operation,
+                        value: value as? inT
+                            ?? operation.swiftValue().inputValue as? inT)
+                    operation.swiftValue().returnValue = returnValue;
+                    return returnValue as? NSObject
+                }, withDelay: delay,
+                withPriority: priority)
+    }
+
+    public func queue<outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(queue,
+                returnBlock: { operation, value in
+                    let returnValue = returnClosure(operation: operation, value: value)
+                    operation.swiftValue().returnValue = returnValue;
+                    return returnValue as? NSObject
+                }, withDelay: delay,
+                withPriority: priority)
+    }
+
+    public func queue<inT: Any, outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(queue,
+                returnBlock: { operation, value in
+                    let returnValue = returnClosure(operation: operation,
+                        value: value as? inT
+                            ?? operation.swiftValue().inputValue as? inT)
+                    operation.swiftValue().returnValue = returnValue;
+                    return returnValue as? NSObject
+                }, withDelay: delay,
+                withPriority: priority)
     }
 }
 
