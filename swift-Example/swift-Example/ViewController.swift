@@ -63,6 +63,25 @@ class ViewController: UIViewController {
                 NSLog("\(value)")
                 return
         }
+
+        struct onceToken {
+            static var token: NHAsyncOnceToken = 0
+        }
+
+
+        NHAsyncManager.queue(nil, onceToken: &onceToken.token) { _ in
+            NSLog("ONCE 0")
+            return
+        }
+//
+        NHAsyncManager.queue(nil, onceToken: &onceToken.token) { _ in
+            NSLog("ONCE 1")
+//            onceToken.token = 0
+            return
+            }.queue(nil, onceToken: &onceToken.token) { _ in
+                NSLog("ONCE 2")
+                return
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
