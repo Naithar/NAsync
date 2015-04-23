@@ -256,18 +256,6 @@ extension NHAsyncManager {
 
 //MARK: Start queue return task
 extension NHAsyncManager {
-    public class func promiseQueue<outT: Any>(queue: NSOperationQueue!,
-        after delay: NSTimeInterval = 0,
-        priority: NSOperationQueuePriority = .Normal,
-        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
-            return self.promiseQueue(queue,
-                returnBlock: { operation, value in
-                    let returnValue = returnClosure(operation: operation, value: value)
-                    operation.swiftValue().returnValue = returnValue;
-                    return returnValue as? NSObject
-                }, withDelay: delay,
-                withPriority: priority)
-    }
 
     public class func promiseQueue<inT: Any, outT: Any>(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
@@ -284,17 +272,17 @@ extension NHAsyncManager {
                 withPriority: priority)
     }
 
-    public class func queue<outT: Any>(queue: NSOperationQueue!,
+    public class func promiseQueue<outT: Any>(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
-            return self.queue(queue,
-                returnBlock: { operation, value in
-                    let returnValue = returnClosure(operation: operation, value: value)
-                    operation.swiftValue().returnValue = returnValue;
-                    return returnValue as? NSObject
-                }, withDelay: delay,
-                withPriority: priority)
+            return self.promiseQueue(queue,
+                after: delay,
+                priority: priority,
+                returnClosure: {
+                    (operation: NHAsyncOperation!, value: NSObject!) -> outT! in
+                    return returnClosure(operation: operation, value: value)
+            })
     }
 
     public class func queue<inT: Any, outT: Any>(queue: NSOperationQueue!,
@@ -311,23 +299,23 @@ extension NHAsyncManager {
                 }, withDelay: delay,
                 withPriority: priority)
     }
+
+    public class func queue<outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(queue,
+                after: delay,
+                priority: priority,
+                returnClosure: {
+                    (operation: NHAsyncOperation!, value: NSObject!) -> outT! in
+                    return returnClosure(operation: operation, value: value)
+            })
+    }
 }
 
 //MARK: Chain queue return task
 extension NHAsyncManager {
-    public func promiseQueue<outT: Any>(queue: NSOperationQueue!,
-        after delay: NSTimeInterval = 0,
-        priority: NSOperationQueuePriority = .Normal,
-        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
-            return self.promiseQueue(queue,
-                returnBlock: { operation, value in
-                    let returnValue = returnClosure(operation: operation, value: value)
-                    operation.swiftValue().returnValue = returnValue;
-                    return returnValue as? NSObject
-                }, withDelay: delay,
-                withPriority: priority)
-    }
-
     public func promiseQueue<inT: Any, outT: Any>(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
@@ -343,17 +331,17 @@ extension NHAsyncManager {
                 withPriority: priority)
     }
 
-    public func queue<outT: Any>(queue: NSOperationQueue!,
+    public func promiseQueue<outT: Any>(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
-            return self.queue(queue,
-                returnBlock: { operation, value in
-                    let returnValue = returnClosure(operation: operation, value: value)
-                    operation.swiftValue().returnValue = returnValue;
-                    return returnValue as? NSObject
-                }, withDelay: delay,
-                withPriority: priority)
+            return self.promiseQueue(queue,
+                after: delay,
+                priority: priority,
+                returnClosure: {
+                    (operation: NHAsyncOperation!, value: NSObject!) -> outT! in
+                    return returnClosure(operation: operation, value: value)
+            })
     }
 
     public func queue<inT: Any, outT: Any>(queue: NSOperationQueue!,
@@ -369,6 +357,19 @@ extension NHAsyncManager {
                     return returnValue as? NSObject
                 }, withDelay: delay,
                 withPriority: priority)
+    }
+
+    public func queue<outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(queue,
+                after: delay,
+                priority: priority,
+                returnClosure: {
+                    (operation: NHAsyncOperation!, value: NSObject!) -> outT! in
+                    return returnClosure(operation: operation, value: value)
+            })
     }
 }
 

@@ -37,13 +37,13 @@ class ViewController: UIViewController {
             return
         }
 
-        var returnValuePromise = NHAsyncManager.promiseQueue(nil) { (_, value: (Int, Int, Int)!) -> (Int, Int)! in
+        var returnValuePromise = NHAsyncManager.promiseQueue(nil) { (_, value: (Int, Int, Int)!) -> Int! in
             NSLog("return queue input = \(value)")
-            return (10, 150)
+            return 10
         }
 
-        returnValuePromise.queue(nil) { (_, value: (Int, Int)!) in
-            NSLog("returned value = \(value)")
+        returnValuePromise.queue(nil) { o in
+            NSLog("returned value = \(o)")
             return
         }
 
