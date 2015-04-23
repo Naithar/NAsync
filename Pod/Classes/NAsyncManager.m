@@ -1048,28 +1048,28 @@
 
 #pragma mark - Async non return
 
-@interface NAsyncManager (StartAsyncNonReturn)
+@implementation NAsyncManager (StartAsyncNonReturn)
 @end
 
-@interface NAsyncManager (StartAsyncOnceNonReturn)
+@implementation NAsyncManager (StartAsyncOnceNonReturn)
 @end
 
-@interface NAsyncManager (ChainAsyncNonReturn)
+@implementation NAsyncManager (ChainAsyncNonReturn)
 @end
 
-@interface NAsyncManager (ChainAsyncOnceNonReturn)
+@implementation NAsyncManager (ChainAsyncOnceNonReturn)
 @end
 
 #pragma mark - Async return value
 
-@interface NAsyncManager (StartAsyncReturn)
+@implementation NAsyncManager (StartAsyncReturn)
 @end
 
-@interface NAsyncManager (StartAsyncOnceReturn)
+@implementation NAsyncManager (StartAsyncOnceReturn)
 @end
 
-@interface NAsyncManager (ChainAsyncReturn)
+@implementation NAsyncManager (ChainAsyncReturn)
 @end
 
-@interface NAsyncManager (ChainAsyncOnceReturn)
+@implementation NAsyncManager (ChainAsyncOnceReturn)
 @end
