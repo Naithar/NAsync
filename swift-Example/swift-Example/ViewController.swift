@@ -66,6 +66,7 @@ class ViewController: UIViewController {
 
         struct onceToken {
             static var token: NHAsyncOnceToken = 0
+            static var token1: NHAsyncOnceToken = 0
         }
 
 
@@ -74,14 +75,18 @@ class ViewController: UIViewController {
             return
         }
 //
-        NHAsyncManager.queue(nil, onceToken: &onceToken.token) { _ in
+        let v = NHAsyncManager.queue(nil, onceToken: &onceToken.token) { _ in
             NSLog("ONCE 1")
 //            onceToken.token = 0
             return
             }.queue(nil, onceToken: &onceToken.token) { _ in
                 NSLog("ONCE 2")
                 return
+            }.queue(nil, onceToken: &onceToken.token1) { _ -> (Int, Int)! in
+                return (100500, 10)
         }
+
+        NSLog("once return = \(v.waitAny())")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
