@@ -1244,13 +1244,193 @@
 #pragma mark - Async return value
 
 @implementation NAsyncManager (StartAsyncReturn)
+
++ (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block {
+    return [self promiseAsyncReturn:block
+                          withDelay:0];
+}
++ (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
+                         withDelay:(NSTimeInterval)delay {
+    return [self promiseAsyncReturn:block
+                          withDelay:delay
+                       withPriority:NSOperationQueuePriorityNormal];
+}
++ (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
+                         withDelay:(NSTimeInterval)delay
+                      withPriority:(NSOperationQueuePriority)priority {
+    return [self promiseQueue:[[NSOperationQueue alloc] init]
+                  returnBlock:block
+                    withDelay:delay
+                 withPriority:priority];
+}
+
++ (instancetype)asyncReturn:(NAsyncReturnBlock)block {
+    return [self asyncReturn:block
+                   withDelay:0];
+}
++ (instancetype)asyncReturn:(NAsyncReturnBlock)block
+                  withDelay:(NSTimeInterval)delay {
+    return [self asyncReturn:block
+                   withDelay:delay
+                withPriority:NSOperationQueuePriorityNormal];
+}
++ (instancetype)asyncReturn:(NAsyncReturnBlock)block
+                  withDelay:(NSTimeInterval)delay
+               withPriority:(NSOperationQueuePriority)priority {
+    return [self queue:[[NSOperationQueue alloc] init]
+           returnBlock:block
+             withDelay:delay
+          withPriority:priority];
+}
+
 @end
 
 @implementation NAsyncManager (StartAsyncOnceReturn)
+
++ (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block {
+    return [self promiseAsyncOnce:token
+                      returnBlock:block
+                        withDelay:0];
+}
++ (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block
+                       withDelay:(NSTimeInterval)delay {
+    return [self promiseAsyncOnce:token
+                      returnBlock:block
+                        withDelay:delay
+                     withPriority:NSOperationQueuePriorityNormal];
+}
++ (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority {
+    return [self promiseQueueOnce:[[NSOperationQueue alloc] init]
+                            token:token
+                      returnBlock:block
+                        withDelay:delay
+                     withPriority:priority];
+}
+
++ (instancetype)asyncOnce:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block {
+    return [self asyncOnce:token
+               returnBlock:block
+                 withDelay:0];
+}
++ (instancetype)asyncOnce:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block
+                withDelay:(NSTimeInterval)delay {
+    return [self asyncOnce:token
+               returnBlock:block
+                 withDelay:delay
+              withPriority:NSOperationQueuePriorityNormal];
+}
++ (instancetype)asyncOnce:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority {
+    return [self queueOnce:[[NSOperationQueue alloc] init]
+                     token:token
+               returnBlock:block
+                 withDelay:delay
+              withPriority:priority];
+}
+
 @end
 
 @implementation NAsyncManager (ChainAsyncReturn)
+
+- (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block {
+    return [self promiseAsyncReturn:block
+                          withDelay:0];
+}
+- (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
+                         withDelay:(NSTimeInterval)delay {
+    return [self promiseAsyncReturn:block
+                          withDelay:delay
+                       withPriority:NSOperationQueuePriorityNormal];
+}
+- (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
+                         withDelay:(NSTimeInterval)delay
+                      withPriority:(NSOperationQueuePriority)priority {
+    return [self promiseQueue:[[NSOperationQueue alloc] init]
+                  returnBlock:block
+                    withDelay:delay
+                 withPriority:priority];
+}
+
+- (instancetype)asyncReturn:(NAsyncReturnBlock)block {
+    return [self asyncReturn:block
+                   withDelay:0];
+}
+- (instancetype)asyncReturn:(NAsyncReturnBlock)block
+                  withDelay:(NSTimeInterval)delay {
+    return [self asyncReturn:block
+                   withDelay:delay
+                withPriority:NSOperationQueuePriorityNormal];
+}
+- (instancetype)asyncReturn:(NAsyncReturnBlock)block
+                  withDelay:(NSTimeInterval)delay
+               withPriority:(NSOperationQueuePriority)priority {
+    return [self queue:[[NSOperationQueue alloc] init]
+           returnBlock:block
+             withDelay:delay
+          withPriority:priority];
+}
+
 @end
 
 @implementation NAsyncManager (ChainAsyncOnceReturn)
+
+- (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block {
+    return [self promiseAsyncOnce:token
+                      returnBlock:block
+                        withDelay:0];
+}
+- (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block
+                       withDelay:(NSTimeInterval)delay {
+    return [self promiseAsyncOnce:token
+                      returnBlock:block
+                        withDelay:delay
+                     withPriority:NSOperationQueuePriorityNormal];
+}
+- (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
+                     returnBlock:(NAsyncReturnBlock)block
+                       withDelay:(NSTimeInterval)delay
+                    withPriority:(NSOperationQueuePriority)priority {
+    return [self promiseQueueOnce:[[NSOperationQueue alloc] init]
+                            token:token
+                      returnBlock:block
+                        withDelay:delay
+                     withPriority:priority];
+}
+
+- (instancetype)asyncOnce:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block {
+    return [self asyncOnce:token
+               returnBlock:block
+                 withDelay:0];
+}
+- (instancetype)asyncOnce:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block
+                withDelay:(NSTimeInterval)delay {
+    return [self asyncOnce:token
+               returnBlock:block
+                 withDelay:delay
+              withPriority:NSOperationQueuePriorityNormal];
+}
+- (instancetype)asyncOnce:(NAsyncOnceToken*)token
+              returnBlock:(NAsyncReturnBlock)block
+                withDelay:(NSTimeInterval)delay
+             withPriority:(NSOperationQueuePriority)priority {
+    return [self queueOnce:[[NSOperationQueue alloc] init]
+                     token:token
+               returnBlock:block
+                 withDelay:delay
+              withPriority:priority];
+}
+
 @end
