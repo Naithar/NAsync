@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let operation = NAsyncOperation(delay: 0, priority: .Normal, previousOperation: nil, andReturnBlock: { _, value in
+        let operation = NHAsyncOperation(delay: 0, priority: .Normal, previousOperation: nil, andReturnBlock: { _, value in
             NSLog("value = \(value)")
 
             for i in 0..<100 {
@@ -27,12 +27,12 @@ class ViewController: UIViewController {
 
         NSLog("\(operation.wait())")
 
-        NAsyncManager.queue(nil) { _ in
+        NHAsyncManager.queue(nil) { _ in
                 NSLog("operation")
                 return
         }
 
-        let promise = NAsyncManager.promiseQueue(nil) { (o: NAsyncOperation!, value: (Int, String)!) in
+        let promise = NHAsyncManager.promiseQueue(nil) { (_, value: (Int, String)!) in
             NSLog("operation promise returned = \(value)")
             return
         }

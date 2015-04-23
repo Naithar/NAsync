@@ -8,15 +8,15 @@
 
 @import NAsync;
 
-SpecBegin(NAsyncOperationBlock)
+SpecBegin(NHAsyncOperationBlock)
 
 describe(@"operation without return type", ^{
     it(@"will run", ^{
         waitUntil(^(DoneCallback done) {
-            [[[NAsyncOperation alloc] initWithDelay:0
+            [[[NHAsyncOperation alloc] initWithDelay:0
                                            priority:NSOperationQueuePriorityNormal
                                   previousOperation:nil
-                                           andBlock:^(NAsyncOperation *operation, id value) {
+                                           andBlock:^(NHAsyncOperation *operation, id value) {
                                                done();
                                            }] performOnQueue:[NSOperationQueue mainQueue]];
         });
@@ -25,10 +25,10 @@ describe(@"operation without return type", ^{
     it(@"will run and receive value", ^{
         __block NSInteger index = 0;
         waitUntil(^(DoneCallback done) {
-            [[[NAsyncOperation alloc] initWithDelay:0
+            [[[NHAsyncOperation alloc] initWithDelay:0
                                            priority:NSOperationQueuePriorityNormal
                                   previousOperation:nil
-                                           andBlock:^(NAsyncOperation *operation, id value) {
+                                           andBlock:^(NHAsyncOperation *operation, id value) {
                                                index = [value integerValue];
                                                done();
                                            }] performOnQueue:[NSOperationQueue mainQueue] withValue:@10];
@@ -41,17 +41,17 @@ describe(@"operation without return type", ^{
 SpecEnd
 
 
-SpecBegin(NAsyncOperationReturnBlock)
+SpecBegin(NHAsyncOperationReturnBlock)
 
 describe(@"operation with return value", ^{
     it(@"will run and return value", ^{
-        __block NAsyncOperation *operation;
+        __block NHAsyncOperation *operation;
 
         waitUntil(^(DoneCallback done) {
-            operation = [[NAsyncOperation alloc] initWithDelay:0
+            operation = [[NHAsyncOperation alloc] initWithDelay:0
                                                       priority:NSOperationQueuePriorityNormal
                                              previousOperation:nil
-                                                andReturnBlock:^(NAsyncOperation *operation, id value) {
+                                                andReturnBlock:^(NHAsyncOperation *operation, id value) {
                                                     done();
                                                     return @20;
                                                 }];
@@ -63,13 +63,13 @@ describe(@"operation with return value", ^{
 
     it(@"will run, receive value and return value", ^{
         __block NSInteger index = 0;
-        __block NAsyncOperation *operation;
+        __block NHAsyncOperation *operation;
 
         waitUntil(^(DoneCallback done) {
-            operation = [[NAsyncOperation alloc] initWithDelay:0
+            operation = [[NHAsyncOperation alloc] initWithDelay:0
                                                       priority:NSOperationQueuePriorityNormal
                                              previousOperation:nil
-                                                andReturnBlock:^(NAsyncOperation *operation, id value) {
+                                                andReturnBlock:^(NHAsyncOperation *operation, id value) {
                                                     index = [value integerValue];
                                                     done();
                                                     return @20;
@@ -86,13 +86,13 @@ describe(@"operation with return value", ^{
 SpecEnd
 
 
-SpecBegin(NAsyncManagerQueue)
+SpecBegin(NHAsyncManagerQueue)
 
 describe(@"start operation", ^{
     it(@"will promise", ^{
 
         waitUntil(^(DoneCallback done) {
-            NAsyncManager *manager = [NAsyncManager promiseQueue:nil
+            NHAsyncManager *manager = [NHAsyncManager promiseQueue:nil
                                                            block:^(id _0, id _1){
                                                                done();
                                                            }];
@@ -106,7 +106,7 @@ describe(@"start operation", ^{
 
         __block NSInteger index = 0;
         waitUntil(^(DoneCallback done) {
-            NAsyncManager *manager = [NAsyncManager promiseQueue:nil
+            NHAsyncManager *manager = [NHAsyncManager promiseQueue:nil
                                                            block:^(id _0, NSNumber* value){
                                                                index = [value integerValue];
                                                                done();
@@ -120,7 +120,7 @@ describe(@"start operation", ^{
 
     it(@"will run task", ^{
         waitUntil(^(DoneCallback done) {
-            [NAsyncManager queue:nil
+            [NHAsyncManager queue:nil
                            block:^(id _0, id _1){
                                done();
                            }];
@@ -132,7 +132,7 @@ describe(@"start operation", ^{
 describe(@"operation chaining", ^{
     it(@"will run chain task", ^{
         waitUntil(^(DoneCallback done) {
-            [[NAsyncManager queue:nil
+            [[NHAsyncManager queue:nil
                             block:^(id _0, id _1){
 
                             }]
@@ -145,7 +145,7 @@ describe(@"operation chaining", ^{
 
     it(@"will run chain task on promise", ^{
         waitUntil(^(DoneCallback done) {
-            NAsyncManager *promise = [NAsyncManager promiseQueue:nil
+            NHAsyncManager *promise = [NHAsyncManager promiseQueue:nil
                                                            block:^(id _0, id _1){
 
                                                            }];
@@ -161,12 +161,12 @@ describe(@"operation chaining", ^{
 
     it(@"will run promise chain task on promise", ^{
         waitUntil(^(DoneCallback done) {
-            NAsyncManager *promise = [NAsyncManager promiseQueue:nil
+            NHAsyncManager *promise = [NHAsyncManager promiseQueue:nil
                                                            block:^(id _0, id _1){
 
                                                            }];
 
-            NAsyncManager *chainedPromise = [promise promiseQueue:nil
+            NHAsyncManager *chainedPromise = [promise promiseQueue:nil
                                                             block:^(id _0, id _1){
                                                                 done();
                                                             }];
@@ -179,12 +179,12 @@ describe(@"operation chaining", ^{
     it(@"will run promise chain task with value on promise", ^{
         __block NSInteger index = 0;
         waitUntil(^(DoneCallback done) {
-            NAsyncManager *promise = [NAsyncManager promiseQueue:nil
+            NHAsyncManager *promise = [NHAsyncManager promiseQueue:nil
                                                            block:^(id _0, id _1){
 
                                                            }];
 
-            NAsyncManager *chainedPromise = [promise promiseQueue:nil
+            NHAsyncManager *chainedPromise = [promise promiseQueue:nil
                                                             block:^(id _0, id value){
                                                                 index = [value integerValue];
                                                                 done();
@@ -201,7 +201,7 @@ describe(@"operation chaining", ^{
 SpecEnd
 
 
-SpecBegin(NAsyncManagerReturnQueue)
+SpecBegin(NHAsyncManagerReturnQueue)
 
 describe(@"start return manager", ^{
     it(@"will start and return value", ^{
@@ -209,8 +209,8 @@ describe(@"start return manager", ^{
         __block NSUInteger index = 0;
 
         waitUntil(^(DoneCallback done) {
-            index = [[[NAsyncManager queue:nil
-                               returnBlock:^(NAsyncOperation *operation,
+            index = [[[NHAsyncManager queue:nil
+                               returnBlock:^(NHAsyncOperation *operation,
                                              id value) {
                                    done();
                                    return @10;
@@ -228,13 +228,13 @@ describe(@"сhain return manager", ^{
         __block NSUInteger taskReturnValue = 0;
 
         waitUntil(^(DoneCallback done) {
-            taskReturnValue = [[[[NAsyncManager queue:nil
-                      returnBlock:^(NAsyncOperation *operation,
+            taskReturnValue = [[[[NHAsyncManager queue:nil
+                      returnBlock:^(NHAsyncOperation *operation,
                                     id value) {
                           return @10;
                       }]
              queue:nil
-             returnBlock:^(NAsyncOperation *_, id value){
+             returnBlock:^(NHAsyncOperation *_, id value){
 
                  returnValue = [value integerValue];
                  done();

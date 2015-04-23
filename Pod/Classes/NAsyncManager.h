@@ -1,5 +1,5 @@
 //
-//  NAsyncManager.h
+//  NHAsyncManager.h
 //  Pods
 //
 //  Created by Naithar on 18.04.15.
@@ -9,26 +9,26 @@
 #import <Foundation/Foundation.h>
 #import <NAsync/NAsyncOperation.h>
 
-@class NAsyncManager;
+@class NHAsyncManager;
 //
-//typedef NAsyncManager NAsync;
+//typedef NHAsyncManager NAsync;
 //
 typedef dispatch_once_t NAsyncOnceToken;
 
-@interface NAsyncManager : NSObject
+@interface NHAsyncManager : NSObject
 
 @property (nonatomic, readonly, strong) NSOperationQueue *queue;
-@property (nonatomic, readonly, strong) NAsyncOperation *operation;
+@property (nonatomic, readonly, strong) NHAsyncOperation *operation;
 
 - (instancetype)initWithQueue:(NSOperationQueue*)queue withDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
-            previousOperation:(NAsyncOperation*)operation
+            previousOperation:(NHAsyncOperation*)operation
                      andBlock:(NAsyncBlock)block;
 
 - (instancetype)initWithQueue:(NSOperationQueue*)queue
                     withDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
-            previousOperation:(NAsyncOperation*)operation
+            previousOperation:(NHAsyncOperation*)operation
                andReturnBlock:(NAsyncReturnBlock)block;
 
 - (instancetype)perform;
@@ -42,7 +42,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 #pragma mark - Queue non return
 
-@interface NAsyncManager (StartQueuedNonReturn)
+@interface NHAsyncManager (StartQueuedNonReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
                        block:(NAsyncBlock)block;
@@ -69,7 +69,7 @@ typedef dispatch_once_t NAsyncOnceToken;
          withPriority:(NSOperationQueuePriority)priority;
 @end
 
-@interface NAsyncManager (StartQueuedOnceNonReturn)
+@interface NHAsyncManager (StartQueuedOnceNonReturn)
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NAsyncOnceToken*)token
@@ -102,7 +102,7 @@ typedef dispatch_once_t NAsyncOnceToken;
              withPriority:(NSOperationQueuePriority)priority;
 @end
 
-@interface NAsyncManager (ChainQueuedNonReturn)
+@interface NHAsyncManager (ChainQueuedNonReturn)
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
                        block:(NAsyncBlock)block;
@@ -130,7 +130,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (ChainQueuedOnceNonReturn)
+@interface NHAsyncManager (ChainQueuedOnceNonReturn)
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NAsyncOnceToken*)token
@@ -165,7 +165,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 #pragma mark - Queue return value
 
-@interface NAsyncManager (StartQueuedReturn)
+@interface NHAsyncManager (StartQueuedReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
                  returnBlock:(NAsyncReturnBlock)block;
@@ -192,7 +192,7 @@ typedef dispatch_once_t NAsyncOnceToken;
          withPriority:(NSOperationQueuePriority)priority;
 @end
 
-@interface NAsyncManager (StartQueuedOnceReturn)
+@interface NHAsyncManager (StartQueuedOnceReturn)
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NAsyncOnceToken*)token
@@ -225,7 +225,7 @@ typedef dispatch_once_t NAsyncOnceToken;
              withPriority:(NSOperationQueuePriority)priority;
 @end
 
-@interface NAsyncManager (ChainQueuedReturn)
+@interface NHAsyncManager (ChainQueuedReturn)
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
                  returnBlock:(NAsyncReturnBlock)block;
@@ -252,7 +252,7 @@ typedef dispatch_once_t NAsyncOnceToken;
          withPriority:(NSOperationQueuePriority)priority;
 @end
 
-@interface NAsyncManager (ChainQueuedOnceReturn)
+@interface NHAsyncManager (ChainQueuedOnceReturn)
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NAsyncOnceToken*)token
@@ -287,7 +287,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 #pragma mark - Main non return
 
-@interface NAsyncManager (StartMainNonReturn)
+@interface NHAsyncManager (StartMainNonReturn)
 
 + (instancetype)promiseMain:(NAsyncBlock)block;
 + (instancetype)promiseMain:(NAsyncBlock)block
@@ -305,7 +305,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (StartMainOnceNonReturn)
+@interface NHAsyncManager (StartMainOnceNonReturn)
 
 + (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
                           block:(NAsyncBlock)block;
@@ -329,7 +329,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (ChainMainNonReturn)
+@interface NHAsyncManager (ChainMainNonReturn)
 
 - (instancetype)promiseMain:(NAsyncBlock)block;
 - (instancetype)promiseMain:(NAsyncBlock)block
@@ -347,7 +347,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (ChainMainOnceNonReturn)
+@interface NHAsyncManager (ChainMainOnceNonReturn)
 
 - (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
                           block:(NAsyncBlock)block;
@@ -373,7 +373,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 #pragma mark - Main return value
 
-@interface NAsyncManager (StartMainReturn)
+@interface NHAsyncManager (StartMainReturn)
 
 + (instancetype)promiseMainReturn:(NAsyncReturnBlock)block;
 + (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
@@ -391,7 +391,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (StartMainOnceReturn)
+@interface NHAsyncManager (StartMainOnceReturn)
 
 + (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
                           returnBlock:(NAsyncReturnBlock)block;
@@ -415,7 +415,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (ChainMainReturn)
+@interface NHAsyncManager (ChainMainReturn)
 
 - (instancetype)promiseMainReturn:(NAsyncReturnBlock)block;
 - (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
@@ -432,7 +432,7 @@ typedef dispatch_once_t NAsyncOnceToken;
               withPriority:(NSOperationQueuePriority)priority;
 @end
 
-@interface NAsyncManager (ChainMainOnceReturn)
+@interface NHAsyncManager (ChainMainOnceReturn)
 
 - (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
                     returnBlock:(NAsyncReturnBlock)block;
@@ -458,7 +458,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 #pragma mark - Async non return
 
-@interface NAsyncManager (StartAsyncNonReturn)
+@interface NHAsyncManager (StartAsyncNonReturn)
 
 + (instancetype)promiseAsync:(NAsyncBlock)block;
 + (instancetype)promiseAsync:(NAsyncBlock)block
@@ -475,7 +475,7 @@ typedef dispatch_once_t NAsyncOnceToken;
          withPriority:(NSOperationQueuePriority)priority;
 @end
 
-@interface NAsyncManager (StartAsyncOnceNonReturn)
+@interface NHAsyncManager (StartAsyncOnceNonReturn)
 
 + (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
                            block:(NAsyncBlock)block;
@@ -499,7 +499,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (ChainAsyncNonReturn)
+@interface NHAsyncManager (ChainAsyncNonReturn)
 
 - (instancetype)promiseAsync:(NAsyncBlock)block;
 - (instancetype)promiseAsync:(NAsyncBlock)block
@@ -517,7 +517,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (ChainAsyncOnceNonReturn)
+@interface NHAsyncManager (ChainAsyncOnceNonReturn)
 
 - (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
                            block:(NAsyncBlock)block;
@@ -544,7 +544,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 #pragma mark - Async return value
 
-@interface NAsyncManager (StartAsyncReturn)
+@interface NHAsyncManager (StartAsyncReturn)
 
 + (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block;
 + (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
@@ -562,7 +562,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (StartAsyncOnceReturn)
+@interface NHAsyncManager (StartAsyncOnceReturn)
 
 + (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
                      returnBlock:(NAsyncReturnBlock)block;
@@ -586,7 +586,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (ChainAsyncReturn)
+@interface NHAsyncManager (ChainAsyncReturn)
 
 - (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block;
 - (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
@@ -605,7 +605,7 @@ typedef dispatch_once_t NAsyncOnceToken;
 
 @end
 
-@interface NAsyncManager (ChainAsyncOnceReturn)
+@interface NHAsyncManager (ChainAsyncOnceReturn)
 
 - (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
                      returnBlock:(NAsyncReturnBlock)block;

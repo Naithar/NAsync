@@ -1,5 +1,5 @@
 //
-//  NAsyncOperation.m
+//  NHAsyncOperation.m
 //  Pods
 //
 //  Created by Naithar on 18.04.15.
@@ -9,7 +9,7 @@
 #import "NAsyncOperation.h"
 #import <NAsync/NAsync-Swift.h>
 
-@interface NAsyncBaseOperation ()
+@interface NHAsyncBaseOperation ()
 @property (nonatomic, assign) BOOL operationReady;
 @property (nonatomic, assign) BOOL operationExecuting;
 @property (nonatomic, assign) BOOL operationFinished;
@@ -18,7 +18,7 @@
 @property (nonatomic, assign) BOOL inQueue;
 @end
 
-@implementation NAsyncBaseOperation
+@implementation NHAsyncBaseOperation
 
 - (instancetype)init {
     return [self initWithPriority:NSOperationQueuePriorityNormal];
@@ -94,12 +94,12 @@
 @end
 
 
-@interface NAsyncDelayOperation ()
+@interface NHAsyncDelayOperation ()
 @property (nonatomic, assign) NSTimeInterval delay;
 
 @end
 
-@implementation NAsyncDelayOperation
+@implementation NHAsyncDelayOperation
 
 + (NSOperationQueue*)delayQueue {
     static NSOperationQueue* delayQueue;
@@ -183,26 +183,26 @@
 @end
 
 
-@interface NAsyncOperation ()
+@interface NHAsyncOperation ()
 
-@property (nonatomic, strong) NAsyncDelayOperation* delayOperation;
-@property (nonatomic, strong) NAsyncOperation* parentOperation;
+@property (nonatomic, strong) NHAsyncDelayOperation* delayOperation;
+@property (nonatomic, strong) NHAsyncOperation* parentOperation;
 @property (nonatomic, copy) NAsyncReturnBlock operationBlock;
 
 @property (nonatomic, copy) id returnValue;
 @property (nonatomic, copy) id inputValue;
 @end
 
-@implementation NAsyncOperation
+@implementation NHAsyncOperation
 
 - (instancetype)initWithDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
-            previousOperation:(NAsyncOperation*)operation
+            previousOperation:(NHAsyncOperation*)operation
                      andBlock:(NAsyncBlock)block {
     return [self initWithDelay:delay
                       priority:priority
              previousOperation:operation
-                andReturnBlock:^id(NAsyncOperation *operation, id value) {
+                andReturnBlock:^id(NHAsyncOperation *operation, id value) {
                     if (block) {
                         block(operation, value);
                     }
@@ -212,7 +212,7 @@
 
 - (instancetype)initWithDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
-            previousOperation:(NAsyncOperation*)operation
+            previousOperation:(NHAsyncOperation*)operation
                andReturnBlock:(NAsyncReturnBlock)block {
     self = [super initWithPriority:priority];
 
@@ -220,7 +220,7 @@
         _operationBlock = block;
 
         if (delay > 0) {
-            NAsyncDelayOperation *delayOperation = [NAsyncDelayOperation withDelay:delay
+            NHAsyncDelayOperation *delayOperation = [NHAsyncDelayOperation withDelay:delay
                                                                        andPriority:priority];
 
             [self addDependency:delayOperation];

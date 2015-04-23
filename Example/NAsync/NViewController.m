@@ -19,14 +19,14 @@
 {
     [super viewDidLoad];
 
-    NAsyncManager *queuePromiseManager = [NAsyncManager promiseQueue:nil block:^(NAsyncOperation *operation, id value) {
+    NHAsyncManager *queuePromiseManager = [NHAsyncManager promiseQueue:nil block:^(NHAsyncOperation *operation, id value) {
         NSLog(@"promise queue");
     }];
 
     @autoreleasepool {
-    NAsyncOperation *operation = [[NAsyncOperation alloc] initWithDelay:0
+    NHAsyncOperation *operation = [[NHAsyncOperation alloc] initWithDelay:0
                                                                priority:NSOperationQueuePriorityNormal previousOperation:nil
-                                                               andReturnBlock:^(NAsyncOperation *operation, id value) {
+                                                               andReturnBlock:^(NHAsyncOperation *operation, id value) {
                                                                    NSLog(@"value = %@", value);
                                                                    for (int i = 0; i < 100; i++) {
                                                                        NSLog(@"%d", i);
@@ -42,7 +42,7 @@
 
 
     @autoreleasepool {
-    NAsyncManager *asyncManager = [[NAsyncManager alloc] initWithQueue:nil withDelay:0 priority:NSOperationQueuePriorityNormal previousOperation:nil andReturnBlock:^id(NAsyncOperation *operation, id value) {
+    NHAsyncManager *asyncManager = [[NHAsyncManager alloc] initWithQueue:nil withDelay:0 priority:NSOperationQueuePriorityNormal previousOperation:nil andReturnBlock:^id(NHAsyncOperation *operation, id value) {
         NSLog(@"value 2 = %@", value);
         return @10;
     }];
@@ -52,34 +52,34 @@
     }
 
     @autoreleasepool {
-    [NAsyncManager queue:nil block:^(NAsyncOperation *operation, id value) {
+    [NHAsyncManager queue:nil block:^(NHAsyncOperation *operation, id value) {
         NSLog(@"queue");
     }];
     }
 
-    [queuePromiseManager queue:nil block:^(NAsyncOperation *operation, id value) {
+    [queuePromiseManager queue:nil block:^(NHAsyncOperation *operation, id value) {
         NSLog(@"chained from promise");
     }];
 
-    NAsyncManager *manager = [queuePromiseManager promiseQueue:nil block:^(NAsyncOperation *operation, id value) {
+    NHAsyncManager *manager = [queuePromiseManager promiseQueue:nil block:^(NHAsyncOperation *operation, id value) {
         NSLog(@"chained prmise from promise");
     }];
 
 
     [manager perform];
 
-    [[NAsyncManager main:^(NAsyncOperation *operation, id value) {
+    [[NHAsyncManager main:^(NHAsyncOperation *operation, id value) {
         self.view.backgroundColor = [UIColor redColor];
-    }] main:^(NAsyncOperation *operation, id value) {
+    }] main:^(NHAsyncOperation *operation, id value) {
         self.view.backgroundColor = [UIColor greenColor];
     } withDelay:10];
 
 
-    [NAsyncManager main:^(NAsyncOperation *operation, id value) {
+    [NHAsyncManager main:^(NHAsyncOperation *operation, id value) {
         self.view.backgroundColor = [UIColor grayColor];
     } withDelay:5];
 
-    [queuePromiseManager main:^(NAsyncOperation *operation, id value) {
+    [queuePromiseManager main:^(NHAsyncOperation *operation, id value) {
         self.view.backgroundColor = [UIColor blueColor];
     }];
 
@@ -87,17 +87,17 @@
     [queuePromiseManager perform];
 
 
-    [[NAsyncManager queue:nil returnBlock:^id(NAsyncOperation *operation, id value) {
+    [[NHAsyncManager queue:nil returnBlock:^id(NHAsyncOperation *operation, id value) {
         return [UIColor redColor];
-    }] main:^(NAsyncOperation *operation, UIColor *value) {
+    }] main:^(NHAsyncOperation *operation, UIColor *value) {
         self.view.backgroundColor = value;
     } withDelay:15];
 	// Do any additional setup after loading the view, typically from a nib.
 
 
-    [[NAsyncManager async:^(NAsyncOperation *operation, id value) {
+    [[NHAsyncManager async:^(NHAsyncOperation *operation, id value) {
         NSLog(@"async operation");
-    }] async:^(NAsyncOperation *operation, id value) {
+    }] async:^(NHAsyncOperation *operation, id value) {
         NSLog(@"async operation 2");
     }];
 

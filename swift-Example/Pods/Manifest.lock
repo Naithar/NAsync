@@ -1,5 +1,5 @@
 PODS:
-  - NAsync (0.1.0)
+  - NAsync (0.2.0)
 
 DEPENDENCIES:
   - NAsync (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NAsync: 64b33e17a68419031e6cc2cb9d28b0686da9e138
+  NAsync: 6290be268b3cd9affbdc36dee3d16437df318e99
 
 COCOAPODS: 0.36.4

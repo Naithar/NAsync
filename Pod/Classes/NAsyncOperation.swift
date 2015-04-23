@@ -1,5 +1,5 @@
 //
-//  NAsyncOperation.swift
+//  NHAsyncOperation.swift
 //  Pods
 //
 //  Created by Naithar on 18.04.15.
@@ -16,7 +16,7 @@ public class NAsyncSwiftValues: NSObject {
     var inputValue: Any! = nil
 }
 
-public extension NAsyncOperation {
+public extension NHAsyncOperation {
     private var swiftValues: NAsyncSwiftValues! {
         get {
             return objc_getAssociatedObject(self, &swiftReturnValueKey) as? NAsyncSwiftValues

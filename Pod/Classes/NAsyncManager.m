@@ -1,5 +1,5 @@
 //
-//  NAsyncManager.m
+//  NHAsyncManager.m
 //  Pods
 //
 //  Created by Naithar on 18.04.15.
@@ -8,26 +8,26 @@
 
 #import "NAsyncManager.h"
 
-@interface NAsyncManager ()
+@interface NHAsyncManager ()
 
 @property (nonatomic, strong) NSOperationQueue *queue;
-@property (nonatomic, strong) NAsyncOperation *operation;
+@property (nonatomic, strong) NHAsyncOperation *operation;
 
 @end
 
-@implementation NAsyncManager
+@implementation NHAsyncManager
 
 - (instancetype)initWithQueue:(NSOperationQueue*)queue
                     withDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
-            previousOperation:(NAsyncOperation*)operation
+            previousOperation:(NHAsyncOperation*)operation
                      andBlock:(NAsyncBlock)block {
 
     self = [super init];
 
 
     if (self) {
-        NAsyncOperation *tempOperation = [[NAsyncOperation alloc] initWithDelay:delay
+        NHAsyncOperation *tempOperation = [[NHAsyncOperation alloc] initWithDelay:delay
                                                                        priority:priority
                                                               previousOperation:operation
                                                                        andBlock:block];
@@ -41,12 +41,12 @@
 - (instancetype)initWithQueue:(NSOperationQueue*)queue
                     withDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
-            previousOperation:(NAsyncOperation*)operation
+            previousOperation:(NHAsyncOperation*)operation
                andReturnBlock:(NAsyncReturnBlock)block {
     self = [super init];
 
     if (self) {
-        NAsyncOperation *tempOperation = [[NAsyncOperation alloc] initWithDelay:delay
+        NHAsyncOperation *tempOperation = [[NHAsyncOperation alloc] initWithDelay:delay
                                                                        priority:priority
                                                               previousOperation:operation
                                                                  andReturnBlock:block];
@@ -58,7 +58,7 @@
 }
 
 - (void)commonInitWithQueue:(NSOperationQueue*)queue
-               andOperation:(NAsyncOperation*)operation {
+               andOperation:(NHAsyncOperation*)operation {
     self.queue = queue ?: [[NSOperationQueue alloc] init];
     self.operation = operation;
 }
@@ -100,7 +100,7 @@
 
 #pragma mark - Queue non return
 
-@implementation NAsyncManager (StartQueuedNonReturn)
+@implementation NHAsyncManager (StartQueuedNonReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
                        block:(NAsyncBlock)block {
@@ -149,7 +149,7 @@
                 block:(NAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
-    NAsyncManager *manager = [self promiseQueue:queue
+    NHAsyncManager *manager = [self promiseQueue:queue
                                           block:block
                                       withDelay:delay
                                    withPriority:priority];
@@ -158,7 +158,7 @@
 
 @end
 
-@implementation NAsyncManager (StartQueuedOnceNonReturn)
+@implementation NHAsyncManager (StartQueuedOnceNonReturn)
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NAsyncOnceToken*)token
@@ -186,7 +186,7 @@
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
 
-    NAsyncBlock operationOnceBlock = ^(NAsyncOperation *operation,
+    NAsyncBlock operationOnceBlock = ^(NHAsyncOperation *operation,
                                        id value) {
         if (block) {
             dispatch_once(token, ^{
@@ -227,7 +227,7 @@
                     block:(NAsyncBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
-    NAsyncManager *manager = [self promiseQueueOnce:queue
+    NHAsyncManager *manager = [self promiseQueueOnce:queue
                                               token:token
                                               block:block
                                           withDelay:delay
@@ -238,7 +238,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainQueuedNonReturn)
+@implementation NHAsyncManager (ChainQueuedNonReturn)
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
                        block:(NAsyncBlock)block {
@@ -287,7 +287,7 @@
                 block:(NAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
-    NAsyncManager *manager = [self promiseQueue:queue
+    NHAsyncManager *manager = [self promiseQueue:queue
                                           block:block
                                       withDelay:delay
                                    withPriority:priority];
@@ -297,7 +297,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainQueuedOnceNonReturn)
+@implementation NHAsyncManager (ChainQueuedOnceNonReturn)
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NAsyncOnceToken*)token
@@ -324,7 +324,7 @@
                            block:(NAsyncBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
-    NAsyncBlock operationOnceBlock = ^(NAsyncOperation *operation,
+    NAsyncBlock operationOnceBlock = ^(NHAsyncOperation *operation,
                                        id value) {
         if (block) {
             dispatch_once(token, ^{
@@ -364,7 +364,7 @@
                     block:(NAsyncBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
-    NAsyncManager *manager = [self promiseQueue:queue
+    NHAsyncManager *manager = [self promiseQueue:queue
                                           block:block
                                       withDelay:delay
                                    withPriority:priority];
@@ -375,7 +375,7 @@
 
 #pragma mark - Queue return value
 
-@implementation NAsyncManager (StartQueuedReturn)
+@implementation NHAsyncManager (StartQueuedReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
                  returnBlock:(NAsyncReturnBlock)block {
@@ -424,7 +424,7 @@
           returnBlock:(NAsyncReturnBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
-    NAsyncManager *manager = [self promiseQueue:queue
+    NHAsyncManager *manager = [self promiseQueue:queue
                                     returnBlock:block
                                       withDelay:delay
                                    withPriority:priority];
@@ -434,7 +434,7 @@
 
 @end
 
-@implementation NAsyncManager (StartQueuedOnceReturn)
+@implementation NHAsyncManager (StartQueuedOnceReturn)
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NAsyncOnceToken*)token
@@ -462,7 +462,7 @@
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
 
-    NAsyncReturnBlock operationOnceBlock = ^id(NAsyncOperation *operation,
+    NAsyncReturnBlock operationOnceBlock = ^id(NHAsyncOperation *operation,
                                                id value) {
         __block id returnValue = nil;
 
@@ -506,7 +506,7 @@
               returnBlock:(NAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
-    NAsyncManager *manager = [self promiseQueueOnce:queue
+    NHAsyncManager *manager = [self promiseQueueOnce:queue
                                               token:token
                                         returnBlock:block
                                           withDelay:delay
@@ -517,7 +517,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainQueuedReturn)
+@implementation NHAsyncManager (ChainQueuedReturn)
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
                  returnBlock:(NAsyncReturnBlock)block {
@@ -566,7 +566,7 @@
           returnBlock:(NAsyncReturnBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
-    NAsyncManager *manager = [self promiseQueue:queue
+    NHAsyncManager *manager = [self promiseQueue:queue
                                     returnBlock:block
                                       withDelay:delay
                                    withPriority:priority];
@@ -575,7 +575,7 @@
 }
 @end
 
-@implementation NAsyncManager (ChainQueuedOnceReturn)
+@implementation NHAsyncManager (ChainQueuedOnceReturn)
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NAsyncOnceToken*)token
@@ -603,7 +603,7 @@
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
 
-    NAsyncReturnBlock operationOnceBlock = ^id(NAsyncOperation *operation,
+    NAsyncReturnBlock operationOnceBlock = ^id(NHAsyncOperation *operation,
                                                id value) {
         __block id returnValue = nil;
 
@@ -647,7 +647,7 @@
               returnBlock:(NAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
-    NAsyncManager *manager = [self promiseQueueOnce:queue
+    NHAsyncManager *manager = [self promiseQueueOnce:queue
                                               token:token
                                         returnBlock:block
                                           withDelay:delay
@@ -660,7 +660,7 @@
 
 #pragma mark - Main non return
 
-@implementation NAsyncManager (StartMainNonReturn)
+@implementation NHAsyncManager (StartMainNonReturn)
 
 + (instancetype)promiseMain:(NAsyncBlock)block {
     return [self promiseMain:block
@@ -702,7 +702,7 @@
 
 @end
 
-@implementation NAsyncManager (StartMainOnceNonReturn)
+@implementation NHAsyncManager (StartMainOnceNonReturn)
 
 + (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
                           block:(NAsyncBlock)block {
@@ -757,7 +757,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainMainNonReturn)
+@implementation NHAsyncManager (ChainMainNonReturn)
 
 - (instancetype)promiseMain:(NAsyncBlock)block {
     return [self promiseMain:block
@@ -799,7 +799,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainMainOnceNonReturn)
+@implementation NHAsyncManager (ChainMainOnceNonReturn)
 
 - (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
                           block:(NAsyncBlock)block {
@@ -855,7 +855,7 @@
 
 #pragma mark - Main return value
 
-@implementation NAsyncManager (StartMainReturn)
+@implementation NHAsyncManager (StartMainReturn)
 
 + (instancetype)promiseMainReturn:(NAsyncReturnBlock)block {
     return [self promiseMainReturn:block
@@ -897,7 +897,7 @@
 
 @end
 
-@implementation NAsyncManager (StartMainOnceReturn)
+@implementation NHAsyncManager (StartMainOnceReturn)
 
 + (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
                           returnBlock:(NAsyncReturnBlock)block {
@@ -951,7 +951,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainMainReturn)
+@implementation NHAsyncManager (ChainMainReturn)
 
 - (instancetype)promiseMainReturn:(NAsyncReturnBlock)block {
     return [self promiseMainReturn:block
@@ -993,7 +993,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainMainOnceReturn)
+@implementation NHAsyncManager (ChainMainOnceReturn)
 
 - (instancetype)promiseMainOnce:(NAsyncOnceToken*)token
                     returnBlock:(NAsyncReturnBlock)block {
@@ -1049,7 +1049,7 @@
 
 #pragma mark - Async non return
 
-@implementation NAsyncManager (StartAsyncNonReturn)
+@implementation NHAsyncManager (StartAsyncNonReturn)
 
 + (instancetype)promiseAsync:(NAsyncBlock)block {
     return [self promiseAsync:block
@@ -1091,7 +1091,7 @@
 
 @end
 
-@implementation NAsyncManager (StartAsyncOnceNonReturn)
+@implementation NHAsyncManager (StartAsyncOnceNonReturn)
 
 + (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
                            block:(NAsyncBlock)block {
@@ -1145,7 +1145,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainAsyncNonReturn)
+@implementation NHAsyncManager (ChainAsyncNonReturn)
 
 - (instancetype)promiseAsync:(NAsyncBlock)block {
     return [self promiseAsync:block
@@ -1187,7 +1187,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainAsyncOnceNonReturn)
+@implementation NHAsyncManager (ChainAsyncOnceNonReturn)
 
 - (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
                            block:(NAsyncBlock)block {
@@ -1243,7 +1243,7 @@
 
 #pragma mark - Async return value
 
-@implementation NAsyncManager (StartAsyncReturn)
+@implementation NHAsyncManager (StartAsyncReturn)
 
 + (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block {
     return [self promiseAsyncReturn:block
@@ -1285,7 +1285,7 @@
 
 @end
 
-@implementation NAsyncManager (StartAsyncOnceReturn)
+@implementation NHAsyncManager (StartAsyncOnceReturn)
 
 + (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
                      returnBlock:(NAsyncReturnBlock)block {
@@ -1339,7 +1339,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainAsyncReturn)
+@implementation NHAsyncManager (ChainAsyncReturn)
 
 - (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block {
     return [self promiseAsyncReturn:block
@@ -1381,7 +1381,7 @@
 
 @end
 
-@implementation NAsyncManager (ChainAsyncOnceReturn)
+@implementation NHAsyncManager (ChainAsyncOnceReturn)
 
 - (instancetype)promiseAsyncOnce:(NAsyncOnceToken*)token
                      returnBlock:(NAsyncReturnBlock)block {
