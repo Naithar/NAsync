@@ -146,38 +146,38 @@
     }];
 }
 
-- (void)testPerfomanceChainDispatch {
-    [self measureBlock:^{
-        XCTestExpectation *expectation = [self expectationWithDescription:@"single async loop expectation 0"];
-        XCTestExpectation *expectationChain = [self expectationWithDescription:@"single async loop expectation 1"];
-        //        __block
-        dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
-            NSInteger sum = 0;
-            for (int i = 0; i < self.loopRepeatCount; i++) {
-                sum += i * 2;
-            }
-
-            [expectation fulfill];
-//            return @(sum)
-            dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
-                NSInteger sum1 = sum;
-
-                for (int i = 0; i < self.loopRepeatCount; i++) {
-                    sum1 += i * 2;
-                }
-
-                [expectationChain fulfill];
-            });
-        });
-
-        [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
-            if (error) {
-                NSLog(@"timeout error %@", error);
-            }
-        }];
-    }];
-    
-}
+//- (void)testPerfomanceChainDispatch {
+//    [self measureBlock:^{
+//        XCTestExpectation *expectation = [self expectationWithDescription:@"single async loop expectation 0"];
+//        XCTestExpectation *expectationChain = [self expectationWithDescription:@"single async loop expectation 1"];
+//        //        __block
+//        dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+//            NSInteger sum = 0;
+//            for (int i = 0; i < self.loopRepeatCount; i++) {
+//                sum += i * 2;
+//            }
+//
+//            [expectation fulfill];
+////            return @(sum)
+//            dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+//                NSInteger sum1 = sum;
+//
+//                for (int i = 0; i < self.loopRepeatCount; i++) {
+//                    sum1 += i * 2;
+//                }
+//
+//                [expectationChain fulfill];
+//            });
+//        });
+//
+//        [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+//            if (error) {
+//                NSLog(@"timeout error %@", error);
+//            }
+//        }];
+//    }];
+//    
+//}
 
 - (void)testPerfomanceChainNAsync {
     [self measureBlock:^{

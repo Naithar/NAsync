@@ -1,1 +1,1 @@
-../../../../../Pod/Classes/NAsyncManager.h
+../../../../../Pod/NAsyncManager.h
