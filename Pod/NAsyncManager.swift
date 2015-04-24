@@ -8,7 +8,7 @@
 
 import UIKit
 //    //async (start (non, return), start-once (non, return), chain (non, return), chain-once (non, return))
-//    //main (start (return), start-once (return), chain (return), chain-once (return))
+//    //main (start-once (return), chain-once (return))
 
 //MARK: Non queue extension
 extension NHAsyncManager {
@@ -629,7 +629,7 @@ extension NHAsyncManager {
     }
 }
 
-//MARK: Queue main once non return task
+//MARK: Chain Main once non return task
 extension NHAsyncManager {
     public func promiseMain(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
@@ -673,5 +673,85 @@ extension NHAsyncManager {
                 after: delay,
                 priority: priority,
                 closure: closure)
+    }
+}
+
+//MARK: Start Main return task
+extension NHAsyncManager {
+    public class func promiseMain<inT: Any, outT: Any>(after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public class func promiseMain<outT: Any>(after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public class func main<inT: Any, outT: Any>(after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public class func main<outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+}
+
+//MARK: Chain Main return task
+extension NHAsyncManager {
+    public func promiseMain<inT: Any, outT: Any>(after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public func promiseMain<outT: Any>(after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public func main<inT: Any, outT: Any>(after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public func main<outT: Any>(queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
     }
 }
