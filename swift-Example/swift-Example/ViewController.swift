@@ -98,6 +98,10 @@ class ViewController: UIViewController {
         }
 
         NSLog("once return = \(v.waitAny())")
+
+        NAsync.queue(nil) { _ in
+            return
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
