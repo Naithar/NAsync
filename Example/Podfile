@@ -1,6 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
-plugin 'slather'
 use_frameworks!
+plugin 'slather'
 
 target 'NAsync', :exclusive => true do
   pod "NAsync", :path => "../"
