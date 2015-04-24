@@ -1,6 +1,0 @@
-framework module NAsync {
-  umbrella header "Pods-NAsync-NAsync-umbrella.h"
-
-  export *
-  module * { export * }
-}
