@@ -91,6 +91,10 @@ class ViewController: UIViewController {
             }.main { (_, value: UIColor!) in
                 self.view.backgroundColor = value;
                 return
+            }.async { _ in
+                NSLog("async")
+            }.async { _ in
+                NSLog("async 1")
         }
 
         NSLog("once return = \(v.waitAny())")
