@@ -22,6 +22,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		90B89FAE1AEA4C690029603D /* NAsyncPerformanceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B89FAD1AEA4C690029603D /* NAsyncPerformanceTest.m */; };
 		90B9674F1AE36044004D1FBD /* libicucore.A.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90FB972A1AE3309300ADBB40 /* libicucore.A.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		90B967501AE36044004D1FBD /* libicucore.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90FB97271AE3288500ADBB40 /* libicucore.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E62AB4DD6D8790781CF3DF2A /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3E0E8555A51B7FE6A33B1C /* Pods_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -89,6 +90,7 @@
 		75583A0C9743E4CBF5F216DF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		7B3E0E8555A51B7FE6A33B1C /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD5482A7FCC676D4AE157EF /* Pods-NAsync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NAsync.release.xcconfig"; path = "Pods/Target Support Files/Pods-NAsync/Pods-NAsync.release.xcconfig"; sourceTree = "<group>"; };
+		90B89FAD1AEA4C690029603D /* NAsyncPerformanceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAsyncPerformanceTest.m; sourceTree = "<group>"; };
 		90FB97271AE3288500ADBB40 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		90FB972A1AE3309300ADBB40 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = usr/lib/libicucore.A.dylib; sourceTree = SDKROOT; };
 		99CE67C773890521B6EE99CF /* Pods-NAsync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NAsync.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NAsync/Pods-NAsync.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				6003F5BB195388D20070C39A /* Tests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
+				90B89FAD1AEA4C690029603D /* NAsyncPerformanceTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90B89FAE1AEA4C690029603D /* NAsyncPerformanceTest.m in Sources */,
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
