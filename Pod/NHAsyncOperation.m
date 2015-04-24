@@ -6,7 +6,7 @@
 //
 //
 
-#import "NAsyncOperation.h"
+#import "NHAsyncOperation.h"
 #import <NAsync/NAsync-Swift.h>
 
 @interface NHAsyncBaseOperation ()

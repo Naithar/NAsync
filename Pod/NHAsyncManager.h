@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <NAsync/NAsyncOperation.h>
+#import <NAsync/NHAsyncOperation.h>
 
 @class NHAsyncManager;
-//
-//typedef NHAsyncManager NAsync;
-//
+
+typedef NHAsyncManager NAsync;
+
 typedef dispatch_once_t NHAsyncOnceToken;
 
 @interface NHAsyncManager : NSObject
