@@ -101,6 +101,10 @@
         NSLog(@"async operation 2");
     }];
 
+    [NAsync async:^(NHAsyncOperation *operation, id value) {
+        return;
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning
