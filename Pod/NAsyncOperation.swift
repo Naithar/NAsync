@@ -61,7 +61,6 @@ public extension NHAsyncOperation {
 
     public func waitAny() -> Any! {
         self.wait()
-
         return self.swiftValue().returnValue
     }
 }

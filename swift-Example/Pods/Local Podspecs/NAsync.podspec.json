@@ -16,13 +16,8 @@
     "ios": "7.0"
   },
   "requires_arc": true,
-  "source_files": "Pod/Classes/**/*",
-  "resource_bundles": {
-    "NAsync": [
-      "Pod/Assets/*.png"
-    ]
-  },
-  "public_header_files": "Pod/Classes/**/*.h",
+  "source_files": "Pod/**/*",
+  "public_header_files": "Pod/*.h",
   "weak_frameworks": "XCTest",
   "frameworks": "XCTest"
 }

@@ -86,6 +86,13 @@ class ViewController: UIViewController {
                 return (100500, 10)
         }
 
+        v.queue(nil) { _ -> UIColor! in
+            return UIColor.redColor()
+            }.main { (_, value: UIColor!) in
+                self.view.backgroundColor = value;
+                return
+        }
+
         NSLog("once return = \(v.waitAny())")
         // Do any additional setup after loading the view, typically from a nib.
     }

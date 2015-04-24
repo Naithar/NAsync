@@ -6,9 +6,9 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   NAsync:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  NAsync: 6290be268b3cd9affbdc36dee3d16437df318e99
+  NAsync: 03297bb3341601d77eb522639de0cfa9dbba44cb
 
 COCOAPODS: 0.36.4
