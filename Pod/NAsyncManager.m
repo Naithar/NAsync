@@ -74,6 +74,14 @@
     return self;
 }
 
+- (NSOperationQueue*)chainAsyncQueue {
+    if (self.queue.maxConcurrentOperationCount == 1) {
+        return [[NSOperationQueue alloc] init];
+    }
+
+    return self.queue;
+}
+
 - (id)wait {
     return [self.operation wait];
 }
@@ -1161,7 +1169,7 @@
 - (instancetype)promiseAsync:(NAsyncBlock)block
                    withDelay:(NSTimeInterval)delay
                 withPriority:(NSOperationQueuePriority)priority {
-    return [self queue:[[NSOperationQueue alloc] init]
+    return [self queue:[self chainAsyncQueue]
                  block:block
              withDelay:delay
           withPriority:priority];
@@ -1180,7 +1188,7 @@
 - (instancetype)async:(NAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
-    return [self queue:[[NSOperationQueue alloc] init]
+    return [self queue:[self chainAsyncQueue]
                  block:block
              withDelay:delay
           withPriority:priority];
@@ -1208,7 +1216,7 @@
                            block:(NAsyncBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
-    return [self promiseQueueOnce:[[NSOperationQueue alloc] init]
+    return [self promiseQueueOnce:[self chainAsyncQueue]
                             token:token
                             block:block
                         withDelay:delay
@@ -1233,7 +1241,7 @@
                     block:(NAsyncBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
-    return [self queueOnce:[[NSOperationQueue alloc] init]
+    return [self queueOnce:[self chainAsyncQueue]
                      token:token
                      block:block
                  withDelay:delay
@@ -1355,7 +1363,7 @@
 - (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
                          withDelay:(NSTimeInterval)delay
                       withPriority:(NSOperationQueuePriority)priority {
-    return [self promiseQueue:[[NSOperationQueue alloc] init]
+    return [self promiseQueue:[self chainAsyncQueue]
                   returnBlock:block
                     withDelay:delay
                  withPriority:priority];
@@ -1374,7 +1382,7 @@
 - (instancetype)asyncReturn:(NAsyncReturnBlock)block
                   withDelay:(NSTimeInterval)delay
                withPriority:(NSOperationQueuePriority)priority {
-    return [self queue:[[NSOperationQueue alloc] init]
+    return [self queue:[self chainAsyncQueue]
            returnBlock:block
              withDelay:delay
           withPriority:priority];
@@ -1402,7 +1410,7 @@
                      returnBlock:(NAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
-    return [self promiseQueueOnce:[[NSOperationQueue alloc] init]
+    return [self promiseQueueOnce:[self chainAsyncQueue]
                             token:token
                       returnBlock:block
                         withDelay:delay
@@ -1427,7 +1435,7 @@
               returnBlock:(NAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
-    return [self queueOnce:[[NSOperationQueue alloc] init]
+    return [self queueOnce:[self chainAsyncQueue]
                      token:token
                returnBlock:block
                  withDelay:delay

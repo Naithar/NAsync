@@ -31,6 +31,8 @@ typedef dispatch_once_t NHAsyncOnceToken;
             previousOperation:(NHAsyncOperation*)operation
                andReturnBlock:(NAsyncReturnBlock)block;
 
+- (NSOperationQueue*)chainAsyncQueue;
+
 - (instancetype)perform;
 - (instancetype)performWithValue:(id)value;
 

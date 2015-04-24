@@ -941,7 +941,7 @@ extension NHAsyncManager {
     public func promiseAsync(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         closure: NAsyncBlock) -> NHAsyncManager! {
-            return self.promiseQueue(NSOperationQueue(),
+            return self.promiseQueue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
                 closure: closure)
@@ -950,7 +950,7 @@ extension NHAsyncManager {
     public func promiseAsync<inT: Any>(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         closure: ((operation: NHAsyncOperation!, value: inT!) -> ())) -> NHAsyncManager! {
-            return self.promiseQueue(NSOperationQueue(),
+            return self.promiseQueue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
                 closure: closure)
@@ -959,7 +959,7 @@ extension NHAsyncManager {
     public func async(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         closure: NAsyncBlock) -> NHAsyncManager! {
-            return self.queue(NSOperationQueue(),
+            return self.queue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
                 closure: closure)
@@ -968,7 +968,7 @@ extension NHAsyncManager {
     public func async<inT: Any>(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         closure: ((operation: NHAsyncOperation!, value: inT!) -> ())) -> NHAsyncManager! {
-            return self.queue(NSOperationQueue(),
+            return self.queue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
                 closure: closure)
@@ -981,7 +981,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         closure: NAsyncBlock) -> NHAsyncManager! {
-            return self.promiseQueue(NSOperationQueue(),
+            return self.promiseQueue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
                 priority: priority,
@@ -992,7 +992,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         closure: ((operation: NHAsyncOperation!, value: inT!) -> ())) -> NHAsyncManager! {
-            return self.promiseQueue(NSOperationQueue(),
+            return self.promiseQueue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
                 priority: priority,
@@ -1003,7 +1003,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         closure: NAsyncBlock) -> NHAsyncManager! {
-            return self.queue(NSOperationQueue(),
+            return self.queue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
                 priority: priority,
@@ -1014,7 +1014,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         closure: ((operation: NHAsyncOperation!, value: inT!) -> ())) -> NHAsyncManager! {
-            return self.queue(NSOperationQueue(),
+            return self.queue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
                 priority: priority,
@@ -1115,7 +1115,7 @@ extension NHAsyncManager {
     public func promiseAsync<inT: Any, outT: Any>(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
-            return self.promiseQueue(NSOperationQueue(),
+            return self.promiseQueue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
                 returnClosure: returnClosure)
@@ -1124,7 +1124,7 @@ extension NHAsyncManager {
     public func promiseAsync<outT: Any>(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
-            return self.promiseQueue(NSOperationQueue(),
+            return self.promiseQueue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
                 returnClosure: returnClosure)
@@ -1133,7 +1133,7 @@ extension NHAsyncManager {
     public func async<inT: Any, outT: Any>(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
-            return self.queue(NSOperationQueue(),
+            return self.queue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
                 returnClosure: returnClosure)
@@ -1143,7 +1143,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
-            return self.queue(NSOperationQueue(),
+            return self.queue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
                 returnClosure: returnClosure)
@@ -1156,7 +1156,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
-            return self.promiseQueue(NSOperationQueue(),
+            return self.promiseQueue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
                 priority: priority,
@@ -1167,7 +1167,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
-            return self.promiseQueue(NSOperationQueue(),
+            return self.promiseQueue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
                 priority: priority,
@@ -1178,7 +1178,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
-            return self.queue(NSOperationQueue(),
+            return self.queue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
                 priority: priority,
@@ -1190,7 +1190,7 @@ extension NHAsyncManager {
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
-            return self.queue(NSOperationQueue(),
+            return self.queue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
                 priority: priority,
