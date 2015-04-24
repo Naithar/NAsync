@@ -716,6 +716,54 @@ extension NHAsyncManager {
     }
 }
 
+//MARK: Start Main Once return task
+extension NHAsyncManager {
+    public class func promiseMain<inT: Any, outT: Any>(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(NSOperationQueue.mainQueue(),
+                onceToken: onceToken,
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public class func promiseMain<outT: Any>(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(NSOperationQueue.mainQueue(),
+                onceToken: onceToken,
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public class func main<inT: Any, outT: Any>(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(NSOperationQueue.mainQueue(),
+                onceToken: onceToken,
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public class func main<outT: Any>(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
+        queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(NSOperationQueue.mainQueue(),
+                onceToken: onceToken,
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+}
+
 //MARK: Chain Main return task
 extension NHAsyncManager {
     public func promiseMain<inT: Any, outT: Any>(after delay: NSTimeInterval = 0,
@@ -750,6 +798,54 @@ extension NHAsyncManager {
         priority: NSOperationQueuePriority = .Normal,
         returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
             return self.queue(NSOperationQueue.mainQueue(),
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+}
+
+//MARK: Chain Main Once return task
+extension NHAsyncManager {
+    public func promiseMain<inT: Any, outT: Any>(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(NSOperationQueue.mainQueue(),
+                onceToken: onceToken,
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public func promiseMain<outT: Any>(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.promiseQueue(NSOperationQueue.mainQueue(),
+                onceToken: onceToken,
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public func main<inT: Any, outT: Any>(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: inT!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(NSOperationQueue.mainQueue(),
+                onceToken: onceToken,
+                after: delay,
+                priority: priority,
+                returnClosure: returnClosure)
+    }
+
+    public func main<outT: Any>(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
+        queue: NSOperationQueue!,
+        after delay: NSTimeInterval = 0,
+        priority: NSOperationQueuePriority = .Normal,
+        returnClosure: ((operation: NHAsyncOperation!, value: AnyObject!) -> outT!)) -> NHAsyncManager! {
+            return self.queue(NSOperationQueue.mainQueue(),
+                onceToken: onceToken,
                 after: delay,
                 priority: priority,
                 returnClosure: returnClosure)
