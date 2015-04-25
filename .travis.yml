@@ -20,5 +20,5 @@ script:
 - xctool -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator test
 - pod lib lint --quick
 after_success: 
-- slather setup Example/NAsync.xcodeproj
-- slather
+#- slather setup Example/NAsync.xcodeproj
+#- slather
