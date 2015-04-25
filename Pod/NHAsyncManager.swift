@@ -27,7 +27,7 @@ extension NHAsyncManager {
     public class func promiseQueue(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(queue,
                 block: closure,
                 withDelay: delay,
@@ -52,7 +52,7 @@ extension NHAsyncManager {
     public class func queue(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(queue,
                 block: closure,
                 withDelay: delay,
@@ -81,7 +81,7 @@ extension NHAsyncManager {
         onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueueOnce(queue,
                 token: onceToken,
                 block: closure,
@@ -110,7 +110,7 @@ extension NHAsyncManager {
         onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queueOnce(queue,
                 token: onceToken,
                 block: closure,
@@ -141,7 +141,7 @@ extension NHAsyncManager {
     public func promiseQueue(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(queue,
                 block: closure,
                 withDelay: delay,
@@ -166,7 +166,7 @@ extension NHAsyncManager {
     public func queue(queue: NSOperationQueue!,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(queue,
                 block: closure,
                 withDelay: delay,
@@ -195,7 +195,7 @@ extension NHAsyncManager {
         onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueueOnce(queue,
                 token: onceToken,
                 block: closure,
@@ -224,7 +224,7 @@ extension NHAsyncManager {
         onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queueOnce(queue,
                 token: onceToken,
                 block: closure,
@@ -506,7 +506,7 @@ extension NHAsyncManager {
 extension NHAsyncManager {
     public class func promiseMain(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(NSOperationQueue.mainQueue(),
                 after: delay,
                 priority: priority,
@@ -524,7 +524,7 @@ extension NHAsyncManager {
 
     public class func main(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(NSOperationQueue.mainQueue(),
                 after: delay,
                 priority: priority,
@@ -546,7 +546,7 @@ extension NHAsyncManager {
     public class func promiseMain(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(NSOperationQueue.mainQueue(),
                 onceToken: onceToken,
                 after: delay,
@@ -568,7 +568,7 @@ extension NHAsyncManager {
     public class func main(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(NSOperationQueue.mainQueue(),
                 onceToken: onceToken,
                 after: delay,
@@ -592,7 +592,7 @@ extension NHAsyncManager {
 extension NHAsyncManager {
     public func promiseMain(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(NSOperationQueue.mainQueue(),
                 after: delay,
                 priority: priority,
@@ -610,7 +610,7 @@ extension NHAsyncManager {
 
     public func main(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(NSOperationQueue.mainQueue(),
                 after: delay,
                 priority: priority,
@@ -632,7 +632,7 @@ extension NHAsyncManager {
     public func promiseMain(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(NSOperationQueue.mainQueue(),
                 onceToken: onceToken,
                 after: delay,
@@ -654,7 +654,7 @@ extension NHAsyncManager {
     public func main(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(NSOperationQueue.mainQueue(),
                 onceToken: onceToken,
                 after: delay,
@@ -854,7 +854,7 @@ extension NHAsyncManager {
 extension NHAsyncManager {
     public class func promiseAsync(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(NSOperationQueue(),
                 after: delay,
                 priority: priority,
@@ -872,7 +872,7 @@ extension NHAsyncManager {
 
     public class func async(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(NSOperationQueue(),
                 after: delay,
                 priority: priority,
@@ -894,7 +894,7 @@ extension NHAsyncManager {
     public class func promiseAsync(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(NSOperationQueue(),
                 onceToken: onceToken,
                 after: delay,
@@ -916,7 +916,7 @@ extension NHAsyncManager {
     public class func async(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(NSOperationQueue(),
                 onceToken: onceToken,
                 after: delay,
@@ -940,7 +940,7 @@ extension NHAsyncManager {
 extension NHAsyncManager {
     public func promiseAsync(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
@@ -958,7 +958,7 @@ extension NHAsyncManager {
 
     public func async(after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(self.chainAsyncQueue(),
                 after: delay,
                 priority: priority,
@@ -980,7 +980,7 @@ extension NHAsyncManager {
     public func promiseAsync(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.promiseQueue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,
@@ -1002,7 +1002,7 @@ extension NHAsyncManager {
     public func async(onceToken: UnsafeMutablePointer<NHAsyncOnceToken>,
         after delay: NSTimeInterval = 0,
         priority: NSOperationQueuePriority = .Normal,
-        closure: NAsyncBlock) -> NHAsyncManager! {
+        closure: NHAsyncBlock) -> NHAsyncManager! {
             return self.queue(self.chainAsyncQueue(),
                 onceToken: onceToken,
                 after: delay,

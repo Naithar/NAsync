@@ -10,8 +10,8 @@
 
 
 @class NHAsyncOperation;
-typedef void(^NAsyncBlock)(NHAsyncOperation *operation, id value);
-typedef id(^NAsyncReturnBlock)(NHAsyncOperation *operation, id value);
+typedef void(^NHAsyncBlock)(NHAsyncOperation *operation, id value);
+typedef id(^NHAsyncReturnBlock)(NHAsyncOperation *operation, id value);
 
 @interface NHAsyncBaseOperation: NSOperation
 
@@ -42,15 +42,15 @@ typedef id(^NAsyncReturnBlock)(NHAsyncOperation *operation, id value);
 - (instancetype)initWithDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
             previousOperation:(NHAsyncOperation*)operation
-               andReturnBlock:(NAsyncReturnBlock)block;
+               andReturnBlock:(NHAsyncReturnBlock)block;
 
 - (instancetype)initWithDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
             previousOperation:(NHAsyncOperation*)operation
-                     andBlock:(NAsyncBlock)block;
+                     andBlock:(NHAsyncBlock)block;
 
-- (void)performOnQueue:(NSOperationQueue*)queue;
-- (void)performOnQueue:(NSOperationQueue*)queue
+- (void)performInQueue:(NSOperationQueue*)queue;
+- (void)performInQueue:(NSOperationQueue*)queue
              withValue:(id)inputValue;
 
 - (id)wait;

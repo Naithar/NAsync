@@ -18,7 +18,7 @@ describe(@"operation without return type", ^{
                                   previousOperation:nil
                                            andBlock:^(NHAsyncOperation *operation, id value) {
                                                done();
-                                           }] performOnQueue:[NSOperationQueue mainQueue]];
+                                           }] performInQueue:[NSOperationQueue mainQueue]];
         });
     });
 
@@ -31,7 +31,7 @@ describe(@"operation without return type", ^{
                                            andBlock:^(NHAsyncOperation *operation, id value) {
                                                index = [value integerValue];
                                                done();
-                                           }] performOnQueue:[NSOperationQueue mainQueue] withValue:@10];
+                                           }] performInQueue:[NSOperationQueue mainQueue] withValue:@10];
         });
 
         expect(index).to.equal(10);
@@ -55,7 +55,7 @@ describe(@"operation with return value", ^{
                                                     done();
                                                     return @20;
                                                 }];
-            [operation performOnQueue:[NSOperationQueue mainQueue]];
+            [operation performInQueue:[NSOperationQueue mainQueue]];
         });
 
         expect([operation wait]).to.equal(@20);
@@ -74,7 +74,7 @@ describe(@"operation with return value", ^{
                                                     done();
                                                     return @20;
                                                 }];
-            [operation performOnQueue:[NSOperationQueue mainQueue] withValue:@10];
+            [operation performInQueue:[NSOperationQueue mainQueue] withValue:@10];
         });
 
         expect(index).to.equal(10);

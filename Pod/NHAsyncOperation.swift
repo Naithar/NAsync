@@ -56,7 +56,7 @@ public extension NHAsyncOperation {
     public func perform(queue: NSOperationQueue!, value: Any! = nil) {
         self.swiftValue().inputValue = nil
 
-        self.performOnQueue(queue, withValue: value as? NSObject)
+        self.performInQueue(queue, withValue: value as? NSObject)
     }
 
     public func waitAny() -> Any! {

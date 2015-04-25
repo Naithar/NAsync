@@ -187,7 +187,7 @@
 
 @property (nonatomic, strong) NHAsyncDelayOperation* delayOperation;
 @property (nonatomic, strong) NHAsyncOperation* parentOperation;
-@property (nonatomic, copy) NAsyncReturnBlock operationBlock;
+@property (nonatomic, copy) NHAsyncReturnBlock operationBlock;
 
 @property (nonatomic, copy) id returnValue;
 @property (nonatomic, copy) id inputValue;
@@ -198,7 +198,7 @@
 - (instancetype)initWithDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
             previousOperation:(NHAsyncOperation*)operation
-                     andBlock:(NAsyncBlock)block {
+                     andBlock:(NHAsyncBlock)block {
     return [self initWithDelay:delay
                       priority:priority
              previousOperation:operation
@@ -213,7 +213,7 @@
 - (instancetype)initWithDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
             previousOperation:(NHAsyncOperation*)operation
-               andReturnBlock:(NAsyncReturnBlock)block {
+               andReturnBlock:(NHAsyncReturnBlock)block {
     self = [super initWithPriority:priority];
 
     if (self) {
@@ -274,12 +274,12 @@
     return self.returnValue;
 }
 
-- (void)performOnQueue:(NSOperationQueue*)queue {
-    [self performOnQueue:queue
+- (void)performInQueue:(NSOperationQueue*)queue {
+    [self performInQueue:queue
                withValue:nil];
 }
 
-- (void)performOnQueue:(NSOperationQueue *)queue
+- (void)performInQueue:(NSOperationQueue *)queue
              withValue:(id)inputValue {
     if (self.inQueue) {
         return;

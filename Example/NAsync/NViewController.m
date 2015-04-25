@@ -35,7 +35,7 @@
                                                                    return @90;
                                                                }];
 
-    [operation performOnQueue:[[NSOperationQueue alloc] init] withValue:@101];
+    [operation performInQueue:[[NSOperationQueue alloc] init] withValue:@101];
 
     NSLog(@"result = %@", [operation wait]);
     }

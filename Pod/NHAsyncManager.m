@@ -21,7 +21,7 @@
                     withDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
             previousOperation:(NHAsyncOperation*)operation
-                     andBlock:(NAsyncBlock)block {
+                     andBlock:(NHAsyncBlock)block {
 
     self = [super init];
 
@@ -42,7 +42,7 @@
                     withDelay:(NSTimeInterval)delay
                      priority:(NSOperationQueuePriority)priority
             previousOperation:(NHAsyncOperation*)operation
-               andReturnBlock:(NAsyncReturnBlock)block {
+               andReturnBlock:(NHAsyncReturnBlock)block {
     self = [super init];
 
     if (self) {
@@ -64,12 +64,12 @@
 }
 
 - (instancetype)perform {
-    [self.operation performOnQueue:self.queue];
+    [self.operation performInQueue:self.queue];
     return self;
 }
 
 - (instancetype)performWithValue:(id)value {
-    [self.operation performOnQueue:self.queue
+    [self.operation performInQueue:self.queue
                          withValue:value];
     return self;
 }
@@ -111,14 +111,14 @@
 @implementation NHAsyncManager (StartQueuedNonReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                       block:(NAsyncBlock)block {
+                       block:(NHAsyncBlock)block {
     return [self promiseQueue:queue
                         block:block
                     withDelay:0];
 }
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                       block:(NAsyncBlock)block
+                       block:(NHAsyncBlock)block
                    withDelay:(NSTimeInterval)delay {
     return [self promiseQueue:queue
                         block:block
@@ -127,7 +127,7 @@
 }
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                       block:(NAsyncBlock)block
+                       block:(NHAsyncBlock)block
                    withDelay:(NSTimeInterval)delay
                 withPriority:(NSOperationQueuePriority)priority {
     return [[self alloc] initWithQueue:queue
@@ -138,14 +138,14 @@
 }
 
 + (instancetype)queue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block {
+                block:(NHAsyncBlock)block {
     return [self queue:queue
                  block:block
              withDelay:0];
 }
 
 + (instancetype)queue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block
+                block:(NHAsyncBlock)block
             withDelay:(NSTimeInterval)delay {
     return [self queue:queue
                  block:block
@@ -154,7 +154,7 @@
 }
 
 + (instancetype)queue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block
+                block:(NHAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
     NHAsyncManager *manager = [self promiseQueue:queue
@@ -170,7 +170,7 @@
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block {
+                           block:(NHAsyncBlock)block {
     return [self promiseQueueOnce:queue
                             token:token
                             block:block
@@ -179,7 +179,7 @@
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block
+                           block:(NHAsyncBlock)block
                        withDelay:(NSTimeInterval)delay {
     return [self promiseQueueOnce:queue
                             token:token
@@ -190,11 +190,11 @@
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block
+                           block:(NHAsyncBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
 
-    NAsyncBlock operationOnceBlock = ^(NHAsyncOperation *operation,
+    NHAsyncBlock operationOnceBlock = ^(NHAsyncOperation *operation,
                                        id value) {
         if (block) {
             dispatch_once(token, ^{
@@ -211,7 +211,7 @@
 
 + (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block {
+                    block:(NHAsyncBlock)block {
     return [self queueOnce:queue
                      token:token
                      block:block
@@ -220,7 +220,7 @@
 
 + (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
+                    block:(NHAsyncBlock)block
                 withDelay:(NSTimeInterval)delay {
     return [self queueOnce:queue
                      token:token
@@ -232,7 +232,7 @@
 
 + (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
+                    block:(NHAsyncBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
     NHAsyncManager *manager = [self promiseQueueOnce:queue
@@ -249,14 +249,14 @@
 @implementation NHAsyncManager (ChainQueuedNonReturn)
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
-                       block:(NAsyncBlock)block {
+                       block:(NHAsyncBlock)block {
     return [self promiseQueue:queue
                         block:block
                     withDelay:0];
 }
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
-                       block:(NAsyncBlock)block
+                       block:(NHAsyncBlock)block
                    withDelay:(NSTimeInterval)delay {
     return [self promiseQueue:queue
                         block:block
@@ -265,7 +265,7 @@
 }
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
-                       block:(NAsyncBlock)block
+                       block:(NHAsyncBlock)block
                    withDelay:(NSTimeInterval)delay
                 withPriority:(NSOperationQueuePriority)priority {
     return [[[self class] alloc] initWithQueue:queue
@@ -276,14 +276,14 @@
 }
 
 - (instancetype)queue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block {
+                block:(NHAsyncBlock)block {
     return [self queue:queue
                  block:block
              withDelay:0];
 }
 
 - (instancetype)queue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block
+                block:(NHAsyncBlock)block
             withDelay:(NSTimeInterval)delay {
     return [self queue:queue
                  block:block
@@ -292,7 +292,7 @@
 }
 
 - (instancetype)queue:(NSOperationQueue*)queue
-                block:(NAsyncBlock)block
+                block:(NHAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
     NHAsyncManager *manager = [self promiseQueue:queue
@@ -309,7 +309,7 @@
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block {
+                           block:(NHAsyncBlock)block {
     return [self promiseQueueOnce:queue
                             token:token
                             block:block
@@ -318,7 +318,7 @@
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block
+                           block:(NHAsyncBlock)block
                        withDelay:(NSTimeInterval)delay {
     return [self promiseQueueOnce:queue
                             token:token
@@ -329,10 +329,10 @@
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block
+                           block:(NHAsyncBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
-    NAsyncBlock operationOnceBlock = ^(NHAsyncOperation *operation,
+    NHAsyncBlock operationOnceBlock = ^(NHAsyncOperation *operation,
                                        id value) {
         if (block) {
             dispatch_once(token, ^{
@@ -349,7 +349,7 @@
 
 - (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block {
+                    block:(NHAsyncBlock)block {
     return [self queueOnce:queue
                      token:token
                      block:block
@@ -358,7 +358,7 @@
 
 - (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
+                    block:(NHAsyncBlock)block
                 withDelay:(NSTimeInterval)delay {
     return [self queueOnce:queue
                      token:token
@@ -369,7 +369,7 @@
 
 - (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
+                    block:(NHAsyncBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
     NHAsyncManager *manager = [self promiseQueueOnce:queue
@@ -387,14 +387,14 @@
 @implementation NHAsyncManager (StartQueuedReturn)
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                 returnBlock:(NAsyncReturnBlock)block {
+                 returnBlock:(NHAsyncReturnBlock)block {
     return [self promiseQueue:queue
                   returnBlock:block
                     withDelay:0];
 }
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                 returnBlock:(NAsyncReturnBlock)block
+                 returnBlock:(NHAsyncReturnBlock)block
                    withDelay:(NSTimeInterval)delay {
     return [self promiseQueue:queue
                   returnBlock:block
@@ -403,7 +403,7 @@
 }
 
 + (instancetype)promiseQueue:(NSOperationQueue*)queue
-                 returnBlock:(NAsyncReturnBlock)block
+                 returnBlock:(NHAsyncReturnBlock)block
                    withDelay:(NSTimeInterval)delay
                 withPriority:(NSOperationQueuePriority)priority {
     return [[self alloc] initWithQueue:queue
@@ -414,14 +414,14 @@
 }
 
 + (instancetype)queue:(NSOperationQueue*)queue
-          returnBlock:(NAsyncReturnBlock)block {
+          returnBlock:(NHAsyncReturnBlock)block {
     return [self queue:queue
            returnBlock:block
              withDelay:0];
 }
 
 + (instancetype)queue:(NSOperationQueue*)queue
-          returnBlock:(NAsyncReturnBlock)block
+          returnBlock:(NHAsyncReturnBlock)block
             withDelay:(NSTimeInterval)delay {
     return [self queue:queue
            returnBlock:block
@@ -430,7 +430,7 @@
 }
 
 + (instancetype)queue:(NSOperationQueue*)queue
-          returnBlock:(NAsyncReturnBlock)block
+          returnBlock:(NHAsyncReturnBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
     NHAsyncManager *manager = [self promiseQueue:queue
@@ -447,7 +447,7 @@
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block {
+                     returnBlock:(NHAsyncReturnBlock)block {
     return [self promiseQueueOnce:queue
                             token:token
                       returnBlock:block
@@ -456,7 +456,7 @@
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block
+                     returnBlock:(NHAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay {
     return [self promiseQueueOnce:queue
                             token:token
@@ -467,11 +467,11 @@
 
 + (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block
+                     returnBlock:(NHAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
 
-    NAsyncReturnBlock operationOnceBlock = ^id(NHAsyncOperation *operation,
+    NHAsyncReturnBlock operationOnceBlock = ^id(NHAsyncOperation *operation,
                                                id value) {
         __block id returnValue = nil;
 
@@ -492,7 +492,7 @@
 
 + (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block {
+              returnBlock:(NHAsyncReturnBlock)block {
     return [self queueOnce:queue
                      token:token
                returnBlock:block
@@ -501,7 +501,7 @@
 
 + (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block
+              returnBlock:(NHAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay {
     return [self queueOnce:queue
                      token:token
@@ -512,7 +512,7 @@
 
 + (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block
+              returnBlock:(NHAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
     NHAsyncManager *manager = [self promiseQueueOnce:queue
@@ -529,14 +529,14 @@
 @implementation NHAsyncManager (ChainQueuedReturn)
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
-                 returnBlock:(NAsyncReturnBlock)block {
+                 returnBlock:(NHAsyncReturnBlock)block {
     return [self promiseQueue:queue
                   returnBlock:block
                     withDelay:0];
 }
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
-                 returnBlock:(NAsyncReturnBlock)block
+                 returnBlock:(NHAsyncReturnBlock)block
                    withDelay:(NSTimeInterval)delay {
     return [self promiseQueue:queue
                   returnBlock:block
@@ -545,7 +545,7 @@
 }
 
 - (instancetype)promiseQueue:(NSOperationQueue*)queue
-                 returnBlock:(NAsyncReturnBlock)block
+                 returnBlock:(NHAsyncReturnBlock)block
                    withDelay:(NSTimeInterval)delay
                 withPriority:(NSOperationQueuePriority)priority {
     return [[[self class] alloc] initWithQueue:queue
@@ -556,14 +556,14 @@
 }
 
 - (instancetype)queue:(NSOperationQueue*)queue
-          returnBlock:(NAsyncReturnBlock)block {
+          returnBlock:(NHAsyncReturnBlock)block {
     return [self queue:queue
            returnBlock:block
              withDelay:0];
 }
 
 - (instancetype)queue:(NSOperationQueue*)queue
-          returnBlock:(NAsyncReturnBlock)block
+          returnBlock:(NHAsyncReturnBlock)block
             withDelay:(NSTimeInterval)delay {
     return [self queue:queue
            returnBlock:block
@@ -572,7 +572,7 @@
 }
 
 - (instancetype)queue:(NSOperationQueue*)queue
-          returnBlock:(NAsyncReturnBlock)block
+          returnBlock:(NHAsyncReturnBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
     NHAsyncManager *manager = [self promiseQueue:queue
@@ -588,7 +588,7 @@
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block {
+                     returnBlock:(NHAsyncReturnBlock)block {
     return [self promiseQueueOnce:queue
                             token:token
                       returnBlock:block
@@ -597,7 +597,7 @@
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block
+                     returnBlock:(NHAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay {
     return [self promiseQueueOnce:queue
                             token:token
@@ -608,11 +608,11 @@
 
 - (instancetype)promiseQueueOnce:(NSOperationQueue*)queue
                            token:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block
+                     returnBlock:(NHAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
 
-    NAsyncReturnBlock operationOnceBlock = ^id(NHAsyncOperation *operation,
+    NHAsyncReturnBlock operationOnceBlock = ^id(NHAsyncOperation *operation,
                                                id value) {
         __block id returnValue = nil;
 
@@ -633,7 +633,7 @@
 
 - (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block {
+              returnBlock:(NHAsyncReturnBlock)block {
     return [self queueOnce:queue
                      token:token
                returnBlock:block
@@ -642,7 +642,7 @@
 
 - (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block
+              returnBlock:(NHAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay {
     return [self queueOnce:queue
                      token:token
@@ -653,7 +653,7 @@
 
 - (instancetype)queueOnce:(NSOperationQueue*)queue
                     token:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block
+              returnBlock:(NHAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
     NHAsyncManager *manager = [self promiseQueueOnce:queue
@@ -671,17 +671,17 @@
 
 @implementation NHAsyncManager (StartMainNonReturn)
 
-+ (instancetype)promiseMain:(NAsyncBlock)block {
++ (instancetype)promiseMain:(NHAsyncBlock)block {
     return [self promiseMain:block
                    withDelay:0];
 }
-+ (instancetype)promiseMain:(NAsyncBlock)block
++ (instancetype)promiseMain:(NHAsyncBlock)block
                   withDelay:(NSTimeInterval)delay {
     return [self promiseMain:block
                    withDelay:delay
                 withPriority:NSOperationQueuePriorityNormal];
 }
-+ (instancetype)promiseMain:(NAsyncBlock)block
++ (instancetype)promiseMain:(NHAsyncBlock)block
                   withDelay:(NSTimeInterval)delay
                withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueue:[NSOperationQueue mainQueue]
@@ -690,17 +690,17 @@
                  withPriority:priority];
 }
 
-+ (instancetype)main:(NAsyncBlock)block {
++ (instancetype)main:(NHAsyncBlock)block {
     return [self main:block
             withDelay:0];
 }
-+ (instancetype)main:(NAsyncBlock)block
++ (instancetype)main:(NHAsyncBlock)block
            withDelay:(NSTimeInterval)delay {
     return [self main:block
             withDelay:delay
          withPriority:NSOperationQueuePriorityNormal];
 }
-+ (instancetype)main:(NAsyncBlock)block
++ (instancetype)main:(NHAsyncBlock)block
            withDelay:(NSTimeInterval)delay
         withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[NSOperationQueue mainQueue]
@@ -714,13 +714,13 @@
 @implementation NHAsyncManager (StartMainOnceNonReturn)
 
 + (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          block:(NAsyncBlock)block {
+                          block:(NHAsyncBlock)block {
     return [self promiseMainOnce:token
                            block:block
                        withDelay:0];
 }
 + (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          block:(NAsyncBlock)block
+                          block:(NHAsyncBlock)block
                       withDelay:(NSTimeInterval)delay {
     return [self promiseMainOnce:token
                            block:block
@@ -729,7 +729,7 @@
 }
 
 + (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          block:(NAsyncBlock)block
+                          block:(NHAsyncBlock)block
                       withDelay:(NSTimeInterval)delay
                    withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueueOnce:[NSOperationQueue mainQueue]
@@ -740,13 +740,13 @@
 }
 
 + (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   block:(NAsyncBlock)block {
+                   block:(NHAsyncBlock)block {
     return [self mainOnce:token
                     block:block
                 withDelay:0];
 }
 + (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   block:(NAsyncBlock)block
+                   block:(NHAsyncBlock)block
                withDelay:(NSTimeInterval)delay {
     return [self mainOnce:token
                     block:block
@@ -754,7 +754,7 @@
              withPriority:NSOperationQueuePriorityNormal];
 }
 + (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   block:(NAsyncBlock)block
+                   block:(NHAsyncBlock)block
                withDelay:(NSTimeInterval)delay
             withPriority:(NSOperationQueuePriority)priority {
     return [self queueOnce:[NSOperationQueue mainQueue]
@@ -768,17 +768,17 @@
 
 @implementation NHAsyncManager (ChainMainNonReturn)
 
-- (instancetype)promiseMain:(NAsyncBlock)block {
+- (instancetype)promiseMain:(NHAsyncBlock)block {
     return [self promiseMain:block
                    withDelay:0];
 }
-- (instancetype)promiseMain:(NAsyncBlock)block
+- (instancetype)promiseMain:(NHAsyncBlock)block
                   withDelay:(NSTimeInterval)delay {
     return [self promiseMain:block
                    withDelay:delay
                 withPriority:NSOperationQueuePriorityNormal];
 }
-- (instancetype)promiseMain:(NAsyncBlock)block
+- (instancetype)promiseMain:(NHAsyncBlock)block
                   withDelay:(NSTimeInterval)delay
                withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueue:[NSOperationQueue mainQueue]
@@ -787,17 +787,17 @@
                  withPriority:priority];
 }
 
-- (instancetype)main:(NAsyncBlock)block {
+- (instancetype)main:(NHAsyncBlock)block {
     return [self main:block
             withDelay:0];
 }
-- (instancetype)main:(NAsyncBlock)block
+- (instancetype)main:(NHAsyncBlock)block
            withDelay:(NSTimeInterval)delay {
     return [self main:block
             withDelay:delay
          withPriority:NSOperationQueuePriorityNormal];
 }
-- (instancetype)main:(NAsyncBlock)block
+- (instancetype)main:(NHAsyncBlock)block
            withDelay:(NSTimeInterval)delay
         withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[NSOperationQueue mainQueue]
@@ -811,13 +811,13 @@
 @implementation NHAsyncManager (ChainMainOnceNonReturn)
 
 - (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          block:(NAsyncBlock)block {
+                          block:(NHAsyncBlock)block {
     return [self promiseMainOnce:token
                            block:block
                        withDelay:0];
 }
 - (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          block:(NAsyncBlock)block
+                          block:(NHAsyncBlock)block
                       withDelay:(NSTimeInterval)delay {
     return [self promiseMainOnce:token
                            block:block
@@ -825,7 +825,7 @@
                     withPriority:NSOperationQueuePriorityNormal];
 }
 - (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          block:(NAsyncBlock)block
+                          block:(NHAsyncBlock)block
                       withDelay:(NSTimeInterval)delay
                    withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueueOnce:[NSOperationQueue mainQueue]
@@ -836,13 +836,13 @@
 }
 
 - (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   block:(NAsyncBlock)block {
+                   block:(NHAsyncBlock)block {
     return [self mainOnce:token
                     block:block
                 withDelay:0];
 }
 - (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   block:(NAsyncBlock)block
+                   block:(NHAsyncBlock)block
                withDelay:(NSTimeInterval)delay {
     return [self mainOnce:token
                     block:block
@@ -850,7 +850,7 @@
              withPriority:NSOperationQueuePriorityNormal];
 }
 - (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   block:(NAsyncBlock)block
+                   block:(NHAsyncBlock)block
                withDelay:(NSTimeInterval)delay
             withPriority:(NSOperationQueuePriority)priority {
     return [self queueOnce:[NSOperationQueue mainQueue]
@@ -866,17 +866,17 @@
 
 @implementation NHAsyncManager (StartMainReturn)
 
-+ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block {
++ (instancetype)promiseMainReturn:(NHAsyncReturnBlock)block {
     return [self promiseMainReturn:block
                          withDelay:0];
 }
-+ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
++ (instancetype)promiseMainReturn:(NHAsyncReturnBlock)block
                         withDelay:(NSTimeInterval)delay {
     return [self promiseMainReturn:block
                          withDelay:delay
                       withPriority:NSOperationQueuePriorityNormal];
 }
-+ (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
++ (instancetype)promiseMainReturn:(NHAsyncReturnBlock)block
                         withDelay:(NSTimeInterval)delay
                      withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueue:[NSOperationQueue mainQueue]
@@ -885,17 +885,17 @@
                  withPriority:priority];
 }
 
-+ (instancetype)mainReturn:(NAsyncReturnBlock)block {
++ (instancetype)mainReturn:(NHAsyncReturnBlock)block {
     return [self mainReturn:block
                   withDelay:0];
 }
-+ (instancetype)mainReturn:(NAsyncReturnBlock)block
++ (instancetype)mainReturn:(NHAsyncReturnBlock)block
                  withDelay:(NSTimeInterval)delay {
     return [self mainReturn:block
                   withDelay:delay
                withPriority:NSOperationQueuePriorityNormal];
 }
-+ (instancetype)mainReturn:(NAsyncReturnBlock)block
++ (instancetype)mainReturn:(NHAsyncReturnBlock)block
                  withDelay:(NSTimeInterval)delay
               withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[NSOperationQueue mainQueue]
@@ -909,13 +909,13 @@
 @implementation NHAsyncManager (StartMainOnceReturn)
 
 + (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          returnBlock:(NAsyncReturnBlock)block {
+                          returnBlock:(NHAsyncReturnBlock)block {
     return [self promiseMainOnce:token
                            returnBlock:block
                              withDelay:0];
 }
 + (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          returnBlock:(NAsyncReturnBlock)block
+                          returnBlock:(NHAsyncReturnBlock)block
                             withDelay:(NSTimeInterval)delay {
     return [self promiseMainOnce:token
                            returnBlock:block
@@ -923,7 +923,7 @@
                           withPriority:NSOperationQueuePriorityNormal];
 }
 + (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                          returnBlock:(NAsyncReturnBlock)block
+                          returnBlock:(NHAsyncReturnBlock)block
                             withDelay:(NSTimeInterval)delay
                          withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueueOnce:[NSOperationQueue mainQueue]
@@ -934,13 +934,13 @@
 }
 
 + (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   returnBlock:(NAsyncReturnBlock)block {
+                   returnBlock:(NHAsyncReturnBlock)block {
     return [self mainOnce:token
                     returnBlock:block
                       withDelay:0];
 }
 + (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   returnBlock:(NAsyncReturnBlock)block
+                   returnBlock:(NHAsyncReturnBlock)block
                      withDelay:(NSTimeInterval)delay {
     return [self mainOnce:token
                     returnBlock:block
@@ -948,7 +948,7 @@
                    withPriority:NSOperationQueuePriorityNormal];
 }
 + (instancetype)mainOnce:(NHAsyncOnceToken*)token
-                   returnBlock:(NAsyncReturnBlock)block
+                   returnBlock:(NHAsyncReturnBlock)block
                      withDelay:(NSTimeInterval)delay
                   withPriority:(NSOperationQueuePriority)priority {
     return [self queueOnce:[NSOperationQueue mainQueue]
@@ -962,17 +962,17 @@
 
 @implementation NHAsyncManager (ChainMainReturn)
 
-- (instancetype)promiseMainReturn:(NAsyncReturnBlock)block {
+- (instancetype)promiseMainReturn:(NHAsyncReturnBlock)block {
     return [self promiseMainReturn:block
                          withDelay:0];
 }
-- (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
+- (instancetype)promiseMainReturn:(NHAsyncReturnBlock)block
                         withDelay:(NSTimeInterval)delay {
     return [self promiseMainReturn:block
                          withDelay:delay
                       withPriority:NSOperationQueuePriorityNormal];
 }
-- (instancetype)promiseMainReturn:(NAsyncReturnBlock)block
+- (instancetype)promiseMainReturn:(NHAsyncReturnBlock)block
                         withDelay:(NSTimeInterval)delay
                      withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueue:[NSOperationQueue mainQueue]
@@ -981,17 +981,17 @@
                  withPriority:priority];
 }
 
-- (instancetype)mainReturn:(NAsyncReturnBlock)block {
+- (instancetype)mainReturn:(NHAsyncReturnBlock)block {
     return [self mainReturn:block
                   withDelay:0];
 }
-- (instancetype)mainReturn:(NAsyncReturnBlock)block
+- (instancetype)mainReturn:(NHAsyncReturnBlock)block
                  withDelay:(NSTimeInterval)delay {
     return [self mainReturn:block
                   withDelay:delay
                withPriority:NSOperationQueuePriorityNormal];
 }
-- (instancetype)mainReturn:(NAsyncReturnBlock)block
+- (instancetype)mainReturn:(NHAsyncReturnBlock)block
                  withDelay:(NSTimeInterval)delay
               withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[NSOperationQueue mainQueue]
@@ -1005,13 +1005,13 @@
 @implementation NHAsyncManager (ChainMainOnceReturn)
 
 - (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                    returnBlock:(NAsyncReturnBlock)block {
+                    returnBlock:(NHAsyncReturnBlock)block {
     return [self promiseMainOnce:token
                      returnBlock:block
                        withDelay:0];
 }
 - (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                    returnBlock:(NAsyncReturnBlock)block
+                    returnBlock:(NHAsyncReturnBlock)block
                       withDelay:(NSTimeInterval)delay {
     return [self promiseMainOnce:token
                      returnBlock:block
@@ -1019,7 +1019,7 @@
                     withPriority:NSOperationQueuePriorityNormal];
 }
 - (instancetype)promiseMainOnce:(NHAsyncOnceToken*)token
-                    returnBlock:(NAsyncReturnBlock)block
+                    returnBlock:(NHAsyncReturnBlock)block
                       withDelay:(NSTimeInterval)delay
                    withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueueOnce:[NSOperationQueue mainQueue]
@@ -1030,13 +1030,13 @@
 }
 
 - (instancetype)mainOnce:(NHAsyncOnceToken*)token
-             returnBlock:(NAsyncReturnBlock)block {
+             returnBlock:(NHAsyncReturnBlock)block {
     return [self mainOnce:token
               returnBlock:block
                 withDelay:0];
 }
 - (instancetype)mainOnce:(NHAsyncOnceToken*)token
-             returnBlock:(NAsyncReturnBlock)block
+             returnBlock:(NHAsyncReturnBlock)block
                withDelay:(NSTimeInterval)delay {
     return [self mainOnce:token
               returnBlock:block
@@ -1044,7 +1044,7 @@
              withPriority:NSOperationQueuePriorityNormal];
 }
 - (instancetype)mainOnce:(NHAsyncOnceToken*)token
-             returnBlock:(NAsyncReturnBlock)block
+             returnBlock:(NHAsyncReturnBlock)block
                withDelay:(NSTimeInterval)delay
             withPriority:(NSOperationQueuePriority)priority {
     return [self queueOnce:[NSOperationQueue mainQueue]
@@ -1060,17 +1060,17 @@
 
 @implementation NHAsyncManager (StartAsyncNonReturn)
 
-+ (instancetype)promiseAsync:(NAsyncBlock)block {
++ (instancetype)promiseAsync:(NHAsyncBlock)block {
     return [self promiseAsync:block
                     withDelay:0];
 }
-+ (instancetype)promiseAsync:(NAsyncBlock)block
++ (instancetype)promiseAsync:(NHAsyncBlock)block
                    withDelay:(NSTimeInterval)delay {
     return [self promiseAsync:block
                     withDelay:delay
                  withPriority:NSOperationQueuePriorityNormal];
 }
-+ (instancetype)promiseAsync:(NAsyncBlock)block
++ (instancetype)promiseAsync:(NHAsyncBlock)block
                    withDelay:(NSTimeInterval)delay
                 withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueue:[[NSOperationQueue alloc] init]
@@ -1079,17 +1079,17 @@
                  withPriority:priority];
 }
 
-+ (instancetype)async:(NAsyncBlock)block {
++ (instancetype)async:(NHAsyncBlock)block {
     return [self async:block
              withDelay:0];
 }
-+ (instancetype)async:(NAsyncBlock)block
++ (instancetype)async:(NHAsyncBlock)block
             withDelay:(NSTimeInterval)delay {
     return [self async:block
              withDelay:delay
           withPriority:NSOperationQueuePriorityNormal];
 }
-+ (instancetype)async:(NAsyncBlock)block
++ (instancetype)async:(NHAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[[NSOperationQueue alloc] init]
@@ -1103,13 +1103,13 @@
 @implementation NHAsyncManager (StartAsyncOnceNonReturn)
 
 + (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block {
+                           block:(NHAsyncBlock)block {
     return [self promiseAsyncOnce:token
                             block:block
                         withDelay:0];
 }
 + (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block
+                           block:(NHAsyncBlock)block
                        withDelay:(NSTimeInterval)delay {
     return [self promiseAsyncOnce:token
                             block:block
@@ -1117,7 +1117,7 @@
                      withPriority:NSOperationQueuePriorityNormal];
 }
 + (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block
+                           block:(NHAsyncBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueueOnce:[[NSOperationQueue alloc] init]
@@ -1128,13 +1128,13 @@
 }
 
 + (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block {
+                    block:(NHAsyncBlock)block {
     return [self asyncOnce:token
                      block:block
                  withDelay:0];
 }
 + (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
+                    block:(NHAsyncBlock)block
                 withDelay:(NSTimeInterval)delay {
     return [self asyncOnce:token
                      block:block
@@ -1142,7 +1142,7 @@
               withPriority:NSOperationQueuePriorityNormal];
 }
 + (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
+                    block:(NHAsyncBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
     return [self queueOnce:[[NSOperationQueue alloc] init]
@@ -1156,17 +1156,17 @@
 
 @implementation NHAsyncManager (ChainAsyncNonReturn)
 
-- (instancetype)promiseAsync:(NAsyncBlock)block {
+- (instancetype)promiseAsync:(NHAsyncBlock)block {
     return [self promiseAsync:block
                     withDelay:0];
 }
-- (instancetype)promiseAsync:(NAsyncBlock)block
+- (instancetype)promiseAsync:(NHAsyncBlock)block
                    withDelay:(NSTimeInterval)delay {
     return [self promiseAsync:block
                     withDelay:delay
                  withPriority:NSOperationQueuePriorityNormal];
 }
-- (instancetype)promiseAsync:(NAsyncBlock)block
+- (instancetype)promiseAsync:(NHAsyncBlock)block
                    withDelay:(NSTimeInterval)delay
                 withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[self chainAsyncQueue]
@@ -1175,17 +1175,17 @@
           withPriority:priority];
 }
 
-- (instancetype)async:(NAsyncBlock)block {
+- (instancetype)async:(NHAsyncBlock)block {
     return [self async:block
              withDelay:0];
 }
-- (instancetype)async:(NAsyncBlock)block
+- (instancetype)async:(NHAsyncBlock)block
             withDelay:(NSTimeInterval)delay {
     return [self async:block
              withDelay:delay
           withPriority:NSOperationQueuePriorityNormal];
 }
-- (instancetype)async:(NAsyncBlock)block
+- (instancetype)async:(NHAsyncBlock)block
             withDelay:(NSTimeInterval)delay
          withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[self chainAsyncQueue]
@@ -1199,13 +1199,13 @@
 @implementation NHAsyncManager (ChainAsyncOnceNonReturn)
 
 - (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block {
+                           block:(NHAsyncBlock)block {
     return [self promiseAsyncOnce:token
                             block:block
                         withDelay:0];
 }
 - (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block
+                           block:(NHAsyncBlock)block
                        withDelay:(NSTimeInterval)delay {
     return [self promiseAsyncOnce:token
                             block:block
@@ -1213,7 +1213,7 @@
                      withPriority:NSOperationQueuePriorityNormal];
 }
 - (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                           block:(NAsyncBlock)block
+                           block:(NHAsyncBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueueOnce:[self chainAsyncQueue]
@@ -1224,13 +1224,13 @@
 }
 
 - (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block {
+                    block:(NHAsyncBlock)block {
     return [self asyncOnce:token
                      block:block
                  withDelay:0];
 }
 - (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
+                    block:(NHAsyncBlock)block
                 withDelay:(NSTimeInterval)delay {
     return [self asyncOnce:token
                      block:block
@@ -1238,7 +1238,7 @@
               withPriority:NSOperationQueuePriorityNormal];
 }
 - (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-                    block:(NAsyncBlock)block
+                    block:(NHAsyncBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
     return [self queueOnce:[self chainAsyncQueue]
@@ -1254,17 +1254,17 @@
 
 @implementation NHAsyncManager (StartAsyncReturn)
 
-+ (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block {
++ (instancetype)promiseAsyncReturn:(NHAsyncReturnBlock)block {
     return [self promiseAsyncReturn:block
                           withDelay:0];
 }
-+ (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
++ (instancetype)promiseAsyncReturn:(NHAsyncReturnBlock)block
                          withDelay:(NSTimeInterval)delay {
     return [self promiseAsyncReturn:block
                           withDelay:delay
                        withPriority:NSOperationQueuePriorityNormal];
 }
-+ (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
++ (instancetype)promiseAsyncReturn:(NHAsyncReturnBlock)block
                          withDelay:(NSTimeInterval)delay
                       withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueue:[[NSOperationQueue alloc] init]
@@ -1273,17 +1273,17 @@
                  withPriority:priority];
 }
 
-+ (instancetype)asyncReturn:(NAsyncReturnBlock)block {
++ (instancetype)asyncReturn:(NHAsyncReturnBlock)block {
     return [self asyncReturn:block
                    withDelay:0];
 }
-+ (instancetype)asyncReturn:(NAsyncReturnBlock)block
++ (instancetype)asyncReturn:(NHAsyncReturnBlock)block
                   withDelay:(NSTimeInterval)delay {
     return [self asyncReturn:block
                    withDelay:delay
                 withPriority:NSOperationQueuePriorityNormal];
 }
-+ (instancetype)asyncReturn:(NAsyncReturnBlock)block
++ (instancetype)asyncReturn:(NHAsyncReturnBlock)block
                   withDelay:(NSTimeInterval)delay
                withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[[NSOperationQueue alloc] init]
@@ -1297,13 +1297,13 @@
 @implementation NHAsyncManager (StartAsyncOnceReturn)
 
 + (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block {
+                     returnBlock:(NHAsyncReturnBlock)block {
     return [self promiseAsyncOnce:token
                       returnBlock:block
                         withDelay:0];
 }
 + (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block
+                     returnBlock:(NHAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay {
     return [self promiseAsyncOnce:token
                       returnBlock:block
@@ -1311,7 +1311,7 @@
                      withPriority:NSOperationQueuePriorityNormal];
 }
 + (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block
+                     returnBlock:(NHAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueueOnce:[[NSOperationQueue alloc] init]
@@ -1322,13 +1322,13 @@
 }
 
 + (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block {
+              returnBlock:(NHAsyncReturnBlock)block {
     return [self asyncOnce:token
                returnBlock:block
                  withDelay:0];
 }
 + (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block
+              returnBlock:(NHAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay {
     return [self asyncOnce:token
                returnBlock:block
@@ -1336,7 +1336,7 @@
               withPriority:NSOperationQueuePriorityNormal];
 }
 + (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block
+              returnBlock:(NHAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
     return [self queueOnce:[[NSOperationQueue alloc] init]
@@ -1350,17 +1350,17 @@
 
 @implementation NHAsyncManager (ChainAsyncReturn)
 
-- (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block {
+- (instancetype)promiseAsyncReturn:(NHAsyncReturnBlock)block {
     return [self promiseAsyncReturn:block
                           withDelay:0];
 }
-- (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
+- (instancetype)promiseAsyncReturn:(NHAsyncReturnBlock)block
                          withDelay:(NSTimeInterval)delay {
     return [self promiseAsyncReturn:block
                           withDelay:delay
                        withPriority:NSOperationQueuePriorityNormal];
 }
-- (instancetype)promiseAsyncReturn:(NAsyncReturnBlock)block
+- (instancetype)promiseAsyncReturn:(NHAsyncReturnBlock)block
                          withDelay:(NSTimeInterval)delay
                       withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueue:[self chainAsyncQueue]
@@ -1369,17 +1369,17 @@
                  withPriority:priority];
 }
 
-- (instancetype)asyncReturn:(NAsyncReturnBlock)block {
+- (instancetype)asyncReturn:(NHAsyncReturnBlock)block {
     return [self asyncReturn:block
                    withDelay:0];
 }
-- (instancetype)asyncReturn:(NAsyncReturnBlock)block
+- (instancetype)asyncReturn:(NHAsyncReturnBlock)block
                   withDelay:(NSTimeInterval)delay {
     return [self asyncReturn:block
                    withDelay:delay
                 withPriority:NSOperationQueuePriorityNormal];
 }
-- (instancetype)asyncReturn:(NAsyncReturnBlock)block
+- (instancetype)asyncReturn:(NHAsyncReturnBlock)block
                   withDelay:(NSTimeInterval)delay
                withPriority:(NSOperationQueuePriority)priority {
     return [self queue:[self chainAsyncQueue]
@@ -1393,13 +1393,13 @@
 @implementation NHAsyncManager (ChainAsyncOnceReturn)
 
 - (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block {
+                     returnBlock:(NHAsyncReturnBlock)block {
     return [self promiseAsyncOnce:token
                       returnBlock:block
                         withDelay:0];
 }
 - (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block
+                     returnBlock:(NHAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay {
     return [self promiseAsyncOnce:token
                       returnBlock:block
@@ -1407,7 +1407,7 @@
                      withPriority:NSOperationQueuePriorityNormal];
 }
 - (instancetype)promiseAsyncOnce:(NHAsyncOnceToken*)token
-                     returnBlock:(NAsyncReturnBlock)block
+                     returnBlock:(NHAsyncReturnBlock)block
                        withDelay:(NSTimeInterval)delay
                     withPriority:(NSOperationQueuePriority)priority {
     return [self promiseQueueOnce:[self chainAsyncQueue]
@@ -1418,13 +1418,13 @@
 }
 
 - (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block {
+              returnBlock:(NHAsyncReturnBlock)block {
     return [self asyncOnce:token
                returnBlock:block
                  withDelay:0];
 }
 - (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block
+              returnBlock:(NHAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay {
     return [self asyncOnce:token
                returnBlock:block
@@ -1432,7 +1432,7 @@
               withPriority:NSOperationQueuePriorityNormal];
 }
 - (instancetype)asyncOnce:(NHAsyncOnceToken*)token
-              returnBlock:(NAsyncReturnBlock)block
+              returnBlock:(NHAsyncReturnBlock)block
                 withDelay:(NSTimeInterval)delay
              withPriority:(NSOperationQueuePriority)priority {
     return [self queueOnce:[self chainAsyncQueue]
