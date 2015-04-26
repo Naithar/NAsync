@@ -11,5 +11,6 @@
 
 #import <NAsync/NHAsyncManager.h>
 #import <NAsync/NHAsyncOperation.h>
+#import <NAsync/NHAsyncManager+Main.h>
 
 #endif

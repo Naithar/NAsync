@@ -175,9 +175,6 @@
 }
 
 - (void)dealloc {
-#ifdef DEBUG
-    NSLog(@"NAsync: delay operation deallocated");
-#endif
 }
 
 @end
@@ -304,10 +301,6 @@
     self.operationBlock = nil;
     self.parentOperation = nil;
     self.delayOperation = nil;
-
-#ifdef DEBUG
-    NSLog(@"operation dealloc");
-#endif
 }
 
 @end
