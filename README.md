@@ -6,6 +6,7 @@ Naithar, devias.naith@gmail.com
 
 ## Usage
  * Add ```pod 'NAsync', :git => 'https://github.com/naithar/NAsync.git'``` to your [Podfile](http://cocoapods.org/)
+ * Add ```!use_framework``` to your [Podfile](http://cocoapods.org/) as pod uses swift files
  * Run ```pod install```
  * Open created ```.xcworkspace``` file
  * Add ```@import NAsync``` in your source code
