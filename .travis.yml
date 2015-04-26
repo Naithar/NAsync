@@ -15,11 +15,11 @@ before_install:
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
+- slather setup Example/NAsync.xcodeproj
 - set -o pipefail && xctool -workspace Example/NAsync.xcworkspace -scheme NAsync-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c 
 - xctool -destination platform='iOS Simulator,name=iPhone 5s,OS=7.1' -workspace Example/NAsync.xcworkspace -scheme NAsync-Example -sdk iphonesimulator test
 - xctool -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator | xcpretty -c
 - xctool -workspace swift-Example/swift-Example.xcworkspace -scheme swift-Example -sdk iphonesimulator test
 - pod lib lint --quick
 after_success: 
-#- slather setup Example/NAsync.xcodeproj
-#- slather
+- slather
