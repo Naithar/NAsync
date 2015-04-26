@@ -13,7 +13,6 @@ Naithar, devias.naith@gmail.com
  * Add ```@import NAsync``` in your source code
  
 ## Non Framework Setup
- //__NHASYNC_NO_FRAMEWORK
  * Clone  source files from ```Pod``` folder
  * Add this source files to your Project
  * Add ```objc
