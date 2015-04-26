@@ -95,7 +95,7 @@
 		90FB972A1AE3309300ADBB40 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = usr/lib/libicucore.A.dylib; sourceTree = SDKROOT; };
 		99CE67C773890521B6EE99CF /* Pods-NAsync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NAsync.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NAsync/Pods-NAsync.debug.xcconfig"; sourceTree = "<group>"; };
 		D40F9C0DC4564E16086B815B /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E6E4ED8F9B1ABD3248BB4E2B /* NAsync.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NAsync.podspec; path = ../NAsync.podspec; sourceTree = "<group>"; };
+		E6E4ED8F9B1ABD3248BB4E2B /* NAsync.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NAsync.podspec; path = ../NAsync.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
