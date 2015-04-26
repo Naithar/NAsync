@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @class NHAsyncOperation;
 typedef void(^NHAsyncBlock)(NHAsyncOperation *operation, id value);
 typedef id(^NHAsyncReturnBlock)(NHAsyncOperation *operation, id value);

@@ -3,13 +3,13 @@ plugin 'slather'
 
 use_frameworks!
 
-target 'NAsync', :exclusive => true do
-  pod "NAsync", :path => "../"
-end
+#target 'NAsync', :exclusive => true do
+#  pod "NAsync", :path => "../"
+#end
 
 target 'Tests', :exclusive => true do
   pod "NAsync", :path => "../"
 
-  pod 'Specta'
-  pod 'Expecta'
+pod 'Specta'
+pod 'Expecta'
 end

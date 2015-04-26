@@ -7,7 +7,12 @@
 //
 
 #import "NHAsyncOperation.h"
+
+#ifndef __NHASYNC_NO_FRAMEWORK
 #import <NAsync/NAsync-Swift.h>
+#else
+#import "NAsync-Swift.h"
+#endif
 
 @interface NHAsyncBaseOperation ()
 @property (nonatomic, assign) BOOL operationReady;

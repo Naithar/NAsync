@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <NAsync/NHAsyncOperation.h>
+#import "NHAsyncOperation.h"
 
 @class NHAsyncManager;
 

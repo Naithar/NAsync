@@ -7,7 +7,7 @@
 //
 
 #import "NViewController.h"
-@import NAsync;
+#import "NAsync.h"
 
 @interface NViewController ()
 
