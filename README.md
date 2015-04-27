@@ -25,7 +25,7 @@ Naithar, devias.naith@gmail.com
  #define __NH_NO_FRAMEWORK_PATH "<Your-Module-Name>-Swift.h"
  #endif
  ```
- to your project's .phc file
+ to your project's ```.phc``` file
  * Add ```#import "NAsync.h"``` in your source code and swift bridging header
 
  
