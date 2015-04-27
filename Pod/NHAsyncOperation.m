@@ -11,7 +11,7 @@
 #ifndef __NHASYNC_NO_FRAMEWORK
 #import <NAsync/NAsync-Swift.h>
 #else
-#import "NAsync-Swift.h"
+#import __NH_NO_FRAMEWORK_PATH
 #endif
 
 @interface NHAsyncBaseOperation ()
