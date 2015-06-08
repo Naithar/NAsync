@@ -107,6 +107,10 @@ class ViewController: UIViewController {
         NAsync.queue(nil) { _ in
             return
         }
+        
+        NAsync.async { _ -> Int! in
+            return 0
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
