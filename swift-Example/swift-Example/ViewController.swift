@@ -55,6 +55,11 @@ class ViewController: UIViewController {
         NSLog("return value promise = \(returnValuePromise.perform((10, 10, 15)).waitAny())")
 
 
+        NAsync.queue(nil) { _ -> Int! in
+            return 0
+        }
+        
+        
         NHAsyncManager.queue(nil) { _ -> Int! in
             return 10
             }.queue(nil) { (_, value: Int!) -> (Int, Int)! in
