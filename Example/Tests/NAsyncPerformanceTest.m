@@ -48,6 +48,28 @@
     }];
 }
 
+- (void)testPerformanceNSOperation {
+    [self measureBlock:^{
+        XCTestExpectation *expectation = [self expectationWithDescription:@"single async loop expectation"];
+        __block NSInteger sum = 0;
+        [[[NSOperationQueue alloc] init] addOperation:[NSBlockOperation blockOperationWithBlock:^{
+            for (int i = 0; i < self.loopRepeatCount; i++) {
+                sum += i * 2;
+            }
+            
+            [expectation fulfill];
+        }]];
+        
+        
+        
+        [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+            if (error) {
+                NSLog(@"timeout error %@", error);
+            }
+        }];
+    }];
+}
+
 - (void)testPerformanceNAsync {
     // This is an example of a performance test case.
 
@@ -63,6 +85,103 @@
             [expectation fulfill];
         }];
 
+        [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+            if (error) {
+                NSLog(@"timeout error %@", error);
+            }
+        }];
+    }];
+}
+
+
+- (void)testPerformanceDispatchChainValue {
+    [self measureBlock:^{
+        XCTestExpectation *expectation = [self expectationWithDescription:@"single async loop expectation"];
+        __block NSInteger sum0 = 0;
+        dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+            
+            NSInteger sum = 0;
+            for (int i = 0; i < self.loopRepeatCount; i++) {
+                sum += i * 2;
+            }
+            
+            dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+                
+                sum0 = sum;
+                for (int i = 0; i < self.loopRepeatCount; i++) {
+                    sum0 += i * 2;
+                }
+            [expectation fulfill];
+            });
+        });
+        
+        [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+            if (error) {
+                NSLog(@"timeout error %@", error);
+            }
+        }];
+    }];
+}
+
+- (void)testPerformanceNSOperationChainValue {
+    [self measureBlock:^{
+        XCTestExpectation *expectation = [self expectationWithDescription:@"single async loop expectation"];
+        __block NSInteger sum0 = 0;
+        __block NSInteger sum1 = 0;
+        
+        
+        NSOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+            for (int i = 0; i < self.loopRepeatCount; i++) {
+                sum0 += i * 2;
+            }
+        }];
+        
+        NSOperation *op1 = [NSBlockOperation blockOperationWithBlock:^{
+            sum1 = sum0;
+            for (int i = 0; i < self.loopRepeatCount; i++) {
+                sum1 += i * 2;
+            }
+            
+            [expectation fulfill];
+        }];
+        [op1 addDependency:op];
+        
+        [[[NSOperationQueue alloc] init] addOperation:op1];
+        [[[NSOperationQueue alloc] init] addOperation:op];
+        
+        [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+            if (error) {
+                NSLog(@"timeout error %@", error);
+            }
+        }];
+    }];
+}
+
+- (void)testPerformanceNAsyncChainValue {
+    // This is an example of a performance test case.
+    
+    
+    [self measureBlock:^{
+        XCTestExpectation *expectation = [self expectationWithDescription:@"single async loop expectation"];
+        __block NSInteger sum0 = 0;
+        [[NHAsyncManager queue:nil returnBlock:^id(NHAsyncOperation *operation, id value) {
+            
+            NSInteger sum = 0;
+            for (int i = 0; i < self.loopRepeatCount; i++) {
+                sum += i * 2;
+            }
+            
+            return @(sum);
+        }] async:^(NHAsyncOperation *operation, id value) {
+            sum0 = [value integerValue];
+            
+            for (int i = 0; i < self.loopRepeatCount; i++) {
+                sum0 += i * 2;
+            }
+            
+            [expectation fulfill];
+        }];
+        
         [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
             if (error) {
                 NSLog(@"timeout error %@", error);
